@@ -11,83 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06660a60-1718-4fa0-891c-42139c2ad941" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/editors/code/keybindings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/code/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Style/rafa-std.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/code/JUnit5 Test Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/code/PHP Constructor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/code/PHP Getter Method.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/code/PHP Implemented Method Body.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/code/PHP Overridden Method Body.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/includes/PHP Class Doc Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/includes/PHP File Header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/includes/PHP Property Doc Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/includes/PHP Trait Doc Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/internal/Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/internal/PHP Class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/idea.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/intellij/idea.vmoptions" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/editors/vim/.vimrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/git/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/git/.gitconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/git/.gitignore_global" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/langs/php/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/langs/php/psysh-config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/langs/python/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell/bash/.bash_profile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell/bash/.bashrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell/bash/.profile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell/bash/themes/codely.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell/zsh/completions/_dot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell/zsh/key-bindings.zsh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell/zsh/themes/prompt_codelytv_setup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editors/code/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/code/PHP Fluent Setter Method.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editors/vim/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/code/PHP Setter Method.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/git/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/includes/PHP Function Doc Comment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/dotly" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dotly" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/automator/services.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/contexts/com.contextsformac.Contexts.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/karabiner-elements/assets/complex_modifications/1537364834.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/karabiner-elements/karabiner.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/plist/limit.maxfiles.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/plist/limit.maxproc.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/rectangle/com.knollsoft.Rectangle.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/os/mac/skhd/skhdrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/codely/open_course" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/_main.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/args.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/collections.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/documentation.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/git.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/log.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/platform.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/str.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core/table.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/github/when_i_starred_a_repo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/java/ddd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/self/install" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/self/update" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/self/utils/install.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/self/utils/update.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/utils/clean_slack_channel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/utils/debug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/utils/delete_dist_parameters" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/utils/meteo_in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/utils/restart_soundbar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/utils/twitter" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/video/delay_audio" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/video/folder_duration" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/wtf/colors" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/wtf/javier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/wtf/matrix" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/wtf/pipes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/wtf/type" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shell/_aliases/git.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_aliases/git.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shell/_exports/exports.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_exports/exports.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shell/_functions/dir.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_functions/dir.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shell/bash/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/editors/intellij/Code Templates/includes/PHP Interface Doc Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symlinks/conf.linux.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.linux.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symlinks/conf.macos.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.macos.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +53,14 @@
       <updated>1605963921616</updated>
       <workItem from="1605963922989" duration="1819000" />
     </task>
+    <task id="LOCAL-00001" summary="customizing dotfiles from dotly">
+      <created>1605987919566</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605987919566</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,10 +77,18 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="customizing dotfiles from dotly" />
+    <option name="LAST_COMMIT_MESSAGE" value="customizing dotfiles from dotly" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="566" y="331" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605987609441">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="566" y="331" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1605987609441" />
+    <state x="440" y="249" key="Vcs.Push.Dialog.v2" timestamp="1605987921433">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="249" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605987921433" />
   </component>
 </project>
