@@ -4,17 +4,10 @@ My custom dotfiles using the framework dotly
 # Prerequisites
 Mac or Linux
 
-
 # Installing
-## Clone the repo
-```sh
-git clone --recurse-submodules https://github.com/EduardoSimon/dotfiles.git .dotfiles 
-````
-
-## Install the framework
 
 ```sh
-dot self install
+bash <(curl -s https://raw.githubusercontent.com/EduardoSimon/dotfiles/master/installer) 
 ````
 
 Dont forget to restart the terminal! 🤓
