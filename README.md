@@ -7,7 +7,7 @@ Mac or Linux
 # Installing
 
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/EduardoSimon/dotfiles/master/installer) 
+bash <(curl -s https://raw.githubusercontent.com/EduardoSimon/dotfiles/main/installer) 
 ````
 
 Dont forget to restart the terminal! 🤓
