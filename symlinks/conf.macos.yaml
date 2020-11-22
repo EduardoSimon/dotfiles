@@ -1,20 +1,12 @@
 - clean: ['~']
 
 - defaults:
-      link:
-          create: true
-          force: true
-
-- link:
-      ~/Library/Application Support/Alfred/Alfred.alfredpreferences: mac/alfred
-      ~/Library/Application Support/Code/User/keybindings.json: editors/vs-code/keybindings.json
-      ~/Library/Application Support/Code/User/settings.json: editors/vs-code/settings.json
-      ~/Library/Application Support/Code/User/snippets: editors/vs-code/snippets
-      ~/Library/Group Containers/group.com.docker/settings.json: mac/docker/settings.json
-      ~/bin/bash: /usr/local/bin/bash
-      ~/bin/date: /usr/local/bin/gdate
-      ~/bin/make: /usr/local/opt/make/libexec/gnubin/make
-      ~/bin/sed: /usr/local/opt/gnu-sed/libexec/gnubin/sed
-      ~/bin/touch: /usr/local/bin/gtouch
+    link:
+      create: true
+      force: true
 
 - create:
+      - ~/.hushlogin
+
+- link:
+    ~/.dotly: os/mac/.dotly

@@ -5,19 +5,11 @@
       create: true
       force: true
 
+- create:
+      - ~/.z
+
 - link:
-    ~/.bashrc: shell/bash/.bashrc
-    ~/.bash_profile: shell/bash/.bash_profile
-    ~/.profile: shell/bash/.profile
     ~/.zimrc: shell/zsh/.zimrc
     ~/.zlogin: shell/zsh/.zlogin
     ~/.zshenv: shell/zsh/.zshenv
     ~/.zshrc: shell/zsh/.zshrc
-    ~/.gitconfig: git/.gitconfig
-    ~/.gitignore_global: git/.gitignore_global
-    ~/.gitattributes: git/.gitattributes
-    ~/.vimrc: editors/vim/.vimrc
-    ~/.composer/composer.json: langs/php/composer.json
-
-- create:
-    - ~/.z

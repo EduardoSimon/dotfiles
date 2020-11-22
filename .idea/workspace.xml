@@ -11,9 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06660a60-1718-4fa0-891c-42139c2ad941" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/modules/dotly" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dotly" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/cdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/cdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/count_files_recursive" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/count_files_recursive_per_directory" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive_per_directory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/create" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/create" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/find_broken_symlinks" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/find_broken_symlinks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/flat_this_dir" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/flat_this_dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/navigate_and_preview_flatten_files" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/navigate_and_preview_flatten_files" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/short_pwd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem/size_of_directory" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/size_of_directory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shell/_aliases/git.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_aliases/git.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shell/_exports/exports.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_exports/exports.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shell/_functions/dir.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_functions/dir.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symlinks/conf.linux.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.linux.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symlinks/conf.macos.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.macos.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symlinks/conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605963921616</updated>
       <workItem from="1605963922989" duration="1819000" />
+      <workItem from="1606035564885" duration="385000" />
     </task>
     <task id="LOCAL-00001" summary="customizing dotfiles from dotly">
       <created>1605987919566</created>
@@ -76,6 +89,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="customizing dotfiles from dotly" />
