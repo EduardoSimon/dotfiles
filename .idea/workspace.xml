@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -11,21 +14,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06660a60-1718-4fa0-891c-42139c2ad941" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/cdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/cdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/count_files_recursive" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/count_files_recursive_per_directory" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive_per_directory" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/create" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/create" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/find_broken_symlinks" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/find_broken_symlinks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/flat_this_dir" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/flat_this_dir" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/navigate_and_preview_flatten_files" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/navigate_and_preview_flatten_files" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/short_pwd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/filesystem/size_of_directory" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/size_of_directory" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shell/_aliases/git.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_aliases/git.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shell/_exports/exports.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_exports/exports.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shell/_functions/dir.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_functions/dir.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symlinks/conf.linux.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.linux.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symlinks/conf.macos.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.macos.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symlinks/conf.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/symlinks/conf.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/dotly" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dotly" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/chrome/goto" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/chrome/goto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/connect" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/connect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker/prune" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker/prune" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/cdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/cdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive_per_directory" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/count_files_recursive_per_directory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/create" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/create" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/find_broken_symlinks" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/find_broken_symlinks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/flat_this_dir" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/flat_this_dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/navigate_and_preview_flatten_files" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/navigate_and_preview_flatten_files" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/filesystem-utils/size_of_directory" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/filesystem-utils/size_of_directory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/amend" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/amend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/apply-gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/apply-gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/changed-files" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/changed-files" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/commit" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/commit" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/contributors" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/contributors" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/due-diligence" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/due-diligence" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/effort" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/effort" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/find" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/find" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/pretty-diff" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/pretty-diff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/pretty-log" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/pretty-log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/pull-all-dirs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/pull-all-dirs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/remove-ignored" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/remove-ignored" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/remove-remote-staled-branches" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/remove-remote-staled-branches" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/show-ignored" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/show-ignored" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/show-remote-staled-branches" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/show-remote-staled-branches" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/git/standup" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/git/standup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/github/org_contributors" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/github/org_contributors" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/github/subdomains" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/github/subdomains" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/github/top_stargazers" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/github/top_stargazers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/image/optimize" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/image/optimize" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/intellij/add_code_templates" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/intellij/add_code_templates" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/java/list_jdks" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/java/list_jdks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/log/tail_json" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/log/tail_json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/mac/force_discover_updates" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/mac/force_discover_updates" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/mysql/delete_db_starting_by" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/mysql/delete_db_starting_by" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/mysql/general_log" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/mysql/general_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/mysql/truncate_database" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/mysql/truncate_database" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/network/ip" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/network/ip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/network/private_ip" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/network/private_ip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/brew_cask_install" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/brew_cask_install" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/brew_cask_uninstall" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/brew_cask_uninstall" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/export" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/install" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/install" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/outdated" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/outdated" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/sync" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/sync" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/uninstall" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/uninstall" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package/update_all" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package/update_all" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/process/kill_named" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/process/kill_named" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/share/qr" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/share/qr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/shell/zsh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/shell/zsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/system/clean" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/system/clean" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/system/empty_trash" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/system/empty_trash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/system/list_opened_apps" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/system/list_opened_apps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/system/media" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/system/media" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/system/port_owner" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/system/port_owner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/system/show_app_open_files" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/system/show_app_open_files" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/system/volume" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/system/volume" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ui/change_wallpaper" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ui/change_wallpaper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/available_commands" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/available_commands" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/available_jdks" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/available_jdks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/list_projects" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/list_projects" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/open_intellij" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/open_intellij" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/open_project_in_intellij" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/open_project_in_intellij" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/sync_dotfiles" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/sync_dotfiles" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/timestamp_to_date" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/timestamp_to_date" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/utils/uuid_code" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/utils/uuid_code" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/video/to-gif" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/video/to-gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/youtube/download-mp3" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/youtube/download-mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/youtube/download-mp4" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/youtube/download-mp4" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +125,7 @@
       <updated>1605963921616</updated>
       <workItem from="1605963922989" duration="1819000" />
       <workItem from="1606035564885" duration="385000" />
+      <workItem from="1606072659546" duration="2915000" />
     </task>
     <task id="LOCAL-00001" summary="customizing dotfiles from dotly">
       <created>1605987919566</created>
@@ -104,5 +165,13 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="440" y="249" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605987921433" />
+    <state x="541" y="246" width="597" height="518" key="find.popup" timestamp="1606074592301">
+      <screen x="0" y="25" width="1680" height="962" />
+    </state>
+    <state x="541" y="246" width="597" height="518" key="find.popup/0.25.1680.962@0.25.1680.962" timestamp="1606074592301" />
+    <state x="505" y="236" width="670" height="676" key="search.everywhere.popup" timestamp="1606074533926">
+      <screen x="0" y="25" width="1680" height="962" />
+    </state>
+    <state x="505" y="236" width="670" height="676" key="search.everywhere.popup/0.25.1680.962@0.25.1680.962" timestamp="1606074533926" />
   </component>
 </project>

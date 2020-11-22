@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "$DOTFILES_PATH/scripts/core/_main.sh"
+source "$DOTLY_PATH/scripts/core/_main.sh"
 
 ##? ZSH helpers
 #?? 1.0.0
@@ -20,8 +20,8 @@ case $1 in
 
   find "$DOTFILES_PATH/shell/zsh" -name '*.zwc' -exec rm -rf {} \;
   find "$DOTFILES_PATH/shell/zsh" -name '*.old' -exec rm -rf {} \;
-  find "$DOTFILES_PATH/modules/zimfw" -name '*.zwc' -exec rm -rf {} \;
-  find "$DOTFILES_PATH/modules/zimfw" -name '*.old' -exec rm -rf {} \;
+  find "$DOTLY_PATH/modules/zimfw" -name '*.zwc' -exec rm -rf {} \;
+  find "$DOTLY_PATH/modules/zimfw" -name '*.old' -exec rm -rf {} \;
 
   /bin/zsh -c "source ${ZDOTDIR:-${HOME}}/.zlogin"
 
