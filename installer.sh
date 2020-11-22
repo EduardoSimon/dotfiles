@@ -9,7 +9,7 @@ set -euo pipefail
 ##? Usage:
 ##?    install
 
-echo "🚀 Welcome to the rgomezcasas/dotfiles installer!"
+echo "🚀 Welcome to the EduardoSimon's dotfiles installer! 🤙"
 echo "-------------------------------------------------"
 echo
 read -rp "🤔  Where do you want to clone the dotfiles? (default ~/.dotfiles): " DOTFILES_PATH
