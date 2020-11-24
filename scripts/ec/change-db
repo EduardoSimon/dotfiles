@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+
+##? Changes db in config file
+#?? 1.0.0
+##?
+##? Usage:
+##?   change-db <dbName>
+docs::eval "$@"
+
+sed -i "57s/.*/\$db['default']['database'] = '$dbName';/" ./application/config/database.php

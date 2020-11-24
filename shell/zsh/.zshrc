@@ -21,3 +21,4 @@ autoload -Uz promptinit && promptinit
 prompt codelytv
 
 source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
