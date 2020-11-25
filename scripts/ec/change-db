@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+# shellcheck source=./../../modules/dotly/scripts/core/_main.sh
 source "$DOTLY_PATH/scripts/core/_main.sh"
 
 
@@ -12,4 +13,13 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?   change-db <dbName>
 docs::eval "$@"
 
-sed -i "57s/.*/\$db['default']['database'] = '$dbName';/" ./application/config/database.php
+FILE=$PWD/application/config/database.php
+
+if [ -f "$FILE" ]; then
+    # shellcheck disable=SC2154
+    sed -i "57s/.*/\$db['default']['database'] = '$dbName';/" $FILE
+    echo "DB Name changed correctly to $dbName"
+else
+    echo "Database config file not found. Make sure you are inside the platform folder."
+fi
+
