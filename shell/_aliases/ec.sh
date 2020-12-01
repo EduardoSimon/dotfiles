@@ -2,3 +2,5 @@ alias styles="echo \"Ejecutando less_compile\" && curl -s \"http://eventscase.lo
 alias regendb="echo \"Ejecutando regenerate_db\" && curl -s \"http://eventscase
 .loc/tools/regenerate_db\""
 alias dbch="dot ec change-db"
+alias nb="dot git new-branch-with-remote"
+alias gacp="dot git commit-push"

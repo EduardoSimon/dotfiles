@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? New branch with tracking in origin
+#?? 1.0.0
+##?
+##? Usage:
+##?   new-branch-with-remote <name>
+docs::eval "$@"
+
+git create-branch -r "$1"

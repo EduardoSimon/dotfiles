@@ -18,6 +18,11 @@ FILE=$PWD/application/config/database.php
 if [ -f "$FILE" ]; then
     # shellcheck disable=SC2154
     sed -i "57s/.*/\$db['default']['database'] = '$dbName';/" $FILE
+    echo "Regenerating db.."
+    regendb
+    echo "Compiling styles..."
+    styles
+    
     echo "DB Name changed correctly to $dbName"
 else
     echo "Database config file not found. Make sure you are inside the platform folder."
