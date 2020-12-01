@@ -14,9 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06660a60-1718-4fa0-891c-42139c2ad941" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/ec/check-merged-branches" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/dotly" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dotly" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ec/change-db" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ec/change-db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shell/_aliases/ec.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/_aliases/ec.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +70,10 @@
       <workItem from="1606072659546" duration="2915000" />
       <workItem from="1606117496159" duration="13474000" />
       <workItem from="1606290278976" duration="27000" />
-      <workItem from="1606290325181" duration="254000" />
+      <workItem from="1606290325181" duration="4645000" />
+      <workItem from="1606308263734" duration="4551000" />
+      <workItem from="1606377383599" duration="3194000" />
+      <workItem from="1606808734858" duration="2188000" />
     </task>
     <task id="LOCAL-00001" summary="customizing dotfiles from dotly">
       <created>1605987919566</created>
@@ -86,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606236734209</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="upgrade ec change-db script">
+      <created>1606290584841</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606290584841</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,20 +121,24 @@
     <option name="LAST_COMMIT_MESSAGE" value="upgrade ec change-db script" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="695" y="359" width="736" height="406" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606230986061">
+    <state x="695" y="359" width="832" height="406" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606840872024">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="566" y="331" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1605987609441" />
-    <state x="695" y="359" width="736" height="406" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606230986061" />
+    <state x="695" y="359" width="832" height="406" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606840872024" />
+    <state x="779" y="226" width="423" height="662" key="RollbackChangesDialog" timestamp="1606290604985">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="779" y="226" width="423" height="662" key="RollbackChangesDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1606290604985" />
     <state x="522" y="188" width="947" height="737" key="SettingsEditor" timestamp="1606118989521">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="522" y="188" width="947" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1606118989521" />
-    <state x="556" y="277" width="800" height="564" key="Vcs.Push.Dialog.v2" timestamp="1606236829537">
+    <state x="556" y="277" width="800" height="564" key="Vcs.Push.Dialog.v2" timestamp="1606290587534">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="440" y="249" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605987921433" />
-    <state x="556" y="277" width="800" height="564" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1606236829537" />
+    <state x="556" y="277" width="800" height="564" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1606290587534" />
     <state x="667" y="269" width="657" height="567" key="find.popup" timestamp="1606233699023">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
