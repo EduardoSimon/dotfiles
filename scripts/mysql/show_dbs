@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Show databases
+#?? 1.0.0
+##?
+##? Usage:
+##?   show_dbs
+##?   show_dbs <ip>
+docs::eval "$@"
+
+if [ -z "$ip" ]; then
+    URL='192.168.33.66'
+else
+    URL=$1
+fi
+mysql -h "$URL" -uroot -p'123' <<MYSQL_SCRIPT
+SHOW DATABASES;
+MYSQL_SCRIPT
+

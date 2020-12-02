@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Create db by name using root user
+#?? 1.0.0
+##?
+##? Usage:
+##?   create_db <dbName>
+docs::eval "$@"
+
+mysql -h 192.168.33.66 -uroot -p'123' <<MYSQL_SCRIPT
+CREATE DATABASE $1;
+MYSQL_SCRIPT
+
+echo "DB $1 created."
