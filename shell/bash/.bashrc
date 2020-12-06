@@ -1,11 +1,12 @@
-export DOTFILES_PATH=$HOME/.dotfiles
+export DOTFILES_PATH="/Users/eduardosimonpicon/.dotfiles"
+export DOTLY_PATH="$DOTFILES_PATH/modules/dotly"
 
 source "$DOTFILES_PATH/shell/init.sh"
-eval $($(brew --prefix)/bin/brew shellenv)
+
 PATH=$(
   IFS=":"
   echo "${path[*]}"
 )
 export PATH
 
-source "$DOTFILES_PATH/shell/bash/themes/codely.sh"
+source "$DOTLY_PATH/shell/bash/themes/codely.sh"

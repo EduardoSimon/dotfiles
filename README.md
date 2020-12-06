@@ -1,14 +1,11 @@
-# My personal DOTFILES 🛠
-My custom dotfiles using the framework dotly
+<h1 align="center">
+  .dotfiles created using <a href="https://github.com/CodelyTV/dotly">🌚 dotly</a>
+</h1>
 
-# Prerequisites
-Mac or Linux
+## Restore your Dotfiles
 
-# Installing
-
-```sh
-bash <(curl -s https://raw.githubusercontent.com/EduardoSimon/dotfiles/main/installer.sh) 
-````
-
-Dont forget to restart the terminal! 🤓
-
+* Install git
+* Clone your dotfiles repository `git clone [your repository of dotfiles] $HOME/.dotfiles`
+* Go to your dotfiles folder `cd $HOME/.dotfiles`
+* Install git submodules `git submodule update --init --recursive`
+* Install your dotfiles `$HOME/.dotfiles/modules/dotly/bin/dot self install`
