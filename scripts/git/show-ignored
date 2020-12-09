@@ -9,6 +9,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   remove-ignored
-docs::eval "$@"
+docs::parse "$@"
 
 git clean -f -X

@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   kill_named
-docs::eval "$@"
+docs::parse "$@"
 
 ps aux | grep $1 | grep -v grep | grep -v kill_named | awk '{print $2}' | xargs kill -9
 

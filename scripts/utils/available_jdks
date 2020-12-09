@@ -9,6 +9,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   available_jdks
-docs::eval "$@"
+docs::parse "$@"
 
 ls /Library/Java/JavaVirtualMachines

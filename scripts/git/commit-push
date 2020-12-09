@@ -10,7 +10,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##? Usage:
 ##?   commit
 ##?   commit <message>
-docs::eval "$@"
+docs::parse "$@"
 
 git add -A
 

@@ -12,6 +12,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Example:
 ##?   org_contributors codelytv
-docs::eval "$@"
+docs::parse "$@"
 
 python "$DOTFILES_PATH/scripts/github/utils/github-contributors.py" -t "$GITHUB_TOKEN" -o "$@"

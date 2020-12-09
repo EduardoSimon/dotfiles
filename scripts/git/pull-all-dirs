@@ -9,6 +9,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   pull-all-dirs
-docs::eval "$@"
+docs::parse "$@"
 
 ls | xargs -I{} git -C {} pull

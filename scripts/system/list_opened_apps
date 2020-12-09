@@ -9,6 +9,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   list_opened_apps
-docs::eval "$@"
+docs::parse "$@"
 
 ps axc | awk 'NR > 1' | awk '{print substr($0,index($0,$5))}' | sort -u

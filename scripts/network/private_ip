@@ -9,6 +9,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   private_ip
-docs::eval "$@"
+docs::parse "$@"
 
 ipconfig getifaddr en0

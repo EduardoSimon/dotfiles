@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   uuid_code
-docs::eval "$@"
+docs::parse "$@"
 
 uuid=$(uuidgen | tr '[:upper:]' '[:lower:]')
 echo -n $uuid | pbcopy

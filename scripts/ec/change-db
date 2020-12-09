@@ -11,7 +11,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   change-db <dbName>
-docs::eval "$@"
+docs::parse "$@"
 
 FILE=$PWD/application/config/database.php
 

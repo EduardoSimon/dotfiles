@@ -13,6 +13,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Example:
 ##?   subdomains codely.tv
-docs::eval "$@"
+docs::parse "$@"
 
 python "$DOTFILES_PATH/scripts/github/utils/github-subdomains.py" -t "$GITHUB_TOKEN" -d "$@"

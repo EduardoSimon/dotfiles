@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   export
-docs::eval "$@"
+docs::parse "$@"
 
 #brew services stop --all
 #brew bundle dump --file="$HOMEBREW_BUNDLE_FILE_PATH" --force

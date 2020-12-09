@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   add_code_templates
-docs::eval "$@"
+docs::parse "$@"
 
 preferences_dir="$HOME/Library/Application Support/JetBrains"
 intellij_version=$(ls "$preferences_dir" | grep 'IntelliJIdea' | sort -r | head -n 1)

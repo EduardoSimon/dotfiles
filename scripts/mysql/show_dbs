@@ -10,7 +10,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##? Usage:
 ##?   show_dbs
 ##?   show_dbs <ip>
-docs::eval "$@"
+docs::parse "$@"
 
 if [ -z "$ip" ]; then
     URL='192.168.33.66'

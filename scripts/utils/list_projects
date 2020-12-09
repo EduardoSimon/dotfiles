@@ -11,7 +11,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Options:
 ##?   --choose  Use choose instead fzf
-docs::eval "$@"
+docs::parse "$@"
 
 project_root_directories=(
   "$HOME/Code/codely/"*

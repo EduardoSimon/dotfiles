@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   install
-docs::eval "$@"
+docs::parse "$@"
 
 if [[ -z $1 ]]; then
   package=$(brew search | fzf)

@@ -11,7 +11,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   check-merged-branches <branchName> <authorName>
-docs::eval "$@"
+docs::parse "$@"
 
 git branch -r --merged $1 --format='%(committerdate) %09 %(authorname) %09 %(refname)' | sort \
 -k5n -k2M -k3n -k4n | grep "$2"

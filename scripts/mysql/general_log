@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   general_log
-docs::eval "$@"
+docs::parse "$@"
 
 MYSQL_LOG_PATH="/var/log/mysql_general.log"
 

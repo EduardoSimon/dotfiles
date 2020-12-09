@@ -8,7 +8,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   effort [--above <value>] [<path>...] [-- [<log options>...]]
-docs::eval "$@"
+docs::parse "$@"
 
 git_extra_mktemp() {
   mktemp -t "$(basename "$0")".XXXXXXX

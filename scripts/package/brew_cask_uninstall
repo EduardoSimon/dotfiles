@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   brew_cask_uninstall
-docs::eval "$@"
+docs::parse "$@"
 
 if [[ -z $1 ]]; then
   to_uninstall=$(brew cask list | fzf)

@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   update_all [--all]
-docs::eval "$@"
+docs::parse "$@"
 
 echo '🍎 Updating App Store apps'
 mas upgrade

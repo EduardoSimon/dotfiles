@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   sync_dotfiles
-docs::eval "$@"
+docs::parse "$@"
 
 cd "$DOTFILES_PATH" || exit
 

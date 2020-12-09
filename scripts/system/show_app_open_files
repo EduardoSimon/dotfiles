@@ -14,7 +14,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##? Options:
 ##?   -h --help   Show this screen.
 ##?   -w --watch  Watch the changes
-docs::eval "$@"
+docs::parse "$@"
 
 selected=$(dot system list_opened_apps | fzf)
 

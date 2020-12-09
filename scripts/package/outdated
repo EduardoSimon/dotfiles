@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   outdated
-docs::eval "$@"
+docs::parse "$@"
 
 echo '♢ Outdated App Store apps:'
 mas outdated

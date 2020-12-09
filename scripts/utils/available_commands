@@ -9,6 +9,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   available_commands
-docs::eval "$@"
+docs::parse "$@"
 
 bash -c "compgen -c"

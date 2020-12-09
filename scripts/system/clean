@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   clean
-docs::eval "$@"
+docs::parse "$@"
 
 sudo rm -rf /Applications/Utilities/Adobe\ Creative\ Cloud/ACC/Creative\ Cloud.app
 sudo rm -rf /Applications/Utilities/Adobe\ Creative\ Cloud/AppsPanel/Updater/Adobe\ Application\ Updater.app

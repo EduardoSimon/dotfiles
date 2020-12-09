@@ -9,6 +9,6 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   tail_json <filename>  Accept wildcards
-docs::eval "$@"
+docs::parse "$@"
 
 tail -f $1 | egrep -v "$2" | jq
