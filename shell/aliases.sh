@@ -20,9 +20,23 @@ alias gpsf="git push --force"
 alias gpl="git pull --rebase --autostash"
 alias gb="git branch"
 alias gl="$DOTLY_PATH/bin/dot git pretty-log"
+alias gacp="$DOTLY_PATH/bin/dot git commit-push"
+alias nb="$DOTLY_PATH/bin/dot git new-branch-with-remote"
 
 # Utils
 alias k='kill -9'
 alias i.='(idea $PWD &>/dev/null &)'
 alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
+alias php.='phpstorm .'
+alias ws.='webstorm .'
+
+#EC
+alias styles="echo \"Ejecutando less_compile\" && curl -s \"http://eventscase.loc/tools/less_compile\""
+alias regendb="echo \"Ejecutando regenerate_db\" && curl -s \"http://eventscase.loc/tools/regenerate_db\""
+alias chdb="$DOTLY_PATH/bin/dot ec change-db"
+
+#Vagrant
+alias vr="vagrant reload"
+alias vre="vagrant reload eventscase"
+alias vrg="vagrant reload gearman"
