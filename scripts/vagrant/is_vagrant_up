@@ -1,0 +1,44 @@
+#!/bin/bash
+set -o pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Add all files, commit with message and push to the current branch
+#?? 1.0.0
+##?
+##? Usage:
+##?   is_vagrant_up <environment>
+##?   is_vagrant_up <environment> <vagrant_source_path>
+docs::parse "$@"
+
+function is_vagrant_up::is_up() {
+    salida="vagrant status | grep -e ${1} | grep -e 'running'"
+    action=$(eval "$salida")
+    if [[ ! -z "$action" ]];then
+        return 1
+    fi
+    return 0
+}
+
+if [ -z $vagrant_source_path ]; then
+    vagrant_source_path=$PWD
+else
+    cd $vagrant_source_path
+fi
+
+while [ : ]
+do
+    
+    is_vagrant_up::is_up $environment
+    CODE=$?
+    [[ $CODE -gt 0 ]] && TEXT="up" || TEXT="down"
+    echo "Checking: vagrant $environment - $TEXT"
+    if [[ $CODE -gt 0 ]];
+    then
+        sleep 5
+        break
+    fi
+    sleep 10
+done
+
+vagrant ssh $environment
