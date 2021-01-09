@@ -16,13 +16,14 @@ docs::parse "$@"
 FILE=$PWD/application/config/database.php
 
 if [ -f "$FILE" ]; then
+    numFileDatabase="$(grep -n '"database"' $FILE | head -n 1 | cut -d: -f1)"
     # shellcheck disable=SC2154
-    sed -i "57s/.*/\$db['default']['database'] = '$dbName';/" $FILE
+    sed -i "${numFileDatabase}s/.*/\$db[\"default\"][\"database\"] = '$dbName';/" $FILE
     echo "Regenerating db.."
-    regendb
+    echo "Ejecutando regenerate_db" && curl -s "http://eventscase.loc/tools/regenerate_db"
     echo "Compiling styles..."
-    styles
-    
+    echo "Ejecutando less_compile" && curl -s "http://eventscase.loc/tools/less_compile"
+    echo ""
     echo "DB Name changed correctly to $dbName"
 else
     echo "Database config file not found. Make sure you are inside the platform folder."
