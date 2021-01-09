@@ -4,19 +4,36 @@ set -euo pipefail
 
 source "$DOTLY_PATH/scripts/core/_main.sh"
 
-##? Add intellij Code Templates symlink (since it's not synced via JetBrains Toolbox)
+##? Add intellij Code Templates symlink to IntelliJIdea / Webstorm / IntelliJClient / PhpStorm
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   add_code_templates
+##?   add_code_templates <editor>
 docs::parse "$@"
 
+EDITORS=('IntelliJClient' 'IntelliJIdea' 'PhpStorm' 'WebStorm' 'PyCharmCE' 'CLion')
 preferences_dir="$HOME/Library/Application Support/JetBrains"
-intellij_version=$(ls "$preferences_dir" | grep 'IntelliJIdea' | sort -r | head -n 1)
-intellij_code_templates_folder="$preferences_dir/$intellij_version/fileTemplates"
 
-rm -rf "$intellij_code_templates_folder"
-ln -s -i "$DOTFILES_PATH/editors/intellij/Code Templates/" "$intellij_code_templates_folder"
+if [ -z "$editor" ]; then
+  for editorName in "${EDITORS[@]}"; do
+    intellij_version=$(ls "$preferences_dir" | grep $editorName | sort -r | head -n 1)
+    intellij_code_templates_folder="$preferences_dir/$intellij_version/fileTemplates"
+    rm -rf "$intellij_code_templates_folder"
+    ln -s -i "$DOTFILES_PATH/editors/intellij/Code Templates/" "$intellij_code_templates_folder"
 
-echo "Applied to path: $intellij_code_templates_folder"
-echo "Done for $intellij_version!"
+    echo "Applied to path: $intellij_code_templates_folder"
+    echo "Done for $intellij_version!"
+  done
+else
+  intellij_version=$(ls "$preferences_dir" | grep '$1' | sort -r | head -n 1)
+  intellij_code_templates_folder="$preferences_dir/$intellij_version/fileTemplates"
+
+  rm -rf "$intellij_code_templates_folder"
+  ln -s -i "$DOTFILES_PATH/editors/intellij/Code Templates/" "$intellij_code_templates_folder"
+
+  echo "Applied to path: $intellij_code_templates_folder"
+  echo "Done for $intellij_version!"
+fi
+
+echo "Done syncing intellij settings 🤙"
