@@ -1,0 +1,6 @@
+% ec
+
+# Change database in Eventscase platform
+dot ec change-db <database>
+
+$ database: dot ec get-dbs
