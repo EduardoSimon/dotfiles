@@ -12,18 +12,34 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?   add_code_templates <editor>
 docs::parse "$@"
 
-EDITORS=('IntelliJClient' 'IntelliJIdea' 'PhpStorm' 'WebStorm' 'PyCharmCE' 'CLion')
-preferences_dir="$HOME/Library/Application Support/JetBrains"
+EDITORS=('IntelliJClient' 'PhpStorm' 'CLion' 'WebStorm' 'IntelliJIdea' 'PyCharmCE')
+
+if grep -qEi "(Microsoft|WSL|microsoft)" /proc/version &> /dev/null ; then
+    home_path=$(wslpath "$(wslvar USERPROFILE 2> /dev/null)")
+    preferences_dir="$home_path/AppData/Roaming/JetBrains"
+elif platform::is_linux; then
+    preferences_dir="$HOME/Library/Application Support/JetBrains"
+elif platform::is_linux; then
+    preferences_dir="$HOME/.config/JetBrains"
+fi
+
 
 if [ -z "$editor" ]; then
   for editorName in "${EDITORS[@]}"; do
     intellij_version=$(ls "$preferences_dir" | grep $editorName | sort -r | head -n 1)
+
+    # TODO skip not found editor
+    if [ -z "$intellij_version" ]; then
+      echo "Skipping $intellij_version"
+    fi
+
     intellij_code_templates_folder="$preferences_dir/$intellij_version/fileTemplates"
     rm -rf "$intellij_code_templates_folder"
     ln -s -i "$DOTFILES_PATH/editors/intellij/Code Templates/" "$intellij_code_templates_folder"
 
     echo "Applied to path: $intellij_code_templates_folder"
     echo "Done for $intellij_version!"
+
   done
 else
   intellij_version=$(ls "$preferences_dir" | grep '$1' | sort -r | head -n 1)
