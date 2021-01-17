@@ -1,3 +1,6 @@
+/**
+* @return ${TYPE_HINT}
+*/
 public ${STATIC} function ${FIELD_NAME}()#if(${RETURN_TYPE}): ${RETURN_TYPE}#else#end
 {
 #if (${STATIC} == "static")

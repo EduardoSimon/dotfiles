@@ -12,7 +12,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?   add_code_templates <editor>
 docs::parse "$@"
 
-EDITORS=('IntelliJClient' 'PhpStorm' 'CLion' 'WebStorm' 'IntelliJIdea' 'PyCharmCE')
+EDITORS=('IntelliJClient' 'PhpStorm' 'WebStorm' 'IntelliJIdea' 'CLion' 'PyCharmCE')
 
 if grep -qEi "(Microsoft|WSL|microsoft)" /proc/version &> /dev/null ; then
     home_path=$(wslpath "$(wslvar USERPROFILE 2> /dev/null)")
@@ -35,7 +35,12 @@ if [ -z "$editor" ]; then
 
     intellij_code_templates_folder="$preferences_dir/$intellij_version/fileTemplates"
     rm -rf "$intellij_code_templates_folder"
-    ln -s -i "$DOTFILES_PATH/editors/intellij/Code Templates/" "$intellij_code_templates_folder"
+
+    if grep -qEi "(Microsoft|WSL|microsoft)" /proc/version &> /dev/null ; then
+        cp -r "$DOTFILES_PATH/editors/intellij/Code Templates" "$intellij_code_templates_folder"
+    else
+        ln -s -i "$DOTFILES_PATH/editors/intellij/Code Templates/" "$intellij_code_templates_folder"
+    fi
 
     echo "Applied to path: $intellij_code_templates_folder"
     echo "Done for $intellij_version!"
