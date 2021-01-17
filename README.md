@@ -14,3 +14,12 @@
 ## Updating Dotly
 
 `cd $DOTLY_PATH && git pull origin master --rebase`
+
+### ToDo List on personal dotfiles
+
+- [ ] Improve git global config on WSL and review other platform
+- [ ] Review unsynced IntelliJ settings and apply them with scripts
+- [ ] Add commit flags to gc dot command
+- [ ] Research how to unbind system keys on Linux/Windows/Mac
+- [ ] Karabiner
+- [ ] Improve SQL support
