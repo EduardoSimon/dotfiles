@@ -18,7 +18,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: addnab/docker-run-action@v1
-        with:
-          image: badouralix/zunit
-          run: zunit
+      - run: docker run -t --rm -v $PWD:/app:ro badouralix/zunit    
