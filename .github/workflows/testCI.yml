@@ -14,9 +14,11 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
+    name: Run Zunit Tests
     runs-on: ubuntu-latest
 
     steps:
-      - name: ZUnit step
-      - uses: actions/checkout@v2
-      - run: docker run -t --rm -v $PWD:/app:ro badouralix/zunit    
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run Zunit
+        run: docker run -t --rm -v $PWD:/app:ro badouralix/zunit    
