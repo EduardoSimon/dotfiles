@@ -1,2 +1,3 @@
 #!/usr/bin/env zsh
 # Write your bootstrap code here
+source "$DOTFILES_PATH/shell/init.sh"

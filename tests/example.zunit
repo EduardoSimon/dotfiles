@@ -1,4 +1,5 @@
 #!/usr/bin/env zunit
-@test 'Example' {
-  assert "true" same_as "true"
+@test 'DB change test' {
+  run "//$db['default']['database'] = 'eventoplus_db';\n $db['default']['database'] = 'eventscase';" > $PWD/database.php
+  assert $PWD/database.php exists
 }
