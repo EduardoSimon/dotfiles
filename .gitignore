@@ -1,1 +1,3 @@
-.idea
+.idea/
+mysql_dump.conf
+.vscode/
