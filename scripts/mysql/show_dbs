@@ -9,15 +9,30 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   show_dbs
-##?   show_dbs <ip>
+##?   show_dbs <hostname> <user> <pass>
 docs::parse "$@"
 
-if [ -z "$ip" ]; then
-    URL='192.168.33.66'
+if [ -z "$hostname" ]; then
+    URL='localhost'
 else
-    URL=$1
+    URL=$hostname
 fi
-mysql -h "$URL" -uroot -p'123' <<MYSQL_SCRIPT
+
+
+if [ -z "$user" ]; then
+  USER='root'
+else
+  USER=$user
+fi
+
+if [ -z "$pass" ]; then
+  PASS=''
+else
+  PASS=$pass
+fi
+
+
+mysql -h "$URL" -u "$USER" -p "$PASS" <<MYSQL_SCRIPT
 SHOW DATABASES;
 MYSQL_SCRIPT
 
