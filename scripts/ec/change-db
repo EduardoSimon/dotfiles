@@ -14,16 +14,17 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 docs::parse "$@"
 
 
-FILE=$(find . -name "database.php")
+FILE=$(find . -name "database.php" -not -path "./**/testing/*")
 
 if [ -f "$FILE" ]; then
     numFileDatabase="$(grep -En "^[\$]db\[[\"']default[\"']\]\[[\"']database[\"']\]" $FILE | head -n 1 | cut -d: -f1)"
 
     sed -i "${numFileDatabase}s/.*/\$db[\"default\"][\"database\"] = '$dbName';/" $FILE
 
-    $regendb && echo "Ejecutando regenerate_db \n" && curl -s "http://eventscase.loc/tools/regenerate_db"
-    $styles && echo "Ejecutando less_compile \n" && curl -s "http://eventscase.loc/tools/less_compile"
+    $regendb && echo "Ejecutando regenerate_db..." && curl -s "http://eventscase.loc/tools/regenerate_db"
+    $styles && echo "Ejecutando less_compile..." && curl -s "http://eventscase.loc/tools/less_compile_all"
 
+    echo ""
     echo "💾 Database changed correctly to $dbName"
 else
     >&2 echo "🏚 Database config file not found. Make sure you are inside the project."
