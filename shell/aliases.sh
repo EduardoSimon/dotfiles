@@ -42,3 +42,6 @@ alias vre="vagrant reload eventscase"
 alias vrg="vagrant reload gearman"
 alias cdgia="cd ~HOME/Documents/GreenAndIn/business-app"
 alias cdgib="cd ~HOME/Documents/GreenAndIn/functions"
+
+#utils
+alias uuid="dot utils uuid_code"
