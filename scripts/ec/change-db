@@ -10,22 +10,22 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 #?? 1.0.0
 ##?
 ##? Usage:
-##?   change-db <dbName>
+##?   change-db <dbName> [--regendb] [--styles]
 docs::parse "$@"
 
-FILE=$PWD/application/config/database.php
+
+FILE=$(find . -name "database.php")
 
 if [ -f "$FILE" ]; then
-    numFileDatabase="$(grep -n '"database"' $FILE | head -n 1 | cut -d: -f1)"
-    # shellcheck disable=SC2154
+    numFileDatabase="$(grep -En "^[\$]db\[[\"']default[\"']\]\[[\"']database[\"']\]" $FILE | head -n 1 | cut -d: -f1)"
+
     sed -i "${numFileDatabase}s/.*/\$db[\"default\"][\"database\"] = '$dbName';/" $FILE
-    echo "Regenerating db.."
-    echo "Ejecutando regenerate_db" && curl -s "http://eventscase.loc/tools/regenerate_db"
-    echo "Compiling styles..."
-    echo "Ejecutando less_compile" && curl -s "http://eventscase.loc/tools/less_compile"
-    echo ""
-    echo "DB Name changed correctly to $dbName"
+
+    $regendb && echo "Ejecutando regenerate_db \n" && curl -s "http://eventscase.loc/tools/regenerate_db"
+    $styles && echo "Ejecutando less_compile \n" && curl -s "http://eventscase.loc/tools/less_compile"
+
+    echo "💾 Database changed correctly to $dbName"
 else
-    echo "Database config file not found. Make sure you are inside the platform folder."
+    >&2 echo "🏚 Database config file not found. Make sure you are inside the project."
 fi
 

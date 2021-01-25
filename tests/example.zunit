@@ -1,5 +1,16 @@
 #!/usr/bin/env zunit
+
+@setup{
+  STUB="//\$db['default']['database'] = 'eventoplus_db';\n \$db['default']['database'] = 'eventscase';"
+  echo "$STUB" > $PWD/tests/_support/database.php
+}
+
 @test 'DB change test' {
-  run "//$db['default']['database'] = 'eventoplus_db';\n $db['default']['database'] = 'eventscase';" > $PWD/database.php
-  assert $PWD/database.php exists
+  skip
+  run dot ec change-db hay 2>> err.log
+  assert $state equals 0
+}
+
+@teardown{
+    rm $PWD/tests/_support/database.php
 }
