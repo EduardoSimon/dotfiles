@@ -23,4 +23,5 @@ export path=(
   "/usr/bin"
   "/usr/sbin"
   "/sbin"
+  "/mnt/c/Windows/system32"
 )

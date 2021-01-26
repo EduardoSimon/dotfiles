@@ -15,6 +15,8 @@ uuid=$(uuidgen | tr '[:upper:]' '[:lower:]')
 if platform::is_macos; then
 	echo -n $uuid | pbcopy
 	osascript -e 'display notification "'"$uuid"'" with title "UUID copied to the clipboard"'
+elif platform::is_wsl; then
+	echo -n $uuid | clip.exe
 else
 	echo -n $uuid | xclip -sel clipboard
 	notify-send "UUID copied to the clipboard"
