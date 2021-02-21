@@ -1,0 +1,10 @@
+@angular
+@ionic
+commitlint
+cordova
+cordova-res
+firebase-tools
+git-cz
+ios-deploy
+ios-sim
+native-run
