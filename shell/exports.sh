@@ -25,6 +25,7 @@ export path=(
   "/usr/sbin"
   "/sbin"
   "/mnt/c/Windows/system32"
+  "$HOME/.local/bin"
 )
 
 eval "$(jenv init -)"

@@ -9,7 +9,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##?
 ##? Usage:
 ##?   show_dbs
-##?   show_dbs <hostname> <user> <pass>
+##?   show_dbs <hostname> <user>
 docs::parse "$@"
 
 if [ -z "$hostname" ]; then
@@ -25,14 +25,8 @@ else
   USER=$user
 fi
 
-if [ -z "$pass" ]; then
-  PASS=''
-else
-  PASS=$pass
-fi
 
-
-mysql -h "$URL" -u "$USER" -p "$PASS" <<MYSQL_SCRIPT
+mysql -h "$URL" -u "$USER" -p <<MYSQL_SCRIPT
 SHOW DATABASES;
 MYSQL_SCRIPT
 

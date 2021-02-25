@@ -8,6 +8,6 @@ namespace ${NAMESPACE};
 
 #end
 
-final class ${NAME} {
+interface ${NAME} {
 
 }
