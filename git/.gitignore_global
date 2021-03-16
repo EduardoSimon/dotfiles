@@ -19,3 +19,10 @@ libsigar-universal64-macosx.dylib
 
 # Custom
 *.no-commit.*
+# Eventscase
+application/Packages/Clients/AccountManager/Accounts/AccountTest.php
+application/Packages/FakeData
+application/controllers/tools_fake.php# Eventscase
+application/Packages/Clients/AccountManager/Accounts/AccountTest.php
+application/Packages/FakeData
+application/controllers/tools_fake.php
