@@ -7,6 +7,9 @@ export FZF_DEFAULT_OPTS='
   --reverse
 '
 
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 export path=(
   "$HOME/bin"
   "$DOTLY_PATH/bin"
@@ -27,5 +30,3 @@ export path=(
   "/mnt/c/Windows/system32"
   "$HOME/.local/bin"
 )
-
-eval "$(jenv init -)"

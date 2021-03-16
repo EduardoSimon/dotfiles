@@ -27,3 +27,7 @@ export PATH="$PATH:/Users/eduardosimonpicon/.simple/bin"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if command -v jenv &> /dev/null
+then
+    eval "$(jenv init -)"
+fi
