@@ -19,7 +19,7 @@ _w "  └───────────────────────�
 _w
 _q "Confirm to install dotfiles @(default ~/.dotfiles)" INSTALL_PATH
 INSTALL_PATH=${INSTALL_PATH:-~/.dotfiles}
-[ ! -d $INSTALL_PATH ] && git clone https://github.com/EduardoSimon/.dotfiles.git $INSTALL_PATH
+[ ! -d $INSTALL_PATH ] && git clone git@github.com:EduardoSimon/dotfiles.git $INSTALL_PATH
 cd $INSTALL_PATH
 
 _a "Initializing submodules"
