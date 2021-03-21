@@ -34,7 +34,7 @@ _a "Initializing zim"
 zsh $INSTALL_PATH/modules/dotly/modules/zimfw/zimfw.zsh install
 
 _a "Installing packages..."
-DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" sudo "$INSTALL_PATH/modules/dotly/bin/dot" package import
+sudo DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" package import
 
 
 _w "🎉 dotfiles installed correctly! 🎉"
