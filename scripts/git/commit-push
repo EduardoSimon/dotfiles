@@ -4,12 +4,12 @@ set -euo pipefail
 
 source "$DOTLY_PATH/scripts/core/_main.sh"
 
-##? Add all files, commit with message and push to the current branch
+##? Add all files, commit-push with message and push to the current branch
 #?? 1.0.0
 ##?
 ##? Usage:
-##?   commit
-##?   commit <message>
+##?   commit-push
+##?   commit-push <message>
 docs::parse "$@"
 
 git add -A
