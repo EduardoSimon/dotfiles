@@ -1,23 +1,44 @@
-#!/usr/bin/env bash
-# Credits to rgomezcasas for this installer
+#!/bin/bash
+red='\033[0;31m'
+green='\033[0;32m'
+purple='\033[0;35m'
+normal='\033[0m'
 
-set -euo pipefail
+_w() {
+  local -r text="${1:-}"
+  echo -e "$text"
+}
+_a() { _w " > $1"; }
+_e() { _a "${red}$1${normal}"; }
+_s() { _a "${green}$1${normal}"; }
+_q() { read -rp "🤔 $1: " "$2"; }
 
-##? Setups the environment
-#?? 1.0.0
-##?
-##? Usage:
-##?    install
+_w "  ┌──────────────────────────────────────────┐"
+_w "~ │ 🚀 Welcome to Eduardo Simon's ${green}dotfiles${normal} installer! │ ~"
+_w "  └──────────────────────────────────────────┘"
+_w
+_q "Confirm to install dotfiles @(default ~/.dotfiles)" INSTALL_PATH
+INSTALL_PATH=${INSTALL_PATH:-~/.dotfiles}
+[ ! -d $INSTALL_PATH ] && git clone https://github.com/EduardoSimon/.dotfiles.git $INSTALL_PATH
+cd $INSTALL_PATH
 
-echo "🚀 Welcome to the EduardoSimon's dotfiles installer! 🤙"
-echo "-------------------------------------------------"
-echo
-read -rp "🤔  Where do you want to clone the dotfiles? (default ~/.dotfiles): " DOTFILES_PATH
-echo
-#DOTFILES_PATH="${DOTFILES_PATH:-~/.dotfiles}"
-export DOTFILES_PATH="$HOME/.dotfiles"
-echo "👉  Cloning into: '$DOTFILES_PATH'"
+_a "Initializing submodules"
+git submodule update --init --recursive
 
-git clone --recurse-submodules https://github.com/EduardoSimon/dotfiles.git "$DOTFILES_PATH"
+_a "Initializing dotly"
+DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" self install
+_a "Initializing dotly"
+DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" symlinks apply
 
-"$DOTFILES_PATH/modules/dotly/bin/dot" self install
+_a "Initializing zim"
+zsh $INSTALL_PATH/modules/dotly/modules/zimfw/zimfw.zsh install
+
+_a "Installing archlinux packages..."
+grep -v '#' ./os/linux/archlinux-packages | yay -S --noconfirm
+
+_a "Installing packages..."
+DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" package import
+
+
+_w "🎉 dotfiles installed correctly! 🎉"
+_w "Please, restart your terminal to see the changes"
