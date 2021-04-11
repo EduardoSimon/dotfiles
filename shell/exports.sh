@@ -29,4 +29,5 @@ export path=(
   "/sbin"
   "/mnt/c/Windows/system32"
   "$HOME/.local/bin"
+  "$HOME/.npm-global/bin"
 )

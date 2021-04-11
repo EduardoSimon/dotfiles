@@ -46,3 +46,9 @@ alias cdgib="cd ~HOME/Documents/GreenAndIn/functions"
 
 #utils
 alias uuid="dot utils uuid_code"
+
+#docker
+alias dockillc='docker container stop $(docker container ls -aq) && docker container rm $(docker container ls -aq)'
+alias dockilli='docker image rm $(docker image ls -q)'
+alias dockillv='docker volume rm $(docker volume ls -q)'
+alias dockillall='dockillc && dockilli && dockillv'
