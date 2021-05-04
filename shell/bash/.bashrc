@@ -10,3 +10,4 @@ PATH=$(
 export PATH
 
 source "$DOTLY_PATH/shell/bash/themes/codely.sh"
+. "$HOME/.cargo/env"
