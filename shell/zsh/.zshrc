@@ -8,6 +8,7 @@ setopt HIST_FCNTL_LOCK
 setopt auto_cd	
 # setopt autopushd
 
+
 cdpath=($HOME/dev $HOME)
 # Start zim
 source "$ZIM_HOME/init.zsh"
@@ -43,4 +44,9 @@ then
     eval "$(jenv init -)"
 fi
 
-eval "$(starship init zsh)"
+if command -v starship &> /dev/null
+then
+    eval "$(starship init zsh)"
+fi
+
+
