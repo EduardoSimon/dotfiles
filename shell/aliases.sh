@@ -31,16 +31,6 @@ alias o.='open .'
 alias php.='phpstorm .'
 alias ws.='webstorm .'
 
-#EC
-alias styles="echo \"Ejecutando less_compile\" && curl -s \"http://eventscase.loc/tools/less_compile\""
-alias regendb="echo \"Ejecutando regenerate_db\" && curl -s \"http://eventscase.loc/tools/regenerate_db\""
-alias chdb="$DOTLY_PATH/bin/dot ec change-db"
-alias showdbs="$DOTLY_PATH/bin/dot mysql show_dbs 192.168.33.66 root"
-alias ec-tests="vagrant ssh -c '/usr/bin/php /media/websites/platform/vendor/phpunit/phpunit/phpunit --configuration /media/websites/platform/phpunit.xml;'"
-
-#Vagrant
-alias vr="vagrant reload"
-alias vre="vagrant suspend && vagrant resume"
 alias cdgia="cd ~HOME/Documents/GreenAndIn/business-app"
 alias cdgib="cd ~HOME/Documents/GreenAndIn/functions"
 

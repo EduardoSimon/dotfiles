@@ -1,3 +1,4 @@
 .idea/
 mysql_dump.conf
 .vscode/
+.envrc

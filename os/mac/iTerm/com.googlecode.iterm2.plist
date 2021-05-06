@@ -1661,7 +1661,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>IBMPlexMono 16</string>
+			<string>FiraCodeNerdFontCompleteM-Regular 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Open Toolbelt</key>
@@ -1851,7 +1851,7 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
-			<true/>
+			<false/>
 			<key>Use Tab Color</key>
 			<false/>
 			<key>Use Underline Color</key>
