@@ -2,6 +2,7 @@
 set nocompatible
 set nolist
 set rnu
+set noesckeys
 " Helps force plug-ins to load correctly when it is turned back on below.
 filetype off
 
