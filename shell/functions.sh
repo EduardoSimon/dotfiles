@@ -35,3 +35,11 @@ reverse-search() {
   typeset -f zle-line-init >/dev/null && zle zle-line-init
   return $ret
 }
+
+function abs_path() {
+    echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+}
+
+function jira() {
+  open -a "Google Chrome" "${JIRA_PROJECT_URL}/${1}"
+}

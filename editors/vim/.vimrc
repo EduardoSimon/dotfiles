@@ -1,105 +1,105 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+" Set compatibility to Vim only.
 set nocompatible
+set nolist
+set rnu
+" Helps force plug-ins to load correctly when it is turned back on below.
+filetype off
 
-" ================ General Config ====================
-
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set ruler                       "Add the current line and column"
-
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
-
-"turn on syntax highlighting
+" Turn on syntax highlighting.
 syntax on
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
+" For plug-ins to load correctly.
+filetype plugin indent on
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/vim/vundles.vim"))
-  source ~/vim/vundles.vim
-endif
+" Turn off modelines
+set modelines=0
 
-" ================ Turn Off Swap Files ==============
+" Automatically wrap text that extends beyond the screen length.
+set wrap
+" Vim's auto indentation feature does not work properly with text copied from outside of Vim. Press the <F2> key to toggle paste mode on/off.
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
 
-set noswapfile
-set nobackup
-set nowb
-
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-if has('persistent_undo') && !isdirectory(expand('~').'/vim/backups')
-  silent !mkdir ~/vim/backups > /dev/null 2>&1
-  set undodir=~/vim/backups
-  set undofile
-endif
-
-" ================ Indentation ======================
-
-set autoindent
-set smartindent
-set smarttab
+" Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set tabstop=2
 set expandtab
+set noshiftround
 
-" Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+" Display 5 lines above/below the cursor when scrolling with a mouse.
+set scrolloff=5
+" Fixes common backspace problems
+set backspace=indent,eol,start
 
-filetype plugin on
-filetype indent on
+" Speed up scrolling in Vim
+set ttyfast
 
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
+" Status bar
+set laststatus=2
 
-" ================ Folds ============================
+" Display options
+set showmode
+set showcmd
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+" Highlight matching pairs of brackets. Use the '%' character to jump between them.
+set matchpairs+=<:>
 
-" ================ Completion =======================
+" Show line numbers
+set number
 
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+" Set status line display
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 
-"
-" ================ Scrolling ========================
+" Encoding
+set encoding=utf-8
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+" Highlight matching search patterns
+set hlsearch
+" Enable incremental search
+set incsearch
+" Include matching uppercase words with lowercase search term
+set ignorecase
+" Include only uppercase words with uppercase search term
+set smartcase
 
-" ================ Search ===========================
+" Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
+set viminfo='100,<9999,s100
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+" Map the <Space> key to toggle a selected fold opened/closed.
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+" Automatically save and load folds
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview"
+let mapleader = ","
+noremap <leader>w :w<cr>
+noremap <leader>gs :CocSearch
+noremap <leader>fs :Files<cr>
+noremap <leader><cr> <cr><c-w>h:q<cr>
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+Plug 'vim-airline/vim-airline'
+call plug#end()
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+
+let g:airline_powerline_fonts = 1
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+:imap ii <Esc>

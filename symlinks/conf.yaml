@@ -16,3 +16,4 @@
     ~/.zshenv: shell/zsh/.zshenv
     ~/.zshrc: shell/zsh/.zshrc
     ~/.jenv/version: langs/java/jenv/version
+    ~/.vimrc: editors/vim/.vimrc

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Replace newlines in a file with \n
+#?? 1.0.0
+##?
+##? Usage:
+##?   newline-for-line-ending <filePath>
+docs::parse "$@"
+
+sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' $filePath
