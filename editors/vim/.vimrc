@@ -91,8 +91,14 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+let g:workspace_autosave_always = 1
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+      autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'thaerkh/vim-workspace'
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
