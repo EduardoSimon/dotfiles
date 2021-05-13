@@ -98,19 +98,27 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'tomasiser/vim-code-dark'
 Plug 'thaerkh/vim-workspace'
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'dense-analysis/ale'
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'tpope/vim-abolish'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'
 call plug#end()
 let g:coc_global_extensions = [ 'coc-tsserver' ]
-
+let g:ale_linters = {'ruby': ['standardrb']}
+let g:ale_fixers = {'ruby': ['standardrb']}
+let g:ale_fix_on_save = 1
 let g:airline_powerline_fonts = 1
-" GoTo code navigation.
+let g:airline_theme = 'codedark'
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 :imap ii <Esc>
+colorscheme codedark
+silent! helptags ALL
