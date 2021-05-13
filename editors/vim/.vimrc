@@ -108,6 +108,7 @@ Plug 'tpope/vim-abolish'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
+Plug 'https://github.com/adelarsq/vim-matchit'
 call plug#end()
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:ale_linters = {'ruby': ['standardrb']}
@@ -121,4 +122,5 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 :imap ii <Esc>
 colorscheme codedark
+packadd! matchit
 silent! helptags ALL
