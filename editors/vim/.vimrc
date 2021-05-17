@@ -23,13 +23,19 @@ imap <F2> <C-O>:set invpaste paste?<CR>
 set pastetoggle=<F2>
 
 " Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
-set textwidth=79
+set textwidth=80
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set noshiftround
+set noerrorbells
+set smartindent
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
 
 " Display 5 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=5
@@ -81,7 +87,7 @@ vnoremap <Space> zf
 " Automatically save and load folds
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
-let mapleader = ","
+let mapleader = " "
 noremap <leader>w :w<cr>
 noremap <leader>gs :CocSearch
 noremap <leader>fs :Files<cr>
@@ -106,20 +112,66 @@ Plug 'dense-analysis/ale'
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'tpope/vim-abolish'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'preservim/nerdtree'
+Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'https://github.com/adelarsq/vim-matchit'
 call plug#end()
+function! s:check_back_space() abort
+    let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+          execute 'h '.expand('<cword>')
+            elseif (coc#rpc#ready())
+                  call CocActionAsync('doHover')
+                    else
+                          execute '!' . &keywordprg . " " . expand('<cword>')
+                            endif
+                          endfunction
+
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <leader>rn <Plug>(coc-rename)
+
+xmap <leader>c  <Plug>(coc-codeaction-selected)
+nmap <leader>c  <Plug>(coc-codeaction-selected)
+
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:ale_linters = {'ruby': ['standardrb']}
-let g:ale_fixers = {'ruby': ['standardrb']}
+let g:ale_fixers = {'ruby': ['standardrb'], 'javascript': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'codedark'
+let g:UltiSnipsExpandTrigger = "<nop>"
+let g:ale_linters_explicit = 1
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
 :imap ii <Esc>
 colorscheme codedark
 packadd! matchit
