@@ -30,6 +30,12 @@ DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL
 _a "Initializing dotly"
 DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" symlinks apply
 
+if [ "$(uname)" == "Darwin" ]; then
+_a "Setting MAC OS defaults"
+sudo bash $DOTFILES_PATH/os/mac/mac-os.sh
+
+fi
+
 _a "Initializing zim"
 zsh $INSTALL_PATH/modules/dotly/modules/zimfw/zimfw.zsh install
 

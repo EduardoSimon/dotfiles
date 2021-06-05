@@ -72,6 +72,10 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
 
+# Prevent prompting to type special characters when holding the key down. For Vim.
+defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
@@ -219,6 +223,7 @@ defaults write com.apple.dock showhidden -bool true
 
 # Dock in the left
 defaults write com.apple.dock orientation -string left
+defaults write com.apple.dock orientation left
 
 # Disable recent applications
 defaults write com.apple.dock show-recents -bool false
