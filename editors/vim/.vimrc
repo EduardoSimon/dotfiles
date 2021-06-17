@@ -122,6 +122,7 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'https://github.com/adelarsq/vim-matchit'
+Plug 'shime/vim-livedown'
 call plug#end()
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -169,6 +170,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" go markdown shorthand for markdown edit
+nmap gm :LivedownToggle
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
