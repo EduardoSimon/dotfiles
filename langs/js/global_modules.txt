@@ -7,3 +7,4 @@ ios-deploy
 ios-sim
 native-run
 livedown
+npm-check-updates
