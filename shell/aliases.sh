@@ -33,9 +33,8 @@ alias ws.='webstorm .'
 
 alias cdgia="cd ~HOME/Documents/GreenAndIn/business-app"
 alias cdgib="cd ~HOME/Documents/GreenAndIn/functions"
-
-#utils
 alias uuid="dot utils uuid_code"
+alias fprev="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 #docker
 alias dockillc='docker container stop $(docker container ls -aq) && docker container rm $(docker container ls -aq)'

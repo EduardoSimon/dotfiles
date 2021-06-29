@@ -30,6 +30,10 @@ set textwidth=80
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
+" helps you solve spelling problems. use :set spelllang=<2alpha-code> to change
+" the language of the spelling
+set spelllang=en_us
+set spell
 set softtabstop=2
 set expandtab
 set noshiftround
@@ -39,7 +43,10 @@ set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
-
+" copy indentation from current line to the new line
+set autoindent
+" set indentation level based on filetype
+filetype plugin indent on
 " Display 5 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=5
 " Fixes common backspace problems
@@ -94,6 +101,7 @@ let mapleader = " "
 noremap <leader>w :w<cr>
 noremap <leader>gs :CocSearch
 noremap <leader>fs :Files<cr>
+noremap <leader>fb :Buffers<cr>
 noremap <leader><cr> <cr><c-w>h:q<cr>
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -106,23 +114,28 @@ if empty(glob('~/.vim/autoload/plug.vim'))
       autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'tomasiser/vim-code-dark'
-Plug 'thaerkh/vim-workspace'
-Plug 'junegunn/fzf.vim'
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'dense-analysis/ale'
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'tpope/vim-abolish'
-Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'preservim/nerdtree'
 Plug 'SirVer/ultisnips'
-Plug 'mlaursen/vim-react-snippets'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-surround'
+Plug 'dense-analysis/ale'
 Plug 'https://github.com/adelarsq/vim-matchit'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mlaursen/vim-react-snippets'
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'preservim/nerdtree'
 Plug 'shime/vim-livedown'
+Plug 'takac/vim-hardtime'
+Plug 'thaerkh/vim-workspace'
+Plug 'tomasiser/vim-code-dark'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
 call plug#end()
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -178,6 +191,22 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+
+" select last pasted text
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" NERDTree plugin remaps
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 :imap ii <Esc>
 colorscheme codedark

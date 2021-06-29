@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Fuzzy find a file with an active preview
+#?? 1.0.0
+##?
+##? Usage:
+##?  search_file_with_preview
+docs::parse "$@"
+
+fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'
+
