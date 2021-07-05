@@ -32,8 +32,7 @@ set tabstop=2
 set shiftwidth=2
 " helps you solve spelling problems. use :set spelllang=<2alpha-code> to change
 " the language of the spelling
-set spelllang=en_us
-set spell
+set nospell
 set softtabstop=2
 set expandtab
 set noshiftround
@@ -102,6 +101,8 @@ noremap <leader>w :w<cr>
 noremap <leader>gs :CocSearch
 noremap <leader>fs :Files<cr>
 noremap <leader>fb :Buffers<cr>
+noremap <leader>f :Ag<cr>
+noremap <leader>r :R<cr>
 noremap <leader><cr> <cr><c-w>h:q<cr>
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -134,6 +135,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rake'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 call plug#end()

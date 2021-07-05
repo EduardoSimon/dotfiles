@@ -19,7 +19,7 @@ ZSH_HIGHLIGHT_MAXLENGTH=300
 
 source "$DOTFILES_PATH/shell/init.sh"
 
-fpath=("$DOTLY_PATH/shell/zsh/themes" "$DOTLY_PATH/shell/zsh/completions" $fpath)
+fpath=("$DOTLY_PATH/shell/zsh/completions" $fpath)
 
 autoload -Uz promptinit && promptinit
 
@@ -33,6 +33,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+. "${HOME}/z.sh"
 
 if command -v direnv &> /dev/null
 then

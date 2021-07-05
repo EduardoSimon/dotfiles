@@ -19,3 +19,4 @@
     ~/.zshrc: shell/zsh/.zshrc
     ~/.jenv/version: langs/java/jenv/version
     ~/.vimrc: editors/vim/.vimrc
+    ~/z.sh: shell/zsh/plugins/z.sh
