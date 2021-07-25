@@ -93,7 +93,7 @@ autocmd BufWinEnter *.* silent loadview"
 let mapleader = " "
 noremap <leader>w :w<cr>
 noremap <leader>gs :CocSearch
-noremap <leader>p :Files<cr>
+noremap <leader>p :GFiles<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>f :Rg<cr>
 

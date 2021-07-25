@@ -4,5 +4,6 @@
 
 ## Restore your Dotfiles
 
-* Install git
-* Run the following command `bash <(curl -s https://raw.githubusercontent.com/EduardoSimon/dotfiles/main/installer.sh?flush_cache=True)`
+- Install git
+- Run the following command `bash <(curl -s https://raw.githubusercontent.com/EduardoSimon/dotfiles/main/installer.sh?flush_cache=True)`
+- Finish the installation by: `dot installation post_install_dotfiles`
