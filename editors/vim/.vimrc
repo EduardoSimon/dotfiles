@@ -107,7 +107,7 @@ endif
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 let g:workspace_autosave_always = 1
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -171,7 +171,7 @@ nmap <leader>c  <Plug>(coc-codeaction-selected)
 let g:coc_global_extensions = [ 'coc-tsserver' ]
 let g:ale_linters = {'ruby': ['standardrb']}
 let g:ale_fixers = {'ruby': ['standardrb'], 'javascript': ['prettier']}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:airline_powerline_fonts = 1
 let g:UltiSnipsExpandTrigger = "<nop>"
 let g:ale_linters_explicit = 1

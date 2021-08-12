@@ -5,7 +5,8 @@ typeset -U path cdpath fpath
 # ZSH Ops
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FCNTL_LOCK
-setopt auto_cd	
+setopt auto_cd
+set -o vi
 # setopt autopushd
 
 
