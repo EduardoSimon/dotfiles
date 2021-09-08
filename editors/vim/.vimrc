@@ -25,8 +25,11 @@ nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O>:set invpaste paste?<CR>
 set pastetoggle=<F2>
 
+" When closing an unsaved file move it to a buffer
+set hidden
+
 " Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
-set textwidth=80
+set textwidth=100
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
@@ -38,8 +41,11 @@ set noerrorbells
 set smartindent
 set noswapfile
 set nobackup
+
+" set up undoing behaviour
 set undodir=~/.vim/undodir
 set undofile
+set undolevels=10000
 " copy indentation from current line to the new line
 set autoindent
 " set indentation level based on filetype
@@ -51,6 +57,9 @@ set backspace=indent,eol,start
 
 " Speed up scrolling in Vim
 set ttyfast
+
+" enable hardtime mode. Stop repeating keys
+let g:hardtime_default_on = 1
 
 " Status bar
 set laststatus=2
@@ -93,7 +102,7 @@ autocmd BufWinEnter *.* silent loadview"
 let mapleader = " "
 noremap <leader>w :w<cr>
 noremap <leader>gs :CocSearch
-noremap <leader>p :GFiles<cr>
+noremap <leader>p :Files<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>f :Rg<cr>
 
@@ -109,7 +118,7 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
-let g:workspace_autosave_always = 1
+let g:workspace_autosave_always = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
       autocmd VimEnter * PlugInstall | source $MYVIMRC
@@ -142,6 +151,7 @@ Plug 'tpope/vim-rake'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
+Plug 'jesseleite/vim-noh'
 call plug#end()
 
 colorscheme gruvbox
