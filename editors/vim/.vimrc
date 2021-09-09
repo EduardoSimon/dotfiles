@@ -149,9 +149,11 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rake'
 Plug 'vim-ruby/vim-ruby'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
-Plug 'jesseleite/vim-noh'
+" Plug 'jesseleite/vim-noh'
 call plug#end()
 
 colorscheme gruvbox
@@ -212,3 +214,5 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 :imap ii <Esc>
 packadd! matchit
 silent! helptags ALL
+" Enable % to be used in every ruby keyword
+runtime macros/matchit.vim
