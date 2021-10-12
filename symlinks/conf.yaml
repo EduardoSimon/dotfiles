@@ -1,4 +1,4 @@
-- clean: ['~']
+- clean: ["~"]
 
 - defaults:
     link:
@@ -6,9 +6,8 @@
       force: true
 
 - create:
-      - ~/.z
-      - $DOTFILES_PATH/shell/bash/completions
-      - $DOTFILES_PATH/shell/bash/themes
+    - $DOTFILES_PATH/shell/bash/completions
+    - $DOTFILES_PATH/shell/bash/themes
 
 - link:
     ~/.bash_profile: shell/bash/.bash_profile
@@ -19,4 +18,4 @@
     ~/.zshrc: shell/zsh/.zshrc
     ~/.jenv/version: langs/java/jenv/version
     ~/.vimrc: editors/vim/.vimrc
-    ~/z.sh: shell/zsh/plugins/z.sh
+    ~/z_script.sh: shell/zsh/plugins/z_script.sh
