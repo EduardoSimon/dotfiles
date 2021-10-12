@@ -56,3 +56,4 @@ if [ -f '/Users/eduardosimonpicon/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/eduardosimonpicon/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduardosimonpicon/google-cloud-sdk/completion.zsh.inc'; fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
