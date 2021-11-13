@@ -16,3 +16,4 @@
     ~/bin/sed: /usr/local/opt/gnu-sed/libexec/gnubin/sed
     ~/bin/touch: /usr/local/bin/gtouch
     ~/bin/find: /usr/local/opt/findutils/bin/gfind
+    ~/.config/karabiner: os/mac/karabiner-elements
