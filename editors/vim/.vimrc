@@ -59,9 +59,9 @@ set backspace=indent,eol,start
 set ttyfast
 
 " enable hardtime mode. Stop repeating keys
-let g:hardtime_default_on = 1
+" let g:hardtime_default_on = 1
 " allow jj but not jjj
-let g:hardtime_maxcount = 2
+" let g:hardtime_maxcount = 2
 " Status bar
 set laststatus=2
 
@@ -106,6 +106,7 @@ noremap <leader>gs :CocSearch
 noremap <leader>p :Files<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>f :Rg<cr>
+noremap <leader>g :ALEFix<cr>
 
 noremap <leader><cr> <cr><c-w>h:q<cr>
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -119,36 +120,26 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
-let g:workspace_autosave_always = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
       autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
-Plug 'SirVer/ultisnips'
 Plug 'dense-analysis/ale'
 Plug 'https://github.com/adelarsq/vim-matchit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'mlaursen/vim-react-snippets'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'preservim/nerdtree'
 Plug 'shime/vim-livedown'
-Plug 'takac/vim-hardtime'
-Plug 'thaerkh/vim-workspace'
-Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rake'
 Plug 'vim-ruby/vim-ruby'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
@@ -200,7 +191,7 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>c  <Plug>(coc-codeaction-selected)
 nmap <leader>c  <Plug>(coc-codeaction-selected)
 
-let g:coc_global_extensions = [ 'coc-tsserver' ]
+let g:coc_global_extensions = [ 'coc-tsserver' , 'coc-solargraph']
 let g:ale_linters = {'ruby': ['standardrb']}
 let g:ale_fixers = {'ruby': ['standardrb'], 'javascript': ['prettier']}
 let g:ale_fix_on_save = 0
