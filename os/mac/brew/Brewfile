@@ -90,3 +90,4 @@ cask "vlc"
 cask "whatsapp"
 mas "Zoho Vault for Safari", id: 1512156331
 cask "font-fira-code-nerd-font"
+brew "rbenv"
