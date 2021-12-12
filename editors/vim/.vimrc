@@ -119,7 +119,7 @@ autocmd BufWinEnter *.* silent loadview"
 let mapleader = " "
 noremap <leader>w :w<cr>
 noremap <leader>gs :CocSearch
-noremap <leader>p :Files<cr>
+noremap <leader>p :GFiles --cached --others --exclude-standard<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>f :Rg<cr>
 xmap <leader>g  <Plug>(coc-format-selected)
@@ -178,6 +178,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'jesseleite/vim-noh'
 Plug 'rakr/vim-one'
+Plug 'github/copilot.vim'
 call plug#end()
 
 "Credit joshdick
