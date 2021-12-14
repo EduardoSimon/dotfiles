@@ -157,7 +157,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
-Plug 'dense-analysis/ale'
 Plug 'https://github.com/adelarsq/vim-matchit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -179,6 +178,7 @@ Plug 'preservim/nerdtree'
 Plug 'jesseleite/vim-noh'
 Plug 'rakr/vim-one'
 Plug 'github/copilot.vim'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 "Credit joshdick
