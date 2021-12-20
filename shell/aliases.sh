@@ -44,3 +44,7 @@ alias dockillall='dockillc && dockilli && dockillv'
 
 alias oktaexec_sta="${OKTAEXEC}"
 alias oktaexec_pro="${OKTAEXEC_PROD}"
+
+alias audit_trivy="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.trivycache/ aquasec/trivy --vuln-type     os --severity HIGH,CRITICAL"
+alias dive="docker run --rm -it -e CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest "
+alias dive_panel="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest "

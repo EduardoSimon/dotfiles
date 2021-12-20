@@ -121,9 +121,11 @@ noremap <leader>w :w<cr>
 noremap <leader>gs :CocSearch
 noremap <leader>p :GFiles --cached --others --exclude-standard<cr>
 noremap <leader>b :Buffers<cr>
-noremap <leader>f :Rg<cr>
-xmap <leader>g  <Plug>(coc-format-selected)
-nmap <leader>g  <Plug>(coc-format-selected)
+noremap <leader>v :execute 'Rg ' . expand('<cword>')<cr>
+noremap <leader>f :execute 'Rg'<cr>
+map <Leader>l :BLines<CR>
+noremap <leader>g :Format <cr>
+noremap <silent> vv <C-w>v
 
 " Requires 'textDocument/selectionRange' support of language server.
 nmap <silent> <C-s> <Plug>(coc-range-select)
@@ -232,13 +234,9 @@ xmap <leader>c  <Plug>(coc-codeaction-selected)
 nmap <leader>c  <Plug>(coc-codeaction-selected)
 
 let g:coc_global_extensions = [ 'coc-tsserver' , 'coc-solargraph']
-let g:ale_linters = {'ruby': ['standardrb']}
-let g:ale_fixers = {'ruby': ['standardrb'], 'javascript': ['prettier']}
-let g:ale_fix_on_save = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme='one'
 let g:UltiSnipsExpandTrigger = "<nop>"
-let g:ale_linters_explicit = 1
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
