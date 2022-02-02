@@ -185,6 +185,8 @@ Plug 'preservim/nerdtree'
 Plug 'rakr/vim-one'
 " Plug 'github/copilot.vim'
 Plug 'tpope/vim-unimpaired'
+" write css selector and expand using <c-y>,
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 "Credit joshdick
