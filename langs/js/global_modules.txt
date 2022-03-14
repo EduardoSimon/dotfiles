@@ -1,3 +1,5 @@
+@angular
+@ionic
 commitlint
 cordova
 cordova-res
@@ -8,3 +10,4 @@ ios-sim
 native-run
 livedown
 npm-check-updates
+ng-tailwindcss
