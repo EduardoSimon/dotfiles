@@ -43,3 +43,27 @@ function abs_path() {
 function jira() {
   open -a "Google Chrome" "${JIRA_PROJECT_URL}/${1}"
 }
+
+function push-monoenv() { 
+if [ $# -ne 1 ]; then
+  echo "usage: push-monoenv <environment>"
+  return 1
+fi
+ENVIRONMENT=$1
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git fetch -p && git branch -f $ENVIRONMENT HEAD && git checkout $ENVIRONMENT &&
+  git commit --allow-empty -m "[SKIP_MANUAL]" && git push --force origin
+  $ENVIRONMENT && git checkout $BRANCH
+}
+
+function force-push-monoenv() {
+if [ $# -ne 1 ]; then
+    echo "usage: merge-to-monoenv <environment>"
+    return -1
+fi
+ENVIRONMENT=$1
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git checkout $ENVIRONMENT && git pull --rebase && git merge $BRANCH && git commit --allow-empty -m "[SKIP_MANUAL]" &&
+ git push origin $ENVIRONMENT
+git checkout $BRANCH
+}

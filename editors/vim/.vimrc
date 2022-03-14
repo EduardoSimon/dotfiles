@@ -19,7 +19,7 @@ set modelines=0
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 
 " Automatically wrap text that extends beyond the screen length.
-set linebreak
+set nowrap
 " Vim's auto indentation feature does not work properly with text copied from outside of Vim. Press the <F2> key to toggle paste mode on/off.
 nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O>:set invpaste paste?<CR>
@@ -90,12 +90,13 @@ set ignorecase
 " Include only uppercase words with uppercase search term
 set smartcase
 
-set foldmethod=syntax
+set foldmethod=marker
 set nofoldenable
 
-set updatetime=300
+" set updatetime=300
 " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
+set re=2
 
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
@@ -106,52 +107,48 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Applying codeAction to the selected region.
 " " Example: `<leader>aap` for current paragraph
- xmap <leader>a  <Plug>(coc-codeaction-selected)
- nmap <leader>a  <Plug>(coc-codeaction-selected)
+ " xmap <leader>a  <Plug>(coc-codeaction-selected)
+ " nmap <leader>a  <Plug>(coc-codeaction-selected)
 
  " Remap keys for applying codeAction to the current buffer.
- nmap <leader>ac  <Plug>(coc-codeaction)
+ " nmap <leader>ac  <Plug>(coc-codeaction)
  " Apply AutoFix to problem on the current line.
- nmap <leader>qf  <Plug>(coc-fix-current)
+ " nmap <leader>qf  <Plug>(coc-fix-current)
 
 
-autocmd BufWinEnter *.* silent loadview"
+" autocmd BufWinEnter *.* silent loadview"
 let mapleader = " "
 noremap <leader>w :w<cr>
-noremap <leader>gs :CocSearch
-noremap <leader>p :GFiles --cached --others --exclude-standard<cr>
+" noremap <leader>gs :CocSearch
+noremap <leader>p :GFiles<cr>
 noremap <leader>b :Buffers<cr>
-noremap <leader>v :execute 'Rg ' . expand('<cword>')<cr>
-noremap <leader>f :execute 'Rg'<cr>
+noremap <leader>v :execute 'Ag ' . expand('<cword>')<cr>
+noremap <leader>f :Ag<cr>
 map <Leader>l :BLines<CR>
 noremap <leader>g :Format <cr>
 noremap <silent> vv <C-w>v
 
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 
-noremap <leader><cr> <cr><c-w>h:q<cr>
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+let g:fzf_layout = { 'down': '~60%' }
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
@@ -162,10 +159,10 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'https://github.com/adelarsq/vim-matchit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
-Plug 'pangloss/vim-javascript'    " JavaScript support
+" Plug 'leafgarland/typescript-vim' " TypeScript syntax
+" Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+" Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'preservim/nerdtree'
 Plug 'shime/vim-livedown'
 Plug 'tpope/vim-abolish'
@@ -177,9 +174,9 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
-Plug 'jesseleite/vim-noh'
+" Plug 'jesseleite/vim-noh'
 Plug 'rakr/vim-one'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
 
@@ -200,92 +197,93 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme one
+colorscheme gruvbox
 set background=dark
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"" Use tab for trigger completion with characters ahead and navigate.
+"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+"" other plugin before putting this into your config.
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
-map <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"" Use <c-space> to trigger completion.
+"if has('nvim')
+"  inoremap <silent><expr> <c-space> coc#refresh()
+"else
+"  inoremap <silent><expr> <c-@> coc#refresh()
+"endif
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"map <silent> [g <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-nmap <leader>rn <Plug>(coc-rename)
+"" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-xmap <leader>c  <Plug>(coc-codeaction-selected)
-nmap <leader>c  <Plug>(coc-codeaction-selected)
+"nmap <leader>rn <Plug>(coc-rename)
 
-let g:coc_global_extensions = [ 'coc-tsserver' , 'coc-solargraph']
-let g:airline_powerline_fonts = 1
-let g:airline_theme='one'
-let g:UltiSnipsExpandTrigger = "<nop>"
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-" Use CTRL-S for selections ranges.
-" " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" go markdown shorthand for markdown edit
-nmap gm :LivedownToggle
+"xmap <leader>c  <Plug>(coc-codeaction-selected)
+"nmap <leader>c  <Plug>(coc-codeaction-selected)
+
+"let g:coc_global_extensions = [ 'coc-solargraph']
+"let g:airline_powerline_fonts = 1
+"let g:airline_theme='one'
+"let g:UltiSnipsExpandTrigger = "<nop>"
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
+"xmap if <Plug>(coc-funcobj-i)
+"omap if <Plug>(coc-funcobj-i)
+"xmap af <Plug>(coc-funcobj-a)
+"omap af <Plug>(coc-funcobj-a)
+"xmap ic <Plug>(coc-classobj-i)
+"omap ic <Plug>(coc-classobj-i)
+"xmap ac <Plug>(coc-classobj-a)
+"omap ac <Plug>(coc-classobj-a)
+"" Use CTRL-S for selections ranges.
+"" " Requires 'textDocument/selectionRange' support of language server.
+"nmap <silent> <C-s> <Plug>(coc-range-select)
+"xmap <silent> <C-s> <Plug>(coc-range-select)
+"" Mappings for CoCList
+"" Show all diagnostics.
+"nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+"" Manage extensions.
+"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+"" Show commands.
+"nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+"" Find symbol of current document.
+"nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+"" Search workspace symbols.
+"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+"" go markdown shorthand for markdown edit
+"nmap gm :LivedownToggle
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-" select last pasted text
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+"" select last pasted text
+"nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" NERDTree plugin remaps
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <leader>t :NERDTreeFind<CR>
+"" NERDTree plugin remaps
+"nnoremap <C-t> :NERDTreeToggle<CR>
+"nnoremap <leader>t :NERDTreeFind<CR>
 
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-      \ quit | endif
+"" Exit Vim if NERDTree is the only window left.
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"      \ quit | endif
 
 inoremap jk <esc>
 inoremap kj <esc>
-packadd! matchit
-silent! helptags ALL
-" Enable % to be used in every ruby keyword
-runtime macros/matchit.vim
+"packadd! matchit
+"silent! helptags ALL
+"" Enable % to be used in every ruby keyword
+"runtime macros/matchit.vim
