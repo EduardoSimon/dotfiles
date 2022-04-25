@@ -19,3 +19,5 @@
     ~/.jenv/version: langs/java/jenv/version
     ~/.vimrc: editors/vim/.vimrc
     ~/z_script.sh: shell/zsh/plugins/z_script.sh
+    ~/.config/alacritty/alacritty.yml: editors/alacritty/alacritty.yml
+    ~/.config/starship.toml: shell/starship.toml
