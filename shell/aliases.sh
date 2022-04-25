@@ -25,14 +25,9 @@ alias nb="$DOTLY_PATH/bin/dot git new-branch-with-remote"
 
 # Utils
 alias k='kill -9'
-alias i.='(idea $PWD &>/dev/null &)'
 alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
-alias php.='phpstorm .'
-alias ws.='webstorm .'
 
-alias cdgia="cd ~HOME/Documents/GreenAndIn/business-app"
-alias cdgib="cd ~HOME/Documents/GreenAndIn/functions"
 alias uuid="dot utils uuid_code"
 alias fprev="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
