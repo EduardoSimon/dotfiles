@@ -22,6 +22,7 @@ alias gb="git branch"
 alias gl="$DOTLY_PATH/bin/dot git pretty-log"
 alias gacp="$DOTLY_PATH/bin/dot git commit-push"
 alias nb="$DOTLY_PATH/bin/dot git new-branch-with-remote"
+alias grh="git reset --hard"
 
 # Utils
 alias k='kill -9'
