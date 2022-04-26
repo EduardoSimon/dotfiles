@@ -238,6 +238,9 @@ xmap <leader>c  <Plug>(coc-codeaction-selected)
 nmap <leader>c  <Plug>(coc-codeaction-selected)
 
 let g:coc_global_extensions = [ 'coc-tsserver']
+
+" sets the max number of autocomplete elements
+:set pumheight=4
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -277,7 +280,7 @@ nnoremap <leader>l :wincmd l<CR>
 "nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 "" NERDTree plugin remaps
-"nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeFind<CR>
 "nnoremap <leader>t :NERDTreeFind<CR>
 
 "" Exit Vim if NERDTree is the only window left.
