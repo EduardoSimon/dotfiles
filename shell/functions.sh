@@ -67,3 +67,7 @@ git checkout $ENVIRONMENT && git pull --rebase && git merge $BRANCH && git commi
  git push origin $ENVIRONMENT
 git checkout $BRANCH
 }
+
+function load_nvm() {
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+}
