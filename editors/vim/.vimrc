@@ -90,7 +90,7 @@ set ignorecase
 " Include only uppercase words with uppercase search term
 set smartcase
 
-set foldmethod=marker
+set foldmethod=syntax
 set nofoldenable
 
 " set updatetime=300
@@ -166,10 +166,10 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'https://github.com/adelarsq/vim-matchit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'leafgarland/typescript-vim' " TypeScript syntax
-" Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
-" Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'preservim/nerdtree'
 Plug 'shime/vim-livedown'
 Plug 'tpope/vim-abolish'
@@ -181,9 +181,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
-" Plug 'jesseleite/vim-noh'
-Plug 'rakr/vim-one'
-" Plug 'github/copilot.vim'
 Plug 'tpope/vim-unimpaired'
 " write css selector and expand using <c-y>,
 Plug 'mattn/emmet-vim'
@@ -227,35 +224,32 @@ set background=dark
 "if has('nvim')
 "  inoremap <silent><expr> <c-space> coc#refresh()
 "else
-"  inoremap <silent><expr> <c-@> coc#refresh()
+inoremap <silent><expr> <c-@> coc#refresh()
 "endif
 
-"map <silent> [g <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]g <Plug>(coc-diagnostic-next)
+map <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 "" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
-"xmap <leader>c  <Plug>(coc-codeaction-selected)
-"nmap <leader>c  <Plug>(coc-codeaction-selected)
+xmap <leader>c  <Plug>(coc-codeaction-selected)
+nmap <leader>c  <Plug>(coc-codeaction-selected)
 
-"let g:coc_global_extensions = [ 'coc-solargraph']
-"let g:airline_powerline_fonts = 1
-"let g:airline_theme='one'
-"let g:UltiSnipsExpandTrigger = "<nop>"
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-"xmap if <Plug>(coc-funcobj-i)
-"omap if <Plug>(coc-funcobj-i)
-"xmap af <Plug>(coc-funcobj-a)
-"omap af <Plug>(coc-funcobj-a)
-"xmap ic <Plug>(coc-classobj-i)
-"omap ic <Plug>(coc-classobj-i)
-"xmap ac <Plug>(coc-classobj-a)
-"omap ac <Plug>(coc-classobj-a)
+let g:coc_global_extensions = [ 'coc-tsserver']
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 "" Use CTRL-S for selections ranges.
 "" " Requires 'textDocument/selectionRange' support of language server.
 "nmap <silent> <C-s> <Plug>(coc-range-select)
