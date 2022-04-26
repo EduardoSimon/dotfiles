@@ -28,6 +28,7 @@ alias grh="git reset --hard"
 alias k='kill -9'
 alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
+alias v='vim .'
 
 alias uuid="dot utils uuid_code"
 alias fprev="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
