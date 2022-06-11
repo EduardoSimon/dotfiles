@@ -2,7 +2,7 @@
 set nocompatible
 set nolist
 set rnu
-set noesckeys
+" set noesckeys disabled for nvim
 " Helps force plug-ins to load correctly when it is turned back on below.
 filetype off
 
@@ -130,6 +130,7 @@ noremap <leader>w :w<cr>
 noremap <leader>p :GFiles<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>v :execute 'Ag ' . expand('<cword>')<cr>
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 noremap <leader>f :Ag<cr>
 map <Leader>l :BLines<CR>
 noremap <leader>g :Format <cr>
@@ -182,6 +183,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-unimpaired'
+Plug 'Mofiqul/dracula.nvim'
 " write css selector and expand using <c-y>,
 Plug 'mattn/emmet-vim'
 call plug#end()
@@ -203,29 +205,11 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme gruvbox
+colorscheme dracula
 set background=dark
 
-"" Use tab for trigger completion with characters ahead and navigate.
-"" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-"" other plugin before putting this into your config.
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-"" Use <c-space> to trigger completion.
-"if has('nvim')
-"  inoremap <silent><expr> <c-space> coc#refresh()
-"else
-inoremap <silent><expr> <c-@> coc#refresh()
-"endif
+inoremap <silent><expr> <c-space> coc#refresh()
 
 map <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -240,7 +224,9 @@ nmap <leader>c  <Plug>(coc-codeaction-selected)
 let g:coc_global_extensions = [ 'coc-tsserver']
 
 " sets the max number of autocomplete elements
-:set pumheight=4
+:set pumheight=8
+
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -253,6 +239,10 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
+
+"" fix for large files syntax hightlighting
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 "" Use CTRL-S for selections ranges.
 "" " Requires 'textDocument/selectionRange' support of language server.
 "nmap <silent> <C-s> <Plug>(coc-range-select)

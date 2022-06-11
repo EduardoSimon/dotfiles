@@ -44,7 +44,7 @@ function jira() {
   open -a "Google Chrome" "${JIRA_PROJECT_URL}/${1}"
 }
 
-function push-monoenv() { 
+function force-push-monoenv() { 
 if [ $# -ne 1 ]; then
   echo "usage: push-monoenv <environment>"
   return 1
@@ -56,18 +56,17 @@ git fetch -p && git branch -f $ENVIRONMENT HEAD && git checkout $ENVIRONMENT &&
   $ENVIRONMENT && git checkout $BRANCH
 }
 
-function force-push-monoenv() {
+function merge-to-monoenv() {
 if [ $# -ne 1 ]; then
-    echo "usage: merge-to-monoenv <environment>"
-    return -1
+  echo "usage: merge-to-monoenv <environment>"
+  return -1
 fi
 ENVIRONMENT=$1
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-git checkout $ENVIRONMENT && git pull --rebase && git merge $BRANCH && git commit --allow-empty -m "[SKIP_MANUAL]" &&
- git push origin $ENVIRONMENT
+git checkout $ENVIRONMENT && git pull origin $ENVIRONMENT && git merge $BRANCH && git commit --allow-empty -m "[SKIP_MANUAL]" && git push origin $ENVIRONMENT
 git checkout $BRANCH
 }
 
 function load_nvm() {
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 }
