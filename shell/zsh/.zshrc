@@ -47,6 +47,8 @@ then
     eval "$(starship init zsh)"
 fi
 
+echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/eduardosimonpicon/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduardosimonpicon/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -62,3 +64,11 @@ fi
 
 # eval $(thefuck --alias)
 # zmodload zsh/zprof
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+. /usr/local/opt/asdf/libexec/asdf.sh

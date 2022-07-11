@@ -22,3 +22,4 @@
     ~/.config/alacritty/alacritty.yml: editors/alacritty/alacritty.yml
     ~/.config/starship.toml: shell/starship.toml
     ~/.tmux.conf: shell/.tmux.conf
+    ~/.asdfrc: shell/.asdfrc
