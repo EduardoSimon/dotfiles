@@ -27,9 +27,6 @@ autoload -Uz promptinit && promptinit
 source "$DOTFILES_PATH/shell/zsh/key-bindings.zsh"
 source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
 
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-
 . "${HOME}/z_script.sh"
 
 if command -v direnv &> /dev/null
@@ -64,11 +61,5 @@ echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
 
 # eval $(thefuck --alias)
 # zmodload zsh/zprof
-
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-. /usr/local/opt/asdf/libexec/asdf.sh
 
 . /usr/local/opt/asdf/libexec/asdf.sh
