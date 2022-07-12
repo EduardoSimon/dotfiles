@@ -63,7 +63,7 @@ if [ $# -ne 1 ]; then
 fi
 ENVIRONMENT=$1
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-git checkout $ENVIRONMENT && git pull origin $ENVIRONMENT && git merge $BRANCH && git commit --allow-empty -m "[SKIP_MANUAL]" && git push origin $ENVIRONMENT
+git checkout $ENVIRONMENT && git reset --hard origin/$ENVIRONMENT  && git merge $BRANCH && git commit --allow-empty -m "[SKIP_MANUAL]" && git push origin $ENVIRONMENT
 git checkout $BRANCH
 }
 
