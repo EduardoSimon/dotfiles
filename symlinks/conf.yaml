@@ -21,5 +21,6 @@
     ~/z_script.sh: shell/zsh/plugins/z_script.sh
     ~/.config/alacritty/alacritty.yml: editors/alacritty/alacritty.yml
     ~/.config/starship.toml: shell/starship.toml
+    ~/.config/nvim/init.vim: editors/init.vim
     ~/.tmux.conf: shell/.tmux.conf
     ~/.asdfrc: shell/.asdfrc
