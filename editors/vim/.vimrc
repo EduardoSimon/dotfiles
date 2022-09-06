@@ -184,6 +184,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-unimpaired'
 Plug 'Mofiqul/dracula.nvim'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
 " write css selector and expand using <c-y>,
 Plug 'mattn/emmet-vim'
 call plug#end()
@@ -205,9 +207,7 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme dracula
-set background=dark
-
+colorscheme onedark
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
