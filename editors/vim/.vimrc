@@ -135,7 +135,7 @@ noremap <leader>f :Ag<cr>
 map <Leader>l :BLines<CR>
 noremap <leader>g :Format <cr>
 noremap <silent> vv <C-w>v
-
+nnoremap <C-h> :set hlsearch!<CR>
 " Requires 'textDocument/selectionRange' support of language server.
 " nmap <silent> <C-s> <Plug>(coc-range-select)
 " xmap <silent> <C-s> <Plug>(coc-range-select)
