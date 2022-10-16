@@ -13,35 +13,11 @@ _e() { _a "${red}$1${normal}"; }
 _s() { _a "${green}$1${normal}"; }
 _q() { read -rp "🤔 $1: " "$2"; }
 
-_w "  ┌──────────────────────────────────────────┐"
-_w "~ │ 🚀 Welcome to Eduardo Simon's ${green}dotfiles${normal} installer! │ ~"
-_w "  └──────────────────────────────────────────┘"
-_w
-_q "Confirm to install dotfiles @(default ~/.dotfiles)" INSTALL_PATH
-INSTALL_PATH=${INSTALL_PATH:-~/.dotfiles}
-[ ! -d $INSTALL_PATH ] && git clone git@github.com:EduardoSimon/dotfiles.git $INSTALL_PATH
-cd $INSTALL_PATH
+# install zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-_a "Initializing submodules"
-git submodule update --init --recursive
+# install zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-_a "Initializing dotly"
-DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" self install
-_a "Initializing dotly"
-DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" symlinks apply
-
-if [ "$(uname)" == "Darwin" ]; then
-_a "Setting MAC OS defaults"
-sudo bash $DOTFILES_PATH/os/mac/mac-os.sh
-
-fi
-
-_a "Initializing zim"
-zsh $INSTALL_PATH/modules/dotly/modules/zimfw/zimfw.zsh install
-
-_a "Installing packages..."
-DOTFILES_PATH="$INSTALL_PATH" DOTLY_PATH="$INSTALL_PATH/modules/dotly" "$INSTALL_PATH/modules/dotly/bin/dot" package import
-
-
-_w "🎉 dotfiles installed correctly! 🎉"
-_w "Please, restart your terminal to see the changes"
+# install zsh-fzf-history-search
+git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
