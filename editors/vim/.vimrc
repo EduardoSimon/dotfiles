@@ -28,6 +28,9 @@ set pastetoggle=<F2>
 " When closing an unsaved file move it to a buffer
 set hidden
 
+" Draw a line at the 100th character of every line
+set colorcolumn=100
+
 " Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
 set textwidth=100
 set formatoptions=tcqrn1
@@ -202,6 +205,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 map <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" select last paste in visual mode
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 "" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>rn <Plug>(coc-rename)
@@ -265,9 +271,24 @@ nnoremap <C-t> :NERDTreeFind<CR>
 "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
 "      \ quit | endif
 
+" Autocomplete HTML tags
+autocmd FileType html,jsx,tsx,eruby set omnifunc=htmlcomplete#CompleteTags
+
 inoremap jk <esc>
 inoremap kj <esc>
 "packadd! matchit
 "silent! helptags ALL
 "" Enable % to be used in every ruby keyword
 "runtime macros/matchit.vim
+"
+"" Rename current file
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <leader>rf :call RenameFile()<cr>
