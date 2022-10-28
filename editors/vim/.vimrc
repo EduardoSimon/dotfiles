@@ -28,6 +28,9 @@ set pastetoggle=<F2>
 " When closing an unsaved file move it to a buffer
 set hidden
 
+" Draw a line at the 100th character of every line
+set colorcolumn=100
+
 " Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
 set textwidth=100
 set formatoptions=tcqrn1
@@ -93,6 +96,9 @@ set smartcase
 set foldmethod=syntax
 set nofoldenable
 
+" Always use the system clipboard
+set clipboard+=unnamedplus
+
 " set updatetime=300
 " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
@@ -135,7 +141,7 @@ noremap <leader>f :Ag<cr>
 map <Leader>l :BLines<CR>
 noremap <leader>g :Format <cr>
 noremap <silent> vv <C-w>v
-
+nnoremap <C-h> :set hlsearch!<CR>
 " Requires 'textDocument/selectionRange' support of language server.
 " nmap <silent> <C-s> <Plug>(coc-range-select)
 " xmap <silent> <C-s> <Plug>(coc-range-select)
@@ -184,35 +190,23 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-unimpaired'
 Plug 'Mofiqul/dracula.nvim'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
 " write css selector and expand using <c-y>,
 Plug 'mattn/emmet-vim'
 call plug#end()
 
-"Credit joshdick
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
-colorscheme dracula
-set background=dark
-
+" Adds true color support in neovim
+set termguicolors
+colorscheme onedark
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
 map <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" select last paste in visual mode
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 "" autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -277,9 +271,24 @@ nnoremap <C-t> :NERDTreeFind<CR>
 "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
 "      \ quit | endif
 
+" Autocomplete HTML tags
+autocmd FileType html,jsx,tsx,eruby set omnifunc=htmlcomplete#CompleteTags
+
 inoremap jk <esc>
 inoremap kj <esc>
 "packadd! matchit
 "silent! helptags ALL
 "" Enable % to be used in every ruby keyword
 "runtime macros/matchit.vim
+"
+"" Rename current file
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <leader>rf :call RenameFile()<cr>
