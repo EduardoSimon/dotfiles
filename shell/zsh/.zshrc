@@ -14,17 +14,6 @@ setopt PUSHD_SILENT         # Do not print the directory stack after pushd or po
 # allow to use absolute path from anywhere on the system to the following locations
 cdpath=($HOME/dev $HOME)
 
-# enable vi mode
-set -o vi
-
-# Enabled completions
-# The autoload command load a file containing shell commands. To find this file, Zsh will look in the directories of the Zsh file search path, defined in the variable $fpath, and search a file called compinit.
-# When compinit is found, its content will be loaded as a function. The function name will be the name of the file. You can then call this function like any other shell function.
-# The -U prevents from expanding aliases
-autoload -U compinit; compinit
-_comp_options+=(globdots) # With hidden files
-source $DOTFILES_PATH/shell/zsh/completions/base.zsh
-
 # Enable plugins
 plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions zsh-fzf-history-search)
 
@@ -57,8 +46,9 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY='^['
 function zvm_after_init() {
   zvm_bindkey viins 'jk' zvm_exit_insert_mode
   zvm_bindkey viins 'kj' zvm_exit_insert_mode
-  echo "Installed"
 }
 
 [[ -n $PROFILE_ZSH ]] && zprof
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
