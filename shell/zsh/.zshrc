@@ -1,3 +1,4 @@
+# Enables profiling in zsh
 [[ -n $PROFILE_ZSH ]] && zmodload zsh/zprof
 
 # Path to your oh-my-zsh installation.
@@ -30,11 +31,12 @@ plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions zsh-fzf-his
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 
-source "$DOTFILES_PATH/shell/zsh/key-bindings.zsh"
-source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
+# Import aliases, functions and custom exports
+source $DOTFILES_PATH/shell/init.sh
+
+# TODO move to asdf
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
-. "${HOME}/z_script.sh"
 # load z/rupa script
 . "${DOTFILES_PATH}/shell/zsh/plugins/z_script.sh"
 
