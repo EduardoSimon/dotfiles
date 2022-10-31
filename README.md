@@ -1,9 +1,9 @@
-<h1 align="center">
-  .dotfiles created using <a href="https://github.com/CodelyTV/dotly">🌚 dotly</a>
-</h1>
+# Installation
 
-## Restore your Dotfiles
+This dotfiles uses chezmoi as a manager, as such, chezmoi needs to be installed in the host, to install please refer to the official [installation guide](https://www.chezmoi.io/install/#one-line-package-install)
 
-- Install git
-- Run the following command `bash <(curl -s https://raw.githubusercontent.com/EduardoSimon/dotfiles/main/installer.sh?flush_cache=True)`
-- Finish the installation by: `dot installation post_install_dotfiles`
+As a general rule of thumb, open your terminal and run to install the binary:
+```
+sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply EduardoSimon
+```
+

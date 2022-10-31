@@ -1,65 +1,62 @@
-# Uncomment for debuf with `zprof`
-# zmodload zsh/zprof
-typeset -U path cdpath fpath
+[[ -n $PROFILE_ZSH ]] && zmodload zsh/zprof
 
-# ZSH Ops
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_FCNTL_LOCK
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# move to the folder if it exists using the name of the folder as a command
 setopt auto_cd
+
+setopt AUTO_PUSHD           # Push the current directory visited on the stack.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+
+# allow to use absolute path from anywhere on the system to the following locations
+cdpath=($HOME/dev $HOME)
+
+# enable vi mode
 set -o vi
 
+# Enabled completions
+# The autoload command load a file containing shell commands. To find this file, Zsh will look in the directories of the Zsh file search path, defined in the variable $fpath, and search a file called compinit.
+# When compinit is found, its content will be loaded as a function. The function name will be the name of the file. You can then call this function like any other shell function.
+# The -U prevents from expanding aliases
+autoload -U compinit; compinit
+_comp_options+=(globdots) # With hidden files
+source $DOTFILES_PATH/shell/zsh/completions/base.zsh
 
-cdpath=($HOME/dev $HOME)
-# Start zim
-source "$ZIM_HOME/init.zsh"
+# Enable plugins
+plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions zsh-fzf-history-search)
 
-# # Async mode for autocompletion
-ZSH_AUTOSUGGEST_USE_ASYNC=true
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_HIGHLIGHT_MAXLENGTH=300
-
-source "$DOTFILES_PATH/shell/init.sh"
-
-fpath=("$DOTLY_PATH/shell/zsh/completions" $fpath)
-
-autoload -Uz promptinit && promptinit
+ZSH_DISABLE_COMPFIX=true
+source $ZSH/oh-my-zsh.sh
 
 source "$DOTFILES_PATH/shell/zsh/key-bindings.zsh"
 source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 . "${HOME}/z_script.sh"
+# load z/rupa script
+. "${DOTFILES_PATH}/shell/zsh/plugins/z_script.sh"
 
 if command -v direnv &> /dev/null
 then
     eval "$(direnv hook zsh)"
 fi
 
-# if command -v jenv &> /dev/null
-# then
-#     eval "$(jenv init -)"
-# fi
-
 if command -v starship &> /dev/null
 then
     eval "$(starship init zsh)"
 fi
 
-echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+# Default escape key <ESC> for insert mode
+ZVM_VI_INSERT_ESCAPE_BINDKEY='^['
 
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/eduardosimonpicon/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduardosimonpicon/google-cloud-sdk/path.zsh.inc'; fi
+# The plugin will auto execute this zvm_after_init function
+function zvm_after_init() {
+  zvm_bindkey viins 'jk' zvm_exit_insert_mode
+  zvm_bindkey viins 'kj' zvm_exit_insert_mode
+  echo "Installed"
+}
 
-# The next line enables shell command completion for gcloud.
-# if [ -f '/Users/eduardosimonpicon/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduardosimonpicon/google-cloud-sdk/completion.zsh.inc'; fi
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ -n $PROFILE_ZSH ]] && zprof
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-# export SDKMAN_DIR="$HOME/.sdkman"
-# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# eval "$(rbenv init - zsh)"
-
-# eval $(thefuck --alias)
-# zmodload zsh/zprof
-
-. /usr/local/opt/asdf/libexec/asdf.sh
