@@ -7,3 +7,8 @@ As a general rule of thumb, open your terminal and run to install the binary:
 sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply EduardoSimon
 ```
 
+# Specific Docs per OS
+
+## WSL 2 + windows
+
+Follow [this guide](https://github.com/lackovic/notes/tree/master/Windows/Windows%20Subsystem%20for%20Linux#run-linux-gui-applications) to set up gui apps when running in wsl2.
