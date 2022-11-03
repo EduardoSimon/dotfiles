@@ -24,9 +24,9 @@ plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions zsh-fzf-his
 ZSH_DISABLE_COMPFIX=true source $ZSH/oh-my-zsh.sh
 
 # Import aliases, functions and custom exports source $DOTFILES_PATH/shell/init.sh
-source "${DOTFILES_PATH}/aliases.sh"
-source "${DOTFILES_PATH}/exports.sh"
-source "${DOTFILES_PATH}/functions.sh"
+source "./aliases.sh"
+source "./exports.sh"
+source "./functions.sh"
 
 # TODO move to asdf
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
