@@ -7,3 +7,5 @@
 - Setup alacrity in Mac OS and ubuntu
 
 - Install asdf in mac and linux
+
+- Review dotly scripts and move interesting ones
