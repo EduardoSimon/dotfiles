@@ -6,4 +6,4 @@
 
 - Setup alacrity in Mac OS and ubuntu
 
-- Move asdf.rc
+- Install asdf in mac and linux
