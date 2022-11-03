@@ -1,0 +1,52 @@
+add_newline = false
+
+[line_break]
+disabled = true
+
+[package]
+disabled = true
+
+[ruby]
+disabled = true
+
+[python]
+disabled = true
+
+[aws]
+disabled = true
+
+[git_status]
+disabled = true
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+
+[nodejs]
+disabled = true
+
+[rust]
+disabled = true
+
+[golang]
+disabled = true
+
+[php]
+disabled = true
+
+[terraform]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[java]
+disabled = true
+
+[cmake]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[docker_context]
+disabled = true
