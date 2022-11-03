@@ -32,7 +32,7 @@ source "./functions.sh"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 # load z/rupa script
-. z.sh
+. "./z.sh"
 
 if command -v direnv &> /dev/null
 then
