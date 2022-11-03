@@ -1,15 +1,11 @@
-- clean: ['~']
+- clean: ["~"]
 
 - defaults:
     link:
       create: true
       force: true
 
-- create:
-      - ~/.hushlogin
-
 - link:
-    ~/.dotly: os/mac/.dotly
     ~/bin/bash: /usr/local/bin/bash
     ~/bin/date: /usr/local/bin/gdate
     ~/bin/make: /usr/local/opt/make/libexec/gnubin/make

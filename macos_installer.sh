@@ -10,5 +10,7 @@ brew install fzf
 # Install git tui
 brew install tig
 
+brew install asdf
+
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install

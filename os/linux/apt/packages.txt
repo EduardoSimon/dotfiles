@@ -1,4 +1,0 @@
-build-essentials
-fzf
-vim
-ripgrep
