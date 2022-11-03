@@ -13,3 +13,5 @@
 - Fix ASDF to install global node
 
 - Version the global node and autoinstall on dotfiles startup
+
+- Fix gitattributes with chezmoi template
