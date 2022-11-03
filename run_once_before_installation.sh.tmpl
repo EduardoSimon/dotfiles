@@ -6,13 +6,24 @@ sudo apt install tig
 sudo apt install build-essentials
 sudo apt install vim
 sudo apt install ripgrep
+
+# Install rust if not installed
+[ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install alacritty
+
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 # Accept license after an update
 sudo xcodebuild -license accept
 
-# Install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install brew if not installed
+[ -x "$(command -v brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install rust if not installed
+[ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install alacritty
 
 brew install ripgrep
 brew install zsh
