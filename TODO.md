@@ -9,3 +9,7 @@
 - Install asdf in mac and linux
 
 - Review dotly scripts and move interesting ones
+
+- Fix ASDF to install global node
+
+- Version the global node and autoinstall on dotfiles startup
