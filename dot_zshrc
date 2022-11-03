@@ -4,6 +4,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# Disable auto update to prevent messing up chezmoi state
+# Zsh will be refreshed every week, however, to force it use: $ chezmoi -R apply
+DISABLE_AUTO_UPDATE="true"
+
 # move to the folder if it exists using the name of the folder as a command
 setopt auto_cd
 
