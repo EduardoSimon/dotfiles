@@ -24,12 +24,12 @@ plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions fzf asdf)
 ZSH_DISABLE_COMPFIX=true source $ZSH/oh-my-zsh.sh
 
 # Import aliases, functions and custom exports source $DOTFILES_PATH/shell/init.sh
-source "~/aliases.sh"
-source "~/exports.sh"
-source "~/functions.sh"
+source "${HOME}/aliases.sh"
+source "${HOME}/exports.sh"
+source "${HOME}/functions.sh"
 
 # load z/rupa script
-. "~/z.sh"
+. "${HOME}/z.sh"
 
 if command -v direnv &> /dev/null
 then
