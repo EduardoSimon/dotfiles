@@ -1,5 +1,5 @@
 #to remove
-export DOTFILES_PATH="$HOME/.dotfiles"
+export DOTFILES_PATH="$HOME/"
 
 #default editor env var
 export EDITOR="nvim"
@@ -9,6 +9,7 @@ export VISUAL="nvim"
 export HISTFILE="$ZDOTDIR/.zhistory"
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
+
 
 # default fzf config
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'

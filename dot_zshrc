@@ -19,7 +19,7 @@ setopt PUSHD_SILENT         # Do not print the directory stack after pushd or po
 cdpath=($HOME/dev $HOME)
 
 # Enable plugins
-plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions zsh-fzf-history-search)
+plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions fzf asdf)
 
 ZSH_DISABLE_COMPFIX=true source $ZSH/oh-my-zsh.sh
 
@@ -27,9 +27,6 @@ ZSH_DISABLE_COMPFIX=true source $ZSH/oh-my-zsh.sh
 source "./aliases.sh"
 source "./exports.sh"
 source "./functions.sh"
-
-# TODO move to asdf
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 # load z/rupa script
 . "./z.sh"
@@ -54,6 +51,3 @@ function zvm_after_init() {
 }
 
 [[ -n $PROFILE_ZSH ]] && zprof
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
