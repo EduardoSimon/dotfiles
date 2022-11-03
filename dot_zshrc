@@ -21,17 +21,18 @@ cdpath=($HOME/dev $HOME)
 # Enable plugins
 plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions zsh-fzf-history-search)
 
-ZSH_DISABLE_COMPFIX=true
-source $ZSH/oh-my-zsh.sh
+ZSH_DISABLE_COMPFIX=true source $ZSH/oh-my-zsh.sh
 
-# Import aliases, functions and custom exports
-source $DOTFILES_PATH/shell/init.sh
+# Import aliases, functions and custom exports source $DOTFILES_PATH/shell/init.sh
+source "${DOTFILES_PATH}/aliases.sh"
+source "${DOTFILES_PATH}/exports.sh"
+source "${DOTFILES_PATH}/functions.sh"
 
 # TODO move to asdf
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 # load z/rupa script
-. "${DOTFILES_PATH}/shell/zsh/plugins/z_script.sh"
+. z.sh
 
 if command -v direnv &> /dev/null
 then
