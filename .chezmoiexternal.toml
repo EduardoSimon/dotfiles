@@ -34,7 +34,7 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".oh-my-zsh/custom/plugins/asdf"]
+["~/.asdf"]
     type = "archive"
     url = "https://github.com/asdf-vm/asdf/archive/master.tar.gz"
     exact = true

@@ -25,7 +25,6 @@ ZSH_DISABLE_COMPFIX=true source $ZSH/oh-my-zsh.sh
 
 # Import aliases, functions and custom exports source $DOTFILES_PATH/shell/init.sh
 source "${HOME}/aliases.sh"
-source "${HOME}/exports.sh"
 source "${HOME}/functions.sh"
 
 # load z/rupa script
