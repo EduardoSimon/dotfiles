@@ -28,12 +28,6 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".oh-my-zsh/custom/plugins/zsh-fzf-history-search"]
-    type = "archive"
-    url = "https://github.com/joshskidmore/zsh-fzf-history-search/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
 ["~/.asdf"]
     type = "archive"
     url = "https://github.com/asdf-vm/asdf/archive/master.tar.gz"

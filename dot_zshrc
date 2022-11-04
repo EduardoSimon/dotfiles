@@ -19,7 +19,7 @@ setopt PUSHD_SILENT         # Do not print the directory stack after pushd or po
 cdpath=($HOME/dev $HOME)
 
 # Enable plugins
-plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions fzf asdf)
+plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions asdf fzf)
 
 ZSH_DISABLE_COMPFIX=true source $ZSH/oh-my-zsh.sh
 
@@ -47,6 +47,10 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY='^['
 function zvm_after_init() {
   zvm_bindkey viins 'jk' zvm_exit_insert_mode
   zvm_bindkey viins 'kj' zvm_exit_insert_mode
+
+  # Rebind history search, fix for:
+  # https://github.com/jeffreytse/zsh-vi-mode/issues/127
+  zvm_bindkey viins '^R' fzf-history-widget
 }
 
 [[ -n $PROFILE_ZSH ]] && zprof
