@@ -6,6 +6,7 @@ sudo apt install tig
 sudo apt install build-essentials
 sudo apt install vim
 sudo apt install ripgrep
+sudo apt install dirmngr gpg curl gawk
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -77,8 +78,12 @@ brew install "tmux"
 brew install "tree"
 brew install "vim"
 brew install "wget"
+brew install "gawk"
 brew install --cask "font-fira-code-nerd-font"
 brew install --cask "karabiner-elements"
 brew install --cask "keycastr"
 
 {{ end -}}
+
+asdf install nodejs lts
+asdf global nodejs lts
