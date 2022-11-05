@@ -292,3 +292,7 @@ function! RenameFile()
   endif
 endfunction
 map <leader>rf :call RenameFile()<cr>
+
+"" Automatically apply the dotfiles conf when modifying a file
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+
