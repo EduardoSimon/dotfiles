@@ -1,0 +1,28 @@
+# IntelliJ IDEA
+.idea
+*.iml
+*.iws
+.idea-compl
+*.sc
+
+# Mac
+.DS_Store
+
+# Clojure
+.lein-repl-history
+.lein-failures
+completer.hist
+.nrepl-port
+
+# Scala
+libsigar-universal64-macosx.dylib
+
+# Custom
+*.no-commit.*
+# Eventscase
+application/Packages/Clients/AccountManager/Accounts/AccountTest.php
+application/Packages/FakeData
+application/controllers/tools_fake.php# Eventscase
+application/Packages/Clients/AccountManager/Accounts/AccountTest.php
+application/Packages/FakeData
+application/controllers/tools_fake.php
