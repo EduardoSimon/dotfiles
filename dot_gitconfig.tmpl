@@ -1,0 +1,82 @@
+[user]
+	email = {{ .chezmoi.email }}
+	name = {{ .chezmoi.username }}
+
+[fetch]
+	prune = true
+
+[push]
+	default = simple
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+
+[core]
+	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes
+	editor = nvim
+	autocrlf = input
+	trustctime = false
+	precomposeunicode = false
+	pager = delta --dark
+	ignorecase = false
+
+[help]
+	autocorrect = 1
+
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+
+[diff]
+  tool = vscode
+
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+  tool = vscode
+
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+
+[credential]
+	helper = osxkeychain
+
+[color]
+	ui = always
+
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = "red bold 52"
+	newNormal = "green bold"
+	newHighlight = "green bold 22"
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+	
+[pull]
+	rebase = true

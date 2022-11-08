@@ -1,0 +1,100 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+sudo apt install zsh
+sudo apt install fzf
+sudo apt install tig
+sudo apt install build-essentials
+sudo apt install vim
+sudo apt install ripgrep
+sudo apt install dirmngr gpg curl gawk
+
+# Install rust if not installed
+[ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install alacritty
+
+#Install VS Codium
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+    | gpg --dearmor \
+    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+    | sudo tee /etc/apt/sources.list.d/vscodium.list
+
+sudo apt update && sudo apt install codium
+
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Accept license after an update
+sudo xcodebuild -license accept
+
+# Install brew if not installed
+[ -x "$(command -v brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install rust if not installed
+[ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install alacritty
+
+brew install ripgrep
+brew install zsh
+
+# Set as default shell
+chsh -s /usr/local/bin/zsh
+
+brew install fzf
+brew install tig
+brew install asdf
+
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
+
+brew tap "dandavison/delta", "https://github.com/dandavison/delta"
+brew tap "homebrew/cask"
+brew install "asdf"
+brew install "awscli"
+brew install "bash"
+brew install "bat"
+brew install "curl"
+brew install "direnv"
+brew install "dog"
+brew install "duf"
+brew install "exa"
+brew install "gnutls"
+brew install "fzf"
+brew install "gcc"
+brew install "git"
+brew install "git-delta"
+brew install "git-extras"
+brew install "glow"
+brew install "gnu-getopt"
+brew install "gnu-sed"
+brew install "gnupg"
+brew install "grep"
+brew install "htop"
+brew install "httpie"
+brew install "jenv"
+brew install "jq"
+brew install "lsd"
+brew install "make"
+brew install "mas"
+brew install "neovim"
+brew install "rust"
+brew install "starship"
+brew install "the_silver_searcher"
+brew install "tig"
+brew install "tldr"
+brew install "tmux"
+brew install "tree"
+brew install "vim"
+brew install "wget"
+brew install "gawk"
+brew install --cask "font-fira-code-nerd-font"
+brew install --cask "karabiner-elements"
+brew install --cask "keycastr"
+brew install --cask vscodium
+
+{{ end -}}
+
+asdf install nodejs lts
+asdf global nodejs lts

@@ -1,0 +1,69 @@
+export DOTFILES_PATH="$HOME/"
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
+export GEM_HOME="$HOME/.gem"
+export GOPATH="$HOME/.go"
+
+#default editor env var
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+#z history
+export HISTFILE="$ZDOTDIR/.zhistory"
+export HISTSIZE=10000                   # Maximum events for internal history
+export SAVEHIST=10000                   # Maximum events in history file
+
+
+# default fzf config
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+FZF_COLORS="bg+:-1,\
+fg:gray,\
+fg+:white,\
+border:black,\
+spinner:0,\
+hl:yellow,\
+header:blue,\
+info:green,\
+pointer:red,\
+marker:red,\
+prompt:gray,\
+hl+:red"
+
+export FZF_DEFAULT_OPTS="--height 60% \
+--border sharp \
+--color='$FZF_COLORS' \
+--prompt '∷ ' \
+--pointer ▶ \
+--marker ⇒"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -n 10'"
+
+
+export FZF_DEFAULT_OPTS='
+  --color=pointer:#ebdbb2,bg+:#3c3836,fg:#ebdbb2,fg+:#fbf1c7,hl:#8ec07c,info:#928374,header:#fb4934
+  --reverse'
+
+export path=(
+  "$PATH"
+  "$HOME/bin"
+  "$DOTLY_PATH/bin"
+  "$DOTFILES_PATH/bin"
+  "$JAVA_HOME/bin"
+  "$GEM_HOME/bin"
+  "$GOPATH/bin"
+  "$HOME/.cargo/bin"
+  "$HOME/.jenv/bin",
+  "/usr/local/opt/ruby/bin"
+  "/usr/local/opt/python/libexec/bin"
+  "/usr/local/bin"
+  "/usr/local/sbin"
+  "/bin"
+  "/usr/bin"
+  "/usr/sbin"
+  "/sbin"
+  "/mnt/c/Windows/system32"
+  "$HOME/.local/bin"
+  "$HOME/.npm-global/bin"
+  "$HOME/.deno/bin"
+)
+
