@@ -53,4 +53,7 @@ function zvm_after_init() {
   zvm_bindkey viins '^R' fzf-history-widget
 }
 
+#Override the default macos ruby bin with the brew one just when asdf installation fails
+export PATH="$(brew --prefix ruby)/bin:$PATH"
+
 [[ -n $PROFILE_ZSH ]] && zprof
