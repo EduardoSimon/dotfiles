@@ -44,26 +44,19 @@ export FZF_DEFAULT_OPTS='
   --reverse'
 
 export path=(
-  "$PATH"
-  "$HOME/bin"
-  "$DOTLY_PATH/bin"
-  "$DOTFILES_PATH/bin"
   "$JAVA_HOME/bin"
   "$GEM_HOME/bin"
   "$GOPATH/bin"
   "$HOME/.cargo/bin"
   "$HOME/.jenv/bin",
-  "/usr/local/opt/ruby/bin"
   "/usr/local/opt/python/libexec/bin"
   "/usr/local/bin"
   "/usr/local/sbin"
-  "/bin"
-  "/usr/bin"
-  "/usr/sbin"
-  "/sbin"
   "/mnt/c/Windows/system32"
   "$HOME/.local/bin"
   "$HOME/.npm-global/bin"
   "$HOME/.deno/bin"
+  $path
 )
 
+export PATH
