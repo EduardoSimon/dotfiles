@@ -16,6 +16,10 @@ sudo apt install pkg-config
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+{{ if eq .chezmoi.os "linux" -}}
+apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+{{ end -}}
+
 cargo install alacritty
 
 chsh -s $(which zsh)
