@@ -10,9 +10,15 @@ sudo apt install curl git
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 sudo apt install ripgrep
 sudo apt install dirmngr gpg gawk
+sudo apt-get -y install cmake
+sudo apt install pkg-config
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+{{ if eq .chezmoi.os "linux" -}}
+apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+{{ end -}}
 
 cargo install alacritty
 
@@ -101,5 +107,24 @@ brew install --cask vscodium
 
 {{ end -}}
 
+asdf plugin add nodejs
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+
 asdf install nodejs lts
 asdf global nodejs lts
+
+{{ if eq .chezmoi.os "linux" -}}
+
+apt-get install autoconf bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
+
+{{ else if eq .chezmoi.os "darwin" -}}
+
+brew install openssl@3 readline libyaml gmp
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+brew install rust
+brew install bison
+
+{{ end -}}
+
+asdf install ruby latest
+asdf global ruby latest
