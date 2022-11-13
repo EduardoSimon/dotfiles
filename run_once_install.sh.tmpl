@@ -1,17 +1,22 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/sh
-sudo apt install zsh
-sudo apt install fzf
-sudo apt install tig
-sudo apt install build-essentials
-sudo apt install vim
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt install -y zsh
+sudo apt install -y fzf
+sudo apt install -y tig
+sudo apt install -y vim
+sudo apt install curl git
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 sudo apt install ripgrep
-sudo apt install dirmngr gpg curl gawk
+sudo apt install dirmngr gpg gawk
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 cargo install alacritty
+
+chsh -s $(which zsh)
 
 #Install VS Codium
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
