@@ -10,6 +10,7 @@ sudo apt install curl git
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 sudo apt install ripgrep
 sudo apt install dirmngr gpg gawk
+sudo apt-get -y install cmake
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -101,5 +102,11 @@ brew install --cask vscodium
 
 {{ end -}}
 
+asdf plugin add nodejs
+asdf plugin add ruby
+
 asdf install nodejs lts
 asdf global nodejs lts
+
+asdf install ruby latest
+asdf global ruby latest
