@@ -32,3 +32,11 @@ BRANCH=$(git rev-parse --abbrev-ref HEAD)
 git checkout $ENVIRONMENT && git reset --hard origin/$ENVIRONMENT  && git merge $BRANCH && git commit --allow-empty -m "[SKIP_MANUAL]" && git push origin $ENVIRONMENT
 git checkout $BRANCH
 }
+
+function compare-branches() {
+  "$DOTFILES_PATH/scripts/git/compare-branches" "$@"
+}
+
+function git-commit() {
+  "$DOTFILES_PATH/scripts/git/commit-no-sign" "$@"
+}
