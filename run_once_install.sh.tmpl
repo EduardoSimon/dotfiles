@@ -12,15 +12,17 @@ sudo apt install ripgrep
 sudo apt install dirmngr gpg gawk
 sudo apt-get -y install cmake
 sudo apt install pkg-config
+sudo apt-get install fontconfig
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 {{ if eq .chezmoi.os "linux" -}}
-apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-{{ end -}}
-
+{{   if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 cargo install alacritty
+{{   end }}
+{{ end -}}
 
 chsh -s $(which zsh)
 
@@ -126,5 +128,6 @@ brew install bison
 
 {{ end -}}
 
-asdf install ruby latest
-asdf global ruby latest
+# Commented out until ruby 3.1.2 installation works in mac
+# asdf install ruby latest
+# asdf global ruby latest

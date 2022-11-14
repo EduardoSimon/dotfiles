@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
-source "$DOTLY_PATH/scripts/core/_main.sh"
-
-##? Add all files and then a commit-no-sign
-#?? 1.0.0
-##?
-##? Usage:
-##?   commit-no-sign
-##?   commit-no-sign <message>
-docs::parse "$@"
+set -eo pipefail
 
 git add -A
 
-if [ -z "$message" ]; then
+if [ -z "$1" ]; then
   git commit
 else
-  git commit -m"$1"
+  git commit -m "$1"
 fi

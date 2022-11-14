@@ -1,26 +1,17 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
-
-##? compare the diff between two branches
-#?? 1.0.0
-##?
-##? Usage:
-##?   compare-branches [<fromBranch>] [<toBranch>]
-docs::parse "$@"
-
-if [ -z "$fromBranch" ]; then
-  seleted_branch=$(git branch | fzf)
+if [ -z "$1" ]; then
+  seleted_branch=$(git branch | fzf | awk '{$1=$1};1')
 else
-  seleted_branch=$fromBranch
+  seleted_branch=$1
 fi
 
-if [ -z "$toBranch" ]; then
+if [ -z "$2" ]; then
   current_branch=$(git branch --show-current)
 else
-  current_branch=$toBranch
+  current_branch=$2
 fi
 
 git diff ${current_branch}..${seleted_branch##*( )} | delta
