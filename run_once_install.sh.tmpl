@@ -18,10 +18,11 @@ sudo apt-get install fontconfig
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 {{ if eq .chezmoi.os "linux" -}}
-apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-{{ end -}}
-
+{{   if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 cargo install alacritty
+{{   end }}
+{{ end -}}
 
 chsh -s $(which zsh)
 
