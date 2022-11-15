@@ -2,15 +2,6 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
-
-##? Git log filtering
-#?? 1.0.0
-##?
-##? Usage:
-##?   pretty-log
-docs::parse "$@"
-
 commit=$(
   git log --graph \
     --color=always \
