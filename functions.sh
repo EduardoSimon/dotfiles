@@ -1,3 +1,15 @@
+platform::is_linux() {
+	[[ $(uname -s) == "Linux" ]]
+}
+
+platform::is_wsl() {
+	grep -qEi "(Microsoft|WSL|microsoft)" /proc/version &>/dev/null
+}
+
+platform::is_macos() {
+	[[ $(uname -s) == "Darwin" ]]
+}
+
 function cdd() {
   cd "$(ls -d -- */ | fzf)" || echo "Invalid directory"
 }
@@ -43,4 +55,21 @@ function git-commit() {
 
 function pretty-diff() {
   "$DOTFILES_PATH/scripts/git/pretty-diff"
+}
+
+function pretty-log() {
+  "$DOTFILES_PATH/scripts/git/pretty-log"
+}
+
+function generate-uuid() {
+uuid=$(uuidgen | tr '[:upper:]' '[:lower:]')
+if platform::is_macos; then
+	echo -n $uuid | pbcopy
+	osascript -e 'display notification "'"$uuid"'" with title "UUID copied to the clipboard"'
+elif platform::is_wsl; then
+	echo -n $uuid | clip.exe
+else
+	echo -n $uuid | xclip -sel clipboard
+	notify-send "UUID copied to the clipboard"
+fi
 }
