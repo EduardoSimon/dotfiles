@@ -20,9 +20,7 @@ alias gpsf="git push --force"
 alias gpl="git fetch --all -p && git pull --rebase --autostash"
 alias gb="git branch"
 alias gr="git branch -r"
-# alias gl="$DOTLY_PATH/bin/dot git pretty-log"
-# alias gacp="$DOTLY_PATH/bin/dot git commit-push"
-# alias nb="$DOTLY_PATH/bin/dot git new-branch-with-remote"
+alias gl="pretty-log"
 alias grh="git reset --hard"
 
 # Utils
@@ -31,7 +29,7 @@ alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
 alias v='nvim .'
 
-alias uuid="dot utils uuid_code"
+alias uuid="uuid_code"
 alias fprev="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 #docker
