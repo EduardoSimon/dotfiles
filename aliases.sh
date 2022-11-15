@@ -29,7 +29,7 @@ alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
 alias v='nvim .'
 
-alias uuid="uuid_code"
+alias uuid="generate-uuid"
 alias fprev="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 #docker
