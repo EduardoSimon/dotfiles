@@ -40,3 +40,7 @@ function compare-branches() {
 function git-commit() {
   "$DOTFILES_PATH/scripts/git/commit-no-sign" "$@"
 }
+
+function pretty-diff() {
+  "$DOTFILES_PATH/scripts/git/pretty-diff"
+}
