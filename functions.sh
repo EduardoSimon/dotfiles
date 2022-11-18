@@ -73,3 +73,14 @@ else
 	notify-send "UUID copied to the clipboard"
 fi
 }
+
+function monoenv_git_refresh() {
+  MONOENVS=( apache tuculca rockola espiral spook barraca puzzle )
+
+  for MONOENV in "${MONOENVS[@]}"; do
+    git checkout $MONOENV
+    git reset --hard origin/master
+    git commit --allow-empty -m "[SKIP_MANUAL]"
+    git push -f origin $MONOENV
+  done
+}
