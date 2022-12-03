@@ -208,6 +208,9 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
+" remap the esc keybinding in terminal mode
+tnoremap <Leader><Esc> <C-\><C-n>
+
 "" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>rn <Plug>(coc-rename)
