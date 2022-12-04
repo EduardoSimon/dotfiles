@@ -84,3 +84,15 @@ function monoenv_git_refresh() {
     git push -f origin $MONOENV
   done
 }
+
+function timestamp-to-date() {
+  "$DOTFILES_PATH/scripts/utils/timestamp_to_date.sh"
+}
+
+function command_exists() {
+	type "$1" >/dev/null 2>&1
+}
+
+function docs::parse() {
+	eval "$(docpars -h "$(grep "^##?" "$0" | cut -c 5-)" : "$@")"
+}

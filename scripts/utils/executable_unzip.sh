@@ -1,8 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -euo pipefail
-
-source "$DOTLY_PATH/scripts/core/_main.sh"
 
 ##? download & decompress into folder without intermediate file
 #?? 1.0.0

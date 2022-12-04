@@ -21,6 +21,7 @@ sudo apt-get install fontconfig
 {{   if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 cargo install alacritty
+cargo install docpars
 {{   end }}
 {{ end -}}
 
@@ -48,6 +49,7 @@ sudo xcodebuild -license accept
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 cargo install alacritty
+cargo install docpars
 
 brew install ripgrep
 brew install zsh
