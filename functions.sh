@@ -46,19 +46,19 @@ git checkout $BRANCH
 }
 
 function compare-branches() {
-  "$DOTFILES_PATH/scripts/git/compare-branches" "$@"
+  "$DOTFILES_PATH/scripts/git/compare-branches.sh" "$@"
 }
 
 function git-commit() {
-  "$DOTFILES_PATH/scripts/git/commit-no-sign" "$@"
+  "$DOTFILES_PATH/scripts/git/commit-no-sign.sh" "$@"
 }
 
 function pretty-diff() {
-  "$DOTFILES_PATH/scripts/git/pretty-diff"
+  "$DOTFILES_PATH/scripts/git/pretty-diff.sh"
 }
 
 function pretty-log() {
-  "$DOTFILES_PATH/scripts/git/pretty-log"
+  "$DOTFILES_PATH/scripts/git/pretty-log.sh"
 }
 
 function generate-uuid() {

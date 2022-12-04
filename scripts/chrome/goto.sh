@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
-
 ##? Fuzzy search and activate Chrome tab from terminal
 ##? Based on: https://github.com/Rasukarusan/fzf-chrome-active-tab
 #?? 1.0.0
