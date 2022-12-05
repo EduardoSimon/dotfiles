@@ -1,12 +1,12 @@
-platform::is_linux() {
+function platform::is_linux() {
 	[[ $(uname -s) == "Linux" ]]
 }
 
-platform::is_wsl() {
+function platform::is_wsl() {
 	grep -qEi "(Microsoft|WSL|microsoft)" /proc/version &>/dev/null
 }
 
-platform::is_macos() {
+function platform::is_macos() {
 	[[ $(uname -s) == "Darwin" ]]
 }
 
@@ -91,8 +91,4 @@ function timestamp-to-date() {
 
 function command_exists() {
 	type "$1" >/dev/null 2>&1
-}
-
-function docs::parse() {
-	eval "$(docpars -h "$(grep "^##?" "$0" | cut -c 5-)" : "$@")"
 }
