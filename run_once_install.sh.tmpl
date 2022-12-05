@@ -39,6 +39,10 @@ sudo apt update && sudo apt install codium
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
+
+# Reinstall developer tools if there's any recent update
+echo "Reinstalling Mac OS developer tools. If the process end, run it again"
+sudo xcode-select --install
 # Accept license after an update
 sudo xcodebuild -license accept
 
