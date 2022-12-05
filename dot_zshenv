@@ -48,7 +48,7 @@ export path=(
   "$GEM_HOME/bin"
   "$GOPATH/bin"
   "$HOME/.cargo/bin"
-  "$HOME/.jenv/bin",
+  "$HOME/.jenv/bin"
   "/usr/local/opt/python/libexec/bin"
   "/usr/local/bin"
   "/usr/local/sbin"
@@ -56,6 +56,7 @@ export path=(
   "$HOME/.local/bin"
   "$HOME/.npm-global/bin"
   "$HOME/.deno/bin"
+  "/opt/homebrew/bin"
   $path
 )
 
