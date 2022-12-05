@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Flat the current directory
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   flat_this_dir
-docs::parse "$@"
+docs_parse "$@"
 
 sudo find . -mindepth 2 -type f -exec mv -i '{}' . ';'

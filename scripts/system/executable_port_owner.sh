@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/scripts_helper.sh"
 
 ##? Prints the owner for a port
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   port_owner <port>
-docs::parse "$@"
+docs_parse "$@"
 
-lsof -n -i4TCP:$1 | grep LISTEN
+lsof -n -i4TCP:$port | grep LISTEN

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Show databases
 #?? 1.0.0
@@ -10,7 +10,7 @@ source "$DOTLY_PATH/scripts/core/_main.sh"
 ##? Usage:
 ##?   show_dbs
 ##?   show_dbs <hostname> <user>
-docs::parse "$@"
+docs_parse "$@"
 
 if [ -z "$hostname" ]; then
     URL='localhost'

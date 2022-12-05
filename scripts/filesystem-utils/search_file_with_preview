@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Fuzzy find a file with an active preview
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?  search_file_with_preview
-docs::parse "$@"
+docs_parse "$@"
 
 fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'
 

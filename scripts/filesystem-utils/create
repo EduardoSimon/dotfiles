@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Create a file with all the involved folders
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   create <filename>
-docs::parse "$@"
+docs_parse "$@"
 
 mkdir -p "$(dirname "$1")" && touch "$1"

@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Truncate all tables for a given database
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   truncate_database <database_name>
-docs::parse "$@"
+docs_parse "$@"
 
 mysql -uroot -N -B -e "SELECT CONCAT('SET FOREIGN_KEY_CHECKS=0; TRUNCATE TABLE $database_name.', TABLE_NAME, '; SET FOREIGN_KEY_CHECKS=1;') AS QUERY FROM information_schema.tables WHERE TABLE_SCHEMA = '$database_name';" | while read line; do
   echo "🔥 Executing: $line"
