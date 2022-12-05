@@ -117,9 +117,13 @@ brew install --cask vscodium
 
 asdf plugin add nodejs
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin add java
 
 asdf install nodejs lts
 asdf global nodejs lts
+
+asdf install java adoptopenjdk-11.0.17+8
+asdf global java adoptopenjdk-11.0.17+8
 
 {{ if eq .chezmoi.os "linux" -}}
 
