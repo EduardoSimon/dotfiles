@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Delete all docker volumes in your system
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   delete-volumes
-docs::parse "$@"
+docs_parse "$@"
 
 if docker ps >/dev/null 2>&1; then
   docker volumes rm $(docker volumes ls -q)

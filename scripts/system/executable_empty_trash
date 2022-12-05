@@ -2,15 +2,6 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
-
-##? Empty the trash and remove cache files
-#?? 1.0.0
-##?
-##? Usage:
-##?   empty_trash
-docs::parse "$@"
-
 free_space_in_home() {
   df -h ~ | tail -n1 | awk '{print $4}'
 }

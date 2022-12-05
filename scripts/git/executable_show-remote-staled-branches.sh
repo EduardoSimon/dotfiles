@@ -2,13 +2,4 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
-
-##? Show all remote staled branches
-#?? 1.0.0
-##?
-##? Usage:
-##?   show-remote-staled-branches
-docs::parse "$@"
-
 for branch in $(git branch -r --merged | egrep -v "origin/HEAD|origin/master"); do echo -e $(git show --format="%ci %cr %an" $branch | head -n 1) \\t$branch; done | sort -r

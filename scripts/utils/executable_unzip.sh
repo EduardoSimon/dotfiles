@@ -1,14 +1,14 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/scripts_helper.sh"
 
 ##? download & decompress into folder without intermediate file
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   unzip <url> <folder>
-docs::parse "$@"
+docs_parse "$@"
 
 curl -s "$url" | tar -xz -C "$folder" --strip-components=1

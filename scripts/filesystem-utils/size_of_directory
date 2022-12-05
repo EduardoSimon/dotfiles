@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Shows the size of the current directory
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   size_of_directory
-docs::parse "$@"
+docs_parse "$@"
 
 ncdu --color dark -rr -x

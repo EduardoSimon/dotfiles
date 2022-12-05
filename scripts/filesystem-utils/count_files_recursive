@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Count files recursives in the current direcory
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   count_files_recursive
-docs::parse "$@"
+docs_parse "$@"
 
 find . -type f -print | wc -l

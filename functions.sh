@@ -1,12 +1,12 @@
-platform::is_linux() {
+function platform::is_linux() {
 	[[ $(uname -s) == "Linux" ]]
 }
 
-platform::is_wsl() {
+function platform::is_wsl() {
 	grep -qEi "(Microsoft|WSL|microsoft)" /proc/version &>/dev/null
 }
 
-platform::is_macos() {
+function platform::is_macos() {
 	[[ $(uname -s) == "Darwin" ]]
 }
 
@@ -46,19 +46,19 @@ git checkout $BRANCH
 }
 
 function compare-branches() {
-  "$DOTFILES_PATH/scripts/git/compare-branches" "$@"
+  "$DOTFILES_PATH/scripts/git/compare-branches.sh" "$@"
 }
 
 function git-commit() {
-  "$DOTFILES_PATH/scripts/git/commit-no-sign" "$@"
+  "$DOTFILES_PATH/scripts/git/commit-no-sign.sh" "$@"
 }
 
 function pretty-diff() {
-  "$DOTFILES_PATH/scripts/git/pretty-diff"
+  "$DOTFILES_PATH/scripts/git/pretty-diff.sh"
 }
 
 function pretty-log() {
-  "$DOTFILES_PATH/scripts/git/pretty-log"
+  "$DOTFILES_PATH/scripts/git/pretty-log.sh"
 }
 
 function generate-uuid() {
@@ -83,4 +83,12 @@ function monoenv_git_refresh() {
     git commit --allow-empty -m "[SKIP_MANUAL]"
     git push -f origin $MONOENV
   done
+}
+
+function timestamp-to-date() {
+  "$DOTFILES_PATH/scripts/utils/timestamp_to_date.sh"
+}
+
+function command_exists() {
+	type "$1" >/dev/null 2>&1
 }

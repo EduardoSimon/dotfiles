@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOFILES_PATH/scripts_helper.sh"
 
 ##? Opens the cd directory with the Finder
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   cdf
-docs::parse "$@"
+docs_parse "$@"
 
 # cd to Finder open folder
 cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
