@@ -52,15 +52,15 @@ sudo xcodebuild -license accept
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-cargo install alacritty
-cargo install docpars
+# Set as default shell
+chsh -s /usr/local/bin/zsh
+
+$HOME/.cargo/bin/cargo install docpars
 
 /opt/homebrew/bin/brew install ripgrep
 /opt/homebrew/bin/brew install zsh
 
-# Set as default shell
-chsh -s /usr/local/bin/zsh
-
+/opt/homebrew/bin/brew install --cask alacritty
 /opt/homebrew/bin/brew install fzf
 /opt/homebrew/bin/brew install tig
 /opt/homebrew/bin/brew install asdf
