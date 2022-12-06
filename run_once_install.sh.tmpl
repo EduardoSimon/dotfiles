@@ -43,6 +43,7 @@ sudo apt update && sudo apt install codium
 # Reinstall developer tools if there's any recent update
 echo "Reinstalling Mac OS developer tools. If the process end, run it again"
 sudo xcode-select --install
+
 # Accept license after an update
 sudo xcodebuild -license accept
 
@@ -52,8 +53,11 @@ sudo xcodebuild -license accept
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Set as default shell
+# Set zsh as default shell
 chsh -s /usr/local/bin/zsh
+
+# Modify Mac OS settings
+$HOME/mac-os.sh
 
 $HOME/.cargo/bin/cargo install docpars
 

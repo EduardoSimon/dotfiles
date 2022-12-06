@@ -17,22 +17,17 @@ done 2>/dev/null &
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# Show bluetooth icon in menu bar
+defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 18
+
+# Auto hide top menu bar. Disabled until a rectangle can maximize in M1 screen.
+# defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 # Play user interface sound effects: false
 defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 
 # Show scrollbar when scrolling
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
-
-# Disable the over-the-top focus ring animation
-defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
-
-# Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-
-# Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -57,9 +52,6 @@ defaults write -g ApplePersistence -bool yes
 
 # Sped up dialogue boxes https://robservatory.com/speed-up-your-mac-via-hidden-prefs/
 defaults write NSGlobalDomain NSWindowResizeTime 0.001
-
-# Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -114,9 +106,6 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 1
 
 # Font rendering stuff
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool YES
-
-# Reduce transparency
-defaults write com.apple.universalaccess reduceTransparency 1
 
 # Autohide the menu bar
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
@@ -227,13 +216,6 @@ defaults write com.apple.dock orientation left
 
 # Disable recent applications
 defaults write com.apple.dock show-recents -bool false
-
-###############################################################################
-# Time Machine                                                                #
-###############################################################################
-
-# Prevent Time Machine from prompting to use new hard drives as backup volume
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 ###############################################################################
 # Activity Monitor                                                            #
