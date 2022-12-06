@@ -96,10 +96,12 @@ set smartcase
 set foldmethod=syntax
 set nofoldenable
 
-" Always use the system clipboard
-set clipboard+=unnamedplus
+set updatetime=750
 
-" set updatetime=300
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
 " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
 set re=2

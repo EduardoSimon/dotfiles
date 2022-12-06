@@ -1,5 +1,4 @@
 export DOTFILES_PATH="$HOME"
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
 export GEM_HOME="$HOME/.gem"
 export GOPATH="$HOME/.go"
 
