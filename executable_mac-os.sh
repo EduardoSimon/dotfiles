@@ -1,18 +1,15 @@
 # Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
+set -euo pipefail
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+echo "Starting to apply custom Mac OS settings"
+
 # Ask for the administrator password upfront
 sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do
-  sudo -n true
-  sleep 60
-  kill -0 "$$" || exit
-done 2>/dev/null &
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -21,7 +18,7 @@ sudo nvram SystemAudioVolume=" "
 defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 18
 
 # Auto hide top menu bar. Disabled until a rectangle can maximize in M1 screen.
-# defaults write NSGlobalDomain _HIHideMenuBar -bool true
+defaults write NSGlobalDomain _HIHideMenuBar -bool false
 
 # Play user interface sound effects: false
 defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
@@ -35,9 +32,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
-
 # Disable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
@@ -46,9 +40,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable macOS text expansion
 defaults write -g WebAutomaticTextReplacementEnabled -bool false
-
-# Use Apple persistence
-defaults write -g ApplePersistence -bool yes
 
 # Sped up dialogue boxes https://robservatory.com/speed-up-your-mac-via-hidden-prefs/
 defaults write NSGlobalDomain NSWindowResizeTime 0.001
@@ -82,9 +73,6 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Show language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/Brussels" >/dev/null
 
 ###############################################################################
 # Screen                                                                      #
@@ -233,3 +221,5 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Sort Activity Monitor results by CPU usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+echo "Applied custom Mac OS settings"
