@@ -47,8 +47,13 @@ sudo xcode-select --install
 # Accept license after an update
 sudo xcodebuild -license accept
 
+# In M1 the brew binary is installed in /opt https://apple.stackexchange.com/questions/437618/why-is-homebrew-installed-in-opt-homebrew-on-apple-silicon-macs
+{{ if eq .chezmoi.arch "arm64" -}}
+alias brew=/opt/homebrew/bin/brew
+{{ end - }}
+
 # Install brew if not installed
-[ -x "$(command -v /opt/homebrew/bin/brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+[ -x "$(command -v brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -58,69 +63,69 @@ chsh -s /usr/local/bin/zsh
 
 $HOME/.cargo/bin/cargo install docpars
 
-/opt/homebrew/bin/brew install ripgrep
-/opt/homebrew/bin/brew install zsh
+brew install ripgrep
+brew install zsh
 
-/opt/homebrew/bin/brew install --cask alacritty
-/opt/homebrew/bin/brew install fzf
-/opt/homebrew/bin/brew install tig
-/opt/homebrew/bin/brew install asdf
+brew install --cask alacritty
+brew install fzf
+brew install tig
+brew install asdf
 
 # To install useful key bindings and fuzzy completion:
-$(/opt/homebrew/bin/brew --prefix)/opt/fzf/install
+$(brew --prefix)/opt/fzf/install
 
-/opt/homebrew/bin/brew tap "dandavison/delta", "https://github.com/dandavison/delta"
-/opt/homebrew/bin/brew tap "homebrew/cask"
-/opt/homebrew/bin/brew install "asdf"
-/opt/homebrew/bin/brew install "awscli"
-/opt/homebrew/bin/brew install "bash"
-/opt/homebrew/bin/brew install "bat"
-/opt/homebrew/bin/brew install "curl"
-/opt/homebrew/bin/brew install "direnv"
-/opt/homebrew/bin/brew install "dog"
-/opt/homebrew/bin/brew install "duf"
-/opt/homebrew/bin/brew install "exa"
-/opt/homebrew/bin/brew install "gnutls"
-/opt/homebrew/bin/brew install "fzf"
-/opt/homebrew/bin/brew install "gcc"
-/opt/homebrew/bin/brew install "git"
-/opt/homebrew/bin/brew install "git-delta"
-/opt/homebrew/bin/brew install "git-extras"
-/opt/homebrew/bin/brew install "glow"
-/opt/homebrew/bin/brew install "gnu-getopt"
-/opt/homebrew/bin/brew install "gnu-sed"
-/opt/homebrew/bin/brew install "gnupg"
-/opt/homebrew/bin/brew install "grep"
-/opt/homebrew/bin/brew install "htop"
-/opt/homebrew/bin/brew install "httpie"
-/opt/homebrew/bin/brew install "jenv"
-/opt/homebrew/bin/brew install "jq"
-/opt/homebrew/bin/brew install "lsd"
-/opt/homebrew/bin/brew install "make"
-/opt/homebrew/bin/brew install "mas"
-/opt/homebrew/bin/brew install "neovim"
-/opt/homebrew/bin/brew install "rust"
-/opt/homebrew/bin/brew install "starship"
-/opt/homebrew/bin/brew install "the_silver_searcher"
-/opt/homebrew/bin/brew install "tig"
-/opt/homebrew/bin/brew install "tldr"
-/opt/homebrew/bin/brew install "tmux"
-/opt/homebrew/bin/brew install "tree"
-/opt/homebrew/bin/brew install "vim"
-/opt/homebrew/bin/brew install "wget"
-/opt/homebrew/bin/brew install "gawk"
-/opt/homebrew/bin/brew install "maven"
-/opt/homebrew/bin/brew install "gabrie30/utils/ghorg"
-/opt/homebrew/bin/brew tap homebrew/cask-fonts
-/opt/homebrew/bin/brew install --cask fork
-/opt/homebrew/bin/brew install --cask "font-fira-code-nerd-font"
-/opt/homebrew/bin/brew install --cask alfred
-/opt/homebrew/bin/brew install --cask rectangle
-/opt/homebrew/bin/brew install --cask "karabiner-elements"
-/opt/homebrew/bin/brew install --cask "keycastr"
-/opt/homebrew/bin/brew install --cask vscodium
+brew tap "dandavison/delta", "https://github.com/dandavison/delta"
+brew tap "homebrew/cask"
+brew install "asdf"
+brew install "awscli"
+brew install "bash"
+brew install "bat"
+brew install "curl"
+brew install "direnv"
+brew install "dog"
+brew install "duf"
+brew install "exa"
+brew install "gnutls"
+brew install "fzf"
+brew install "gcc"
+brew install "git"
+brew install "git-delta"
+brew install "git-extras"
+brew install "glow"
+brew install "gnu-getopt"
+brew install "gnu-sed"
+brew install "gnupg"
+brew install "grep"
+brew install "htop"
+brew install "httpie"
+brew install "jenv"
+brew install "jq"
+brew install "lsd"
+brew install "make"
+brew install "mas"
+brew install "neovim"
+brew install "rust"
+brew install "starship"
+brew install "the_silver_searcher"
+brew install "tig"
+brew install "tldr"
+brew install "tmux"
+brew install "tree"
+brew install "vim"
+brew install "wget"
+brew install "gawk"
+brew install "maven"
+brew install "gabrie30/utils/ghorg"
+brew tap homebrew/cask-fonts
+brew install --cask fork
+brew install --cask "font-fira-code-nerd-font"
+brew install --cask alfred
+brew install --cask rectangle
+brew install --cask "karabiner-elements"
+brew install --cask "keycastr"
+brew install --cask vscodium
 
-alias asdf=$(/opt/homebrew/bin/brew --prefix)/bin/asdf
+alias asdf=$(brew --prefix)/bin/asdf
 
 {{ end -}}
 
@@ -140,10 +145,10 @@ apt-get install autoconf bison patch build-essential rustc libssl-dev libyaml-de
 
 {{ else if eq .chezmoi.os "darwin" -}}
 
-/opt/homebrew/bin/brew install openssl@3 readline libyaml gmp
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(/opt/homebrew/bin/brew --prefix openssl@3)"
-/opt/homebrew/bin/brew install rust
-/opt/homebrew/bin/brew install bison
+brew install openssl@3 readline libyaml gmp
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+brew install rust
+brew install bison
 
 {{ end -}}
 
