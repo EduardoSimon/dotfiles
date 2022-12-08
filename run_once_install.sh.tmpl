@@ -50,7 +50,7 @@ sudo xcodebuild -license accept
 # In M1 the brew binary is installed in /opt https://apple.stackexchange.com/questions/437618/why-is-homebrew-installed-in-opt-homebrew-on-apple-silicon-macs
 {{ if eq .chezmoi.arch "arm64" -}}
 alias brew=/opt/homebrew/bin/brew
-{{ end - }}
+{{ end -}}
 
 # Install brew if not installed
 [ -x "$(command -v brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
