@@ -1,8 +1,14 @@
 " Set compatibility to Vim only.
 set nocompatible
-set nolist
+
+"  show special characters
+set list
+
+" Set relative line numbers
 set rnu
+
 " set noesckeys disabled for nvim
+
 " Helps force plug-ins to load correctly when it is turned back on below.
 filetype off
 
@@ -20,10 +26,6 @@ set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 
 " Automatically wrap text that extends beyond the screen length.
 set nowrap
-" Vim's auto indentation feature does not work properly with text copied from outside of Vim. Press the <F2> key to toggle paste mode on/off.
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F2>
 
 " When closing an unsaved file move it to a buffer
 set hidden
@@ -49,12 +51,16 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=10000
-" copy indentation from current line to the new line
+
+" copy indentation from current line to the new line. Really useful for end in ruby
 set autoindent
+
 " set indentation level based on filetype
 filetype plugin indent on
+
 " Display 5 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=5
+
 " Fixes common backspace problems
 set backspace=indent,eol,start
 
@@ -65,6 +71,7 @@ set ttyfast
 " let g:hardtime_default_on = 1
 " allow jj but not jjj
 " let g:hardtime_maxcount = 2
+
 " Status bar
 set laststatus=2
 
@@ -86,10 +93,13 @@ set encoding=utf-8
 
 " Highlight matching search patterns
 set hlsearch
+
 " Enable incremental search
 set incsearch
+
 " Include matching uppercase words with lowercase search term
 set ignorecase
+
 " Include only uppercase words with uppercase search term
 set smartcase
 
@@ -116,47 +126,45 @@ endif
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
+
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Applying codeAction to the selected region.
-" " Example: `<leader>aap` for current paragraph
- " xmap <leader>a  <Plug>(coc-codeaction-selected)
- " nmap <leader>a  <Plug>(coc-codeaction-selected)
 
- " Remap keys for applying codeAction to the current buffer.
- " nmap <leader>ac  <Plug>(coc-codeaction)
- " Apply AutoFix to problem on the current line.
- " nmap <leader>qf  <Plug>(coc-fix-current)
-
-
-" autocmd BufWinEnter *.* silent loadview"
 let mapleader = " "
 noremap <leader>w :w<cr>
-" noremap <leader>gs :CocSearch
 noremap <leader>p :GFiles<cr>
 noremap <leader>b :Buffers<cr>
 noremap <leader>v :execute 'Ag ' . expand('<cword>')<cr>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" Fuzzy search the whole project
 noremap <leader>f :Ag<cr>
+
 map <Leader>l :BLines<CR>
-noremap <leader>g :Format <cr>
+
+" Open a split vertical split pane
 noremap <silent> vv <C-w>v
+
+" Disable the search hightlight with hotkey. Useful to stop typing :noh
 nnoremap <C-h> :set hlsearch!<CR>
-" Requires 'textDocument/selectionRange' support of language server.
-" nmap <silent> <C-s> <Plug>(coc-range-select)
-" xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Auto center the buffer when moving vertically
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Auto format with Coc projects
+noremap <leader>g :Format <cr>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -170,6 +178,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'https://github.com/adelarsq/vim-matchit'
@@ -194,6 +203,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Mofiqul/dracula.nvim'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'ThePrimeagen/vim-be-good'
+Plug 'mrjones2014/dash.nvim', { 'do': 'make install' }
 " write css selector and expand using <c-y>,
 Plug 'mattn/emmet-vim'
 call plug#end()
@@ -211,11 +222,12 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " remap the esc keybinding in terminal mode
-tnoremap <Leader><Esc> <C-\><C-n>
+tnoremap jk <C-\><C-n>
+tnoremap kj <C-\><C-n>
 
 "" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" rename
+" rename the symbol
 nmap <leader>rn <Plug>(coc-rename)
 
 " Applying code actions to the selected code block.
@@ -235,7 +247,6 @@ let g:coc_global_extensions = [ 'coc-tsserver']
 " sets the max number of autocomplete elements
 :set pumheight=8
 
-
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -252,6 +263,7 @@ omap ac <Plug>(coc-classobj-a)
 "" fix for large files syntax hightlighting
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
 "" Use CTRL-S for selections ranges.
 "" " Requires 'textDocument/selectionRange' support of language server.
 "nmap <silent> <C-s> <Plug>(coc-range-select)
@@ -275,12 +287,8 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-"" select last pasted text
-"nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
-
 "" NERDTree plugin remaps
 nnoremap <C-t> :NERDTreeFind<CR>
-"nnoremap <leader>t :NERDTreeFind<CR>
 
 "" Exit Vim if NERDTree is the only window left.
 "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -291,11 +299,12 @@ autocmd FileType html,jsx,tsx,eruby set omnifunc=htmlcomplete#CompleteTags
 
 inoremap jk <esc>
 inoremap kj <esc>
-"packadd! matchit
-"silent! helptags ALL
-"" Enable % to be used in every ruby keyword
-"runtime macros/matchit.vim
-"
+
+packadd! matchit
+silent! helptags ALL
+" Enable % to be used in every ruby keyword
+runtime macros/matchit.vim
+
 "" Rename current file
 function! RenameFile()
   let old_name = expand('%')
@@ -310,4 +319,3 @@ map <leader>rf :call RenameFile()<cr>
 
 "" Automatically apply the dotfiles conf when modifying a file
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
-
