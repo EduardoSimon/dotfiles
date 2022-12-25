@@ -165,5 +165,8 @@ asdf install maven 3.5.4
 asdf global maven 3.5.4
 
 # Commented out until ruby 3.1.2 installation works in mac
-# asdf install ruby latest
-# asdf global ruby latest
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+brew install openssl@3 readline libyaml gmp
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+asdf install ruby 3.1.2
+asdf global ruby 3.1.2
