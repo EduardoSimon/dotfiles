@@ -55,7 +55,6 @@ function zvm_after_init() {
 
 #Override the default macos ruby bin with the brew one just when asdf installation fails
 {{ if eq .chezmoi.os "darwin" -}}
-export PATH="$(brew --prefix ruby)/bin:$PATH"
 {{ end -}}
 
 [[ -n $PROFILE_ZSH ]] && zprof

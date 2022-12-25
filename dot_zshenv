@@ -1,6 +1,6 @@
 export DOTFILES_PATH="$HOME"
-export GEM_HOME="$HOME/.gem"
 export GOPATH="$HOME/.go"
+export GEM_HOME=$HOME/gems
 
 #default editor env var
 export EDITOR="nvim"
@@ -43,8 +43,8 @@ export FZF_DEFAULT_OPTS='
   --reverse'
 
 export path=(
+  "$HOME/gems/bin"
   "$JAVA_HOME/bin"
-  "$GEM_HOME/bin"
   "$GOPATH/bin"
   "$HOME/.cargo/bin"
   "$HOME/.jenv/bin"
