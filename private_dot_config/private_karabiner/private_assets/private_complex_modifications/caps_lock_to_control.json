@@ -1,0 +1,20 @@
+{
+  "title": "Caps lock to left control",
+  "rules": [
+      {
+          "manipulators": [
+              {
+                  "from": {
+                      "key_code": "caps_lock"
+                  },
+                  "to": [
+                      {
+                          "key_code": "left_control"
+                      }
+                  ],
+                  "type": "basic"
+              }
+          ]
+      }
+  ]
+}
