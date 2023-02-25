@@ -363,9 +363,10 @@ set -g prefix C-a
 bind C-a send-prefix
 
 # -- killing panes/windows -----------------------------------------------------
-
-bind-key x kill-pane #avoids prompting confirmation when killing the pane
-bind-key & kill-window #avoids prompting confirmation when killing the window
+#avoids prompting confirmation when killing the pane
+bind-key x kill-pane #!important
+#avoids prompting confirmation when killing the window 
+bind-key & kill-window #!important
 
 # if you don't want Oh my tmux! to alter a binding, use #!important
 # bind v new-window -c #{pane_current_path} #!important
