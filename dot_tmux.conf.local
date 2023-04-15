@@ -374,6 +374,8 @@ bind-key & kill-window #!important
 # move status line to top
 set -g status-position top
 
+# justifies windows in the center
+set-option -g status-justify centre
 
 # -- tpm -----------------------------------------------------------------------
 
