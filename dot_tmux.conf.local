@@ -1,4 +1,4 @@
-j : << EOF
+# : << EOF
 # https://github.com/gpakosz/.tmux
 # (‑●‑●)> dual licensed under the WTFPL v2 license and the MIT license,
 #         without any warranty.
@@ -374,8 +374,16 @@ bind-key & kill-window #!important
 # move status line to top
 set -g status-position top
 
+set -g @plugin "janoamaral/tokyo-night-tmux"
+
 # justifies windows in the center
 set-option -g status-justify centre
+
+
+# fixes toky night status bar color problem
+set -g status-bg "#1a1b26"
+
+
 
 # -- tpm -----------------------------------------------------------------------
 
