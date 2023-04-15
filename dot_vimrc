@@ -139,6 +139,9 @@ noremap <leader>b :Buffers<cr>
 noremap <leader>v :execute 'Ag ' . expand('<cword>')<cr>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+nnoremap <c-l> :let @*=expand("%")<CR>
+nnoremap <c-n> :let @*=fnamemodify(expand("%"), ":~:.") . ":" . line(".")<CR>
+
 " Fuzzy search the whole project
 noremap <leader>f :Ag<cr>
 
