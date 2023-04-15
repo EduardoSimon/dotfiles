@@ -1,0 +1,7 @@
+[merge]
+    command = "nvim"
+    args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+
+[diff]
+    command = "delta"
+    args = ["--dark", "{{ .Destination }}", "{{ .Target }}"]
