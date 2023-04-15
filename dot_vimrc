@@ -320,5 +320,8 @@ function! RenameFile()
 endfunction
 map <leader>rf :call RenameFile()<cr>
 
+"" fix tailwind autocomplete
+au FileType html let b:coc_root_patterns = ['.git', '.env', 'config/tailwind.config.js', 'tailwind.config.cjs']
+
 "" Automatically apply the dotfiles conf when modifying a file
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
