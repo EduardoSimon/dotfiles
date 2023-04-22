@@ -183,7 +183,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'gruvbox-community/gruvbox'
 Plug 'https://github.com/adelarsq/vim-matchit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -203,7 +202,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-unimpaired'
-Plug 'Mofiqul/dracula.nvim'
+Plug 'tpope/vim-rails'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ThePrimeagen/vim-be-good'
