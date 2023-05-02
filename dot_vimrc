@@ -136,6 +136,7 @@ let mapleader = " "
 noremap <leader>w :w<cr>
 noremap <leader>p :GFiles<cr>
 noremap <leader>b :Buffers<cr>
+noremap <leader>r :Rails<cr>
 noremap <leader>v :execute 'Ag ' . expand('<cword>')<cr>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
