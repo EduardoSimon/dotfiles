@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@yaegassy/coc-tailwindcss3": ">=0.4.7",
+    "coc-angular": ">=11.2.9",
+    "coc-css": ">=1.2.6",
+    "coc-db": ">=0.0.44",
+    "coc-eslint": ">=1.5.2",
+    "coc-git": ">=2.4.3",
+    "coc-html": ">=1.4.1",
+    "coc-json": ">=1.8.0",
+    "coc-lightbulb": ">=0.0.5",
+    "coc-prettier": ">=1.1.24",
+    "coc-react-refactor": ">=0.5.0",
+    "coc-snippets": ">=2.4.6",
+    "coc-solargraph": ">=1.2.2",
+    "coc-sql": ">=0.8.1",
+    "coc-svg": ">=0.0.13",
+    "coc-tailwindcss": ">=0.7.0",
+    "coc-tsserver": ">=1.8.6"
+  },
+  "disabled": [],
+  "locked": []
+}
