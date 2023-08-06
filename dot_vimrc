@@ -7,15 +7,13 @@ set list
 " Set relative line numbers
 set rnu
 
-" set noesckeys disabled for nvim
-
 " Helps force plug-ins to load correctly when it is turned back on below.
 filetype off
 
 " Turn on syntax highlighting.
 syntax on
 
-" For plug-ins to load correctly.
+" set indentation level based on filetype
 filetype plugin indent on
 
 " Turn off modelines
@@ -55,9 +53,6 @@ set undolevels=10000
 " copy indentation from current line to the new line. Really useful for end in ruby
 set autoindent
 
-" set indentation level based on filetype
-filetype plugin indent on
-
 " Display 5 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=5
 
@@ -68,9 +63,9 @@ set backspace=indent,eol,start
 set ttyfast
 
 " enable hardtime mode. Stop repeating keys
-" let g:hardtime_default_on = 1
+let g:hardtime_default_on = 1
 " allow jj but not jjj
-" let g:hardtime_maxcount = 2
+let g:hardtime_maxcount = 2
 
 " Status bar
 set laststatus=2
@@ -85,16 +80,14 @@ set matchpairs+=<:>
 " Show line numbers
 set number
 
-" Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
-
 " Encoding
 set encoding=utf-8
 
-" Highlight matching search patterns
+" Highlight matching search patterns. Starts highlighting as soon as there's a match using a greedy
+" strategy.
 set hlsearch
 
-" Enable incremental search
+" Enable incremental search. While typing it starts a new search.
 set incsearch
 
 " Include matching uppercase words with lowercase search term
@@ -106,7 +99,7 @@ set smartcase
 set foldmethod=syntax
 set nofoldenable
 
-set updatetime=750
+set updatetime=100
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -122,10 +115,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-"
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -140,13 +129,13 @@ noremap <leader>r :Rails<cr>
 noremap <leader>v :execute 'Ag ' . expand('<cword>')<cr>
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+" Copy to clipboard relative file path
 nnoremap <c-l> :let @*=expand("%")<CR>
+" Copy to clipboard relative file path with line number included
 nnoremap <c-n> :let @*=fnamemodify(expand("%"), ":~:.") . ":" . line(".")<CR>
 
 " Fuzzy search the whole project
 noremap <leader>f :Ag<cr>
-
-map <Leader>l :BLines<CR>
 
 " Open a split vertical split pane
 noremap <silent> vv <C-w>v
@@ -170,51 +159,46 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let g:fzf_layout = { 'down': '~60%' }
+
+
+" Automatically install vim-plug if not present: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-let g:fzf_layout = { 'down': '~60%' }
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'https://github.com/adelarsq/vim-matchit'
+Plug 'dstein64/vim-startuptime'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'preservim/nerdtree'
-Plug 'shime/vim-livedown'
+Plug 'takac/vim-hardtime'
+Plug 'shime/vim-livedown', { 'for': 'markdown' }
+"" TODO review usage appart from coercion
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
+"" Note: Increases startuptime by 100ms. 
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rails'
-Plug 'joshdick/onedark.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'ThePrimeagen/vim-be-good'
-Plug 'mrjones2014/dash.nvim', { 'do': 'make install' }
-" write css selector and expand using <c-y>,
-Plug 'mattn/emmet-vim'
+" TODO review
+" Plug 'mattn/emmet-vim'
 call plug#end()
 
 " Adds true color support in neovim
 set termguicolors
-colorscheme onedark
+colorscheme dracula
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -228,22 +212,13 @@ nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 tnoremap jk <C-\><C-n>
 tnoremap kj <C-\><C-n>
 
-"" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " rename the symbol
 nmap <leader>rn <Plug>(coc-rename)
 
-" Applying code actions to the selected code block.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Remap keys for apply code actions at the cursor position.
 nmap <leader>ac  <Plug>(coc-codeaction-cursor)
-" Remap keys for apply code actions affect whole buffer.
-nmap <leader>as  <Plug>(coc-codeaction-source)
-" Apply the most preferred quickfix action to fix diagnostic on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
 
 let g:coc_global_extensions = [ 'coc-tsserver']
 
@@ -267,24 +242,23 @@ omap ac <Plug>(coc-classobj-a)
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-"" Use CTRL-S for selections ranges.
-"" " Requires 'textDocument/selectionRange' support of language server.
-"nmap <silent> <C-s> <Plug>(coc-range-select)
-"xmap <silent> <C-s> <Plug>(coc-range-select)
-"" Mappings for CoCList
-"" Show all diagnostics.
-"nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-"" Manage extensions.
-"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-"" Show commands.
-"nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-"" Find symbol of current document.
-"nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-"" Search workspace symbols.
-"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-"" go markdown shorthand for markdown edit
-"nmap gm :LivedownToggle
+" Use CTRL-S for growing selection.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
+" Mappings for CoC
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+
+"" Navigate using <Space> + hjkl between panes
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -292,20 +266,16 @@ nnoremap <leader>l :wincmd l<CR>
 
 "" NERDTree plugin remaps
 nnoremap <C-t> :NERDTreeFind<CR>
-
-"" Exit Vim if NERDTree is the only window left.
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-"      \ quit | endif
+nnoremap <C-w> :NERDTreeToggle<CR>
 
 " Autocomplete HTML tags
 autocmd FileType html,jsx,tsx,eruby set omnifunc=htmlcomplete#CompleteTags
 
+" remap esc to jk or kj aksdjf
 inoremap jk <esc>
 inoremap kj <esc>
 
-packadd! matchit
-silent! helptags ALL
-" Enable % to be used in every ruby keyword
+" Allows better motions in ruby blocks: https://github.com/nelstrom/vim-textobj-rubyblock
 runtime macros/matchit.vim
 
 "" Rename current file
