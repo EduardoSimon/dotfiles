@@ -295,3 +295,6 @@ au FileType html let b:coc_root_patterns = ['.git', '.env', 'config/tailwind.con
 
 "" Automatically apply the dotfiles conf when modifying a file
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+
+"" Open fzf with last search
+noremap <leader>e :Ag<cr><C-p>
