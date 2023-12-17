@@ -1,6 +1,8 @@
-[user]
-	email = eduardo.simon@flywire.com
-	name = {{ .chezmoi.username }}
+[includeIf "gitdir:~/work/"]
+	path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/personal/"]
+	path = ~/.gitconfig-personal
 
 [fetch]
 	prune = true
