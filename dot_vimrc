@@ -199,11 +199,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'kana/vim-textobj-user'
+Plug 'morhetz/gruvbox'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-projectionist'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ThePrimeagen/vim-be-good'
@@ -214,7 +216,7 @@ call plug#end()
 
 " Adds true color support in neovim
 set termguicolors
-colorscheme onedark
+colorscheme gruvbox
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -227,8 +229,6 @@ nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 " remap the esc keybinding in terminal mode
 tnoremap jk <C-\><C-n>
 tnoremap kj <C-\><C-n>
-
-"" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " rename the symbol
 nmap <leader>rn <Plug>(coc-rename)
@@ -244,6 +244,11 @@ nmap <leader>ac  <Plug>(coc-codeaction-cursor)
 nmap <leader>as  <Plug>(coc-codeaction-source)
 " Apply the most preferred quickfix action to fix diagnostic on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+" go test
+nnoremap <Leader>t :A<CR>
+
+let g:projectionist_heuristics = json_decode(join(readfile(expand('~/.config/projections.json'))))
 
 let g:coc_global_extensions = [ 'coc-tsserver']
 
@@ -320,8 +325,31 @@ function! RenameFile()
 endfunction
 map <leader>rf :call RenameFile()<cr>
 
+"" move to next error
+try
+    nmap <silent> [c :call CocAction('diagnosticNext')<cr>
+    nmap <silent> ]c :call CocAction('diagnosticPrevious')<cr>
+endtry
+
 "" fix tailwind autocomplete
 au FileType html let b:coc_root_patterns = ['.git', '.env', 'config/tailwind.config.js', 'tailwind.config.cjs']
 
 "" Automatically apply the dotfiles conf when modifying a file
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
