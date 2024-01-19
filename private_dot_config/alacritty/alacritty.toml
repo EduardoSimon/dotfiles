@@ -1,0 +1,45 @@
+[colors.bright]
+black = "#686868"
+blue = "#57c7ff"
+cyan = "#9aedfe"
+green = "#5af78e"
+magenta = "#ff6ac1"
+red = "#ff5c57"
+white = "#f1f1f0"
+yellow = "#f3f99d"
+
+[colors.normal]
+black = "#282a36"
+blue = "#57c7ff"
+cyan = "#9aedfe"
+green = "#5af78e"
+magenta = "#ff6ac1"
+red = "#ff5c57"
+white = "#f1f1f0"
+yellow = "#f3f99d"
+
+[colors.primary]
+background = "#282a36"
+foreground = "#eff0eb"
+
+[cursor.style]
+shape = "Block"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+args = ["-l", "-c", "tmux attach || tmux"]
+program = "/bin/zsh"
+
+[window]
+decorations = "Buttonless"
+opacity = 0.94
+startup_mode = "Maximized"
