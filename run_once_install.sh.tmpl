@@ -3,7 +3,7 @@
 sudo apt-get update
 sudo apt-get install build-essential
 sudo apt install -y zsh
-sudo apt install -y fzf
+yes n | sudo apt install -y fzf
 sudo apt install -y tig
 sudo apt install -y vim
 sudo apt install curl git
@@ -57,12 +57,12 @@ brew install ripgrep
 brew install zsh
 
 brew install --cask alacritty
-brew install fzf
+yes n | brew install fzf
 brew install tig
 brew install asdf
 
 # To install useful key bindings and fuzzy completion:
-$(brew --prefix)/opt/fzf/install
+yes n | $(brew --prefix)/opt/fzf/install
 
 brew tap "dandavison/delta", "https://github.com/dandavison/delta"
 brew tap "homebrew/cask"
@@ -76,7 +76,6 @@ brew install "dog"
 brew install "duf"
 brew install "exa"
 brew install "gnutls"
-brew install "fzf"
 brew install "gcc"
 brew install "git"
 brew install "git-delta"
