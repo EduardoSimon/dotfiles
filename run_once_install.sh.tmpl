@@ -65,7 +65,6 @@ brew install asdf
 yes n | $(brew --prefix)/opt/fzf/install
 
 brew tap "dandavison/delta", "https://github.com/dandavison/delta"
-brew tap "homebrew/cask"
 brew install "asdf"
 brew install "awscli"
 brew install "bash"
@@ -123,7 +122,7 @@ asdf plugin add nodejs
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf plugin add java
 
-asdf install nodejs lts
+asdf install nodejs 20.18
 asdf global nodejs lts
 
 asdf install java adoptopenjdk-11.0.17+8
