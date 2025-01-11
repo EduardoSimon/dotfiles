@@ -5,7 +5,7 @@ This dotfiles uses `chezmoi` as a dotfiles manager.
 Open a terminal and run to install the dotfiles:
 
 ```
-sudo sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply EduardoSimon
+sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply EduardoSimon
 ```
 
 > [!NOTE]
