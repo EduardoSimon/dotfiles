@@ -20,7 +20,6 @@ sudo apt-get install fontconfig
 {{ if eq .chezmoi.os "linux" -}}
 {{   if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-cargo install alacritty
 cargo install docpars
 {{   end }}
 {{ end -}}
@@ -46,7 +45,7 @@ alias brew=/opt/homebrew/bin/brew
 [ -x "$(command -v brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install rust if not installed
-[ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+[ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Set zsh as default shell
 chsh -s /usr/local/bin/zsh
