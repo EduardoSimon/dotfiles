@@ -222,4 +222,7 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 
+# Allow to export Rectangle config in a json file
+defaults write com.knollsoft.Rectangle showExportImport -bool true
+
 echo "Applied custom Mac OS settings"
