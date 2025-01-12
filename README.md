@@ -12,6 +12,10 @@ sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply EduardoSimon
 > The onliner does not install chezmoi, which is required if you want to maintain the dotfiles. If you'd like to install the chezmoi binary, please refer to its [installation guide](https://www.chezmoi.io/install/#one-line-package-install).
 
 
+## Mac OS Only
+
+- Import Rectangle config file from ~/.config/Rectangle/RectangleConfig.json: Settings > Import
+
 ## WSL 2 + windows Only
 
 Follow [this guide](https://github.com/lackovic/notes/tree/master/Windows/Windows%20Subsystem%20for%20Linux#run-linux-gui-applications) to set up gui apps when running in wsl2.
