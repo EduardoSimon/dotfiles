@@ -2,7 +2,7 @@
 #!/bin/sh
 sudo apt-get update
 sudo apt-get install build-essential
-sudo apt install -y zsh
+sudo apt install -y fish
 yes n | sudo apt install -y fzf
 sudo apt install -y tig
 sudo apt install -y vim
@@ -14,6 +14,8 @@ sudo apt-get -y install cmake
 sudo apt install pkg-config
 sudo apt-get install fontconfig
 
+chsh -s $(which fish)
+
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -23,8 +25,6 @@ sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb
 cargo install docpars
 {{   end }}
 {{ end -}}
-
-chsh -s $(which zsh)
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
@@ -47,13 +47,13 @@ alias brew=/opt/homebrew/bin/brew
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-# Set zsh as default shell
-chsh -s /usr/local/bin/zsh
+brew install fish
+
+chsh -s $(which fish)
 
 $HOME/.cargo/bin/cargo install docpars
 
 brew install ripgrep
-brew install zsh
 
 brew install --cask alacritty
 yes n | brew install fzf
