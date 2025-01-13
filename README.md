@@ -23,6 +23,7 @@ Follow [this guide](https://github.com/lackovic/notes/tree/master/Windows/Window
 ## Mac OS Only
 
 - Open Safari settings > Modify behaviour on start up.
+- [Configure fish](https://gist.github.com/gagarine/cf3f65f9be6aa0e105b184376f765262)
 
 # Development
 
