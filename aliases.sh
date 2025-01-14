@@ -1,6 +1,3 @@
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ll="ls -l"
@@ -37,9 +34,6 @@ alias dockillc='docker container stop $(docker container ls -aq) && docker conta
 alias dockilli='docker image rm $(docker image ls -q)'
 alias dockillv='docker volume rm $(docker volume ls -q)'
 alias dockillall='dockillc && dockilli && dockillv'
-
-alias oktaexec_sta="${OKTAEXEC}"
-alias oktaexec_pro="${OKTAEXEC_PROD}"
 
 alias audit_trivy="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.trivycache/ aquasec/trivy --vuln-type     os --severity HIGH,CRITICAL"
 alias dive="docker run --rm -it -e CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest "
