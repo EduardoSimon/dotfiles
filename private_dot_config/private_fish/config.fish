@@ -39,6 +39,8 @@ alias dive_panel="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.so
 
 alias magelland="docker run --rm -it -e USER -e GITLAB_TOKEN -e AWS_PROFILE -v $PWD:/platform_app -v ~/.aws:/root/.aws -v /var/run/docker.sock:/var/run/docker.sock magellan_release"
 
+# Allow relative cd
+set -gx CDPATH $CDPATH . ~ $HOME/work $HOME/personal
 
 # Set environment variables
 set -Ux DOTFILES_PATH "$HOME"
