@@ -38,6 +38,9 @@ sudo xcodebuild -license accept
 # Install brew if not installed
 [ -x "$(command -v brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+export PATH=/opt/homebrew/bin:$PATH
+
+
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
