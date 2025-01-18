@@ -109,7 +109,7 @@ asdf global nodejs lts
 asdf install java adoptopenjdk-11.0.17+8
 asdf global java adoptopenjdk-11.0.17+8
 
-{{ if eq .chezmoi.os "linux" -}}
+{{ else if eq .chezmoi.os "linux" -}}
 
 asdf plugin add nodejs
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
