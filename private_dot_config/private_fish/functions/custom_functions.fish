@@ -50,7 +50,7 @@ function merge-to-monoenv
 
     git checkout $ENVIRONMENT
     and git reset --hard origin/$ENVIRONMENT
-    and git merge $BRANCH
+    and git merge $BRANCH --no-edit
     and git commit --allow-empty -m "[SKIP_MANUAL]"
     and git push origin $ENVIRONMENT
     and git checkout $BRANCH
@@ -102,5 +102,54 @@ end
 
 function command_exists
     type $argv[1] >/dev/null 2>&1
+end
+
+function jboard
+    open "$JIRA_BOARD_URL"
+end
+
+function fpush-with-mr
+  if test (count $argv) -eq 0
+    echo "Usage: gpush <branch_name> [<labels>]"
+    echo "  <branch_name>: The name of the branch to push."
+    echo "  <labels>: Optional. A comma-separated list of labels for the merge request."
+    return 1
+  end
+
+  set branch $argv[1]
+  set default_labels "INEX::review"
+  set labels $default_labels
+
+  if set -q argv[2]
+    set labels $argv[2]
+  end
+
+  git push -u -f origin $branch -o merge_request.create -o merge_request.label=$labels
+end
+
+function create-stack
+  argparse 'no-merge-request' -- $argv
+
+  if test (count $argv) -eq 0
+    echo "Usage: create-stack [--no-merge-request] <stack_name>"
+    echo "  <stack_name>: The name of the stack to append to the branch."
+    echo "  --no-merge-request: Do not create a merge request."
+    return 1
+  end
+
+  set current_branch (git rev-parse --abbrev-ref HEAD)
+  set stack_name $argv[1]
+  set new_branch_name "$current_branch-$stack_name"
+
+  # Create the new branch
+  git branch -f "$new_branch_name" HEAD
+
+  echo "Created new branch: $new_branch_name"
+
+  # Conditionally push and create a merge request
+  if not set -q _flag_no_mr
+    # Assuming fpush-with-mr takes the branch name as an argument
+    fpush-with-mr "$new_branch_name"
+  end
 end
 
