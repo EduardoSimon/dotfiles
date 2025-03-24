@@ -93,12 +93,8 @@ fish_add_path "$HOME/.npm-global/bin"
 fish_add_path "$HOME/.deno/bin"
 fish_add_path "/opt/homebrew/bin"
 fish_add_path "$ASDF_DIR/bin"
-fish_add_path "$HOME/.asdf/shims"
-
-if status --is-interactive && type -q asdf
-  source (brew --prefix asdf)/libexec/asdf.fish
-end
 
 starship init fish | source
+mise activate fish | source
 
 fish_vi_key_bindings
