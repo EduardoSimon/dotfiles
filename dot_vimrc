@@ -1,6 +1,10 @@
 " Set compatibility to Vim only.
 set nocompatible
 
+" Set zsh as the shell as there are problems with fish
+" https://github.com/junegunn/fzf.vim/issues/689
+set shell=zsh
+
 "  show special characters
 set list
 
