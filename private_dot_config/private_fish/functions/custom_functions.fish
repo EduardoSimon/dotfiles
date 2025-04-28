@@ -39,21 +39,103 @@ function force-push-monoenv
     and git checkout $BRANCH
 end
 
+# Function to merge the current branch into a specified environment branch
+# after ensuring the environment branch matches its origin counterpart.
+# Fails safely if the working directory has uncommitted changes.
 function merge-to-monoenv
+    # Check if exactly one argument (environment) is provided
     if test (count $argv) -ne 1
-        echo "usage: merge-to-monoenv <environment>"
+        echo "Usage: merge-to-monoenv <environment>"
         return 1
     end
 
-    set ENVIRONMENT $argv[1]
-    set BRANCH (git rev-parse --abbrev-ref HEAD)
+    set -l ENVIRONMENT $argv[1]
+    set -l BRANCH (git rev-parse --abbrev-ref HEAD)
+    if test $status -ne 0
+        echo "Error: Failed to get current branch name."
+        return 1
+    end
 
-    git checkout $ENVIRONMENT
-    and git reset --hard origin/$ENVIRONMENT
-    and git merge $BRANCH --no-edit
-    and git commit --allow-empty -m "[SKIP_MANUAL]"
-    and git push origin $ENVIRONMENT
-    and git checkout $BRANCH
+    echo "Attempting to merge branch '$BRANCH' into '$ENVIRONMENT'..."
+
+    # --- Safety Check: Ensure working directory is clean ---
+    set -l dirty_status (git status --porcelain)
+    if test -n "$dirty_status" # Check if the output of git status --porcelain is not empty
+        echo "Error: Working directory is not clean. Please commit, stash, or discard changes."
+        # Show the status for clarity
+        git status --short
+        return 1
+    end
+    echo "✓ Working directory clean."
+
+    # --- Prepare Environment Branch ---
+    echo "Updating local '$ENVIRONMENT' branch..."
+    # Fetch the latest changes from the remote
+    if not git fetch origin
+        echo "Error: Failed to fetch from origin."
+        return 1
+    end
+    echo "✓ Fetched origin."
+
+    # Checkout the target environment branch
+    if not git checkout $ENVIRONMENT
+        echo "Error: Failed to checkout branch '$ENVIRONMENT'."
+        # Attempt to switch back to the original branch for safety
+        git checkout $BRANCH >/dev/null 2>&1
+        return 1
+    end
+    echo "✓ Checked out '$ENVIRONMENT'."
+
+    # Reset the local environment branch to match the remote one
+    # This is safe now because we checked for a clean working directory earlier.
+    if not git reset --hard origin/$ENVIRONMENT
+        echo "Error: Failed to reset '$ENVIRONMENT' to 'origin/$ENVIRONMENT'."
+        # Attempt to switch back to the original branch for safety
+        git checkout $BRANCH >/dev/null 2>&1
+        return 1
+    end
+    echo "✓ Reset '$ENVIRONMENT' to match 'origin/$ENVIRONMENT'."
+
+    # --- Merge and Push ---
+    echo "Merging '$BRANCH' into '$ENVIRONMENT'..."
+    # Merge the original branch into the environment branch
+    if not git merge $BRANCH --no-edit
+        echo "Error: Failed to merge '$BRANCH' into '$ENVIRONMENT'. Resolve conflicts and commit manually."
+        # Leave the user on the ENVIRONMENT branch to resolve conflicts
+        return 1
+    end
+    echo "✓ Merged '$BRANCH'."
+
+    # Create the empty commit marker
+    if not git commit --allow-empty -m "[SKIP_MANUAL]"
+        echo "Error: Failed to create empty commit marker."
+        # Attempt to switch back to the original branch for safety
+        git checkout $BRANCH >/dev/null 2>&1
+        return 1
+    end
+    echo "✓ Created skip commit."
+
+    # Push the changes to the remote environment branch
+    if not git push origin $ENVIRONMENT
+        echo "Error: Failed to push '$ENVIRONMENT' to origin."
+        # Attempt to switch back to the original branch for safety
+        git checkout $BRANCH >/dev/null 2>&1
+        return 1
+    end
+    echo "✓ Pushed '$ENVIRONMENT' to origin."
+
+    # --- Cleanup ---
+    echo "Switching back to branch '$BRANCH'..."
+    # Checkout the original branch
+    if not git checkout $BRANCH
+        echo "Warning: Failed to switch back to branch '$BRANCH'. Please check manually."
+        # Don't return error here, as the main goal was achieved, but warn the user.
+    else
+        echo "✓ Switched back to '$BRANCH'."
+    end
+
+    echo "Merge to '$ENVIRONMENT' completed successfully."
+    return 0
 end
 
 function compare-branches
