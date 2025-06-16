@@ -235,3 +235,26 @@ function create-stack
   end
 end
 
+function list-stacks
+  set current_branch (git rev-parse --abbrev-ref HEAD)
+  if test $status -ne 0
+    echo "Error: Failed to get current branch name."
+    return 1
+  end
+
+  # Get all branches that start with current branch name followed by a dash
+  set stack_branches (git branch --format="%(refname:short)" | grep "^$current_branch-")
+  
+  if test (count $stack_branches) -eq 0
+    echo "No stacks found for branch: $current_branch"
+    return 0
+  end
+
+  echo "Stacks for branch '$current_branch':"
+  for branch in $stack_branches
+    # Extract the stack name (everything after the last dash of the current branch pattern)
+    set stack_name (echo $branch | sed "s/^$current_branch-//")
+    echo "  - $stack_name ($branch)"
+  end
+end
+
