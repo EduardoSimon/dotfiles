@@ -22,6 +22,7 @@ alias grh="git reset --hard"
 
 # Utils
 alias k='kill -9'
+alias c="cursor ."
 alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
 alias v='nvim .'
