@@ -15,4 +15,4 @@
 *.no-commit.*
 
 # Claude local permissions file
-.claude/settings.local.json
+**/.claude/settings.local.json
