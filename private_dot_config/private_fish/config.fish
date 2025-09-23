@@ -96,5 +96,6 @@ fish_add_path "$ASDF_DIR/bin"
 
 starship init fish | source
 mise activate fish | source
+direnv hook fish | source
 
 fish_vi_key_bindings
