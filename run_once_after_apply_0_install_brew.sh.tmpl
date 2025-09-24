@@ -1,6 +1,8 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
+export PATH=/opt/homebrew/bin:$PATH
+
 brew install fish
 
 echo $(which fish) | sudo tee -a /etc/shells
