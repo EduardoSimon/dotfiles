@@ -6,10 +6,6 @@ name = "Eduardo Simon"
 email = {{ $email | quote }}
 work = {{ $work }}
 
-[merge]
-   command = "nvim"
-   args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
-
 [diff]
     exclude = ["externals"]
     pager = "delta"
