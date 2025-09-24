@@ -9,70 +9,12 @@ chsh -s $(which fish)
 
 brew install ripgrep
 yes n | brew install fzf
-brew install tig
-brew install asdf
 
 # To install useful key bindings and fuzzy completion:
 yes n | $(brew --prefix)/opt/fzf/install
 
-brew tap "dandavison/delta", "https://github.com/dandavison/delta"
-brew install "asdf"
-brew install "awscli"
-brew install "bash"
-brew install "bat"
-brew install "curl"
-brew install "direnv"
-brew install "dog"
-brew install "duf"
-brew install "exa"
-brew install "gnutls"
-brew install "gcc"
-brew install "git"
-brew install "git-delta"
-brew install "git-extras"
-brew install "glow"
-brew install "gnu-getopt"
-brew install "gnu-sed"
-brew install "gnupg"
-brew install "grep"
-brew install "htop"
-brew install "httpie"
-brew install "jenv"
-brew install "jq"
-brew install "lsd"
-brew install "make"
-brew install "mas"
-brew install "neovim"
-brew install "rust"
-brew install "starship"
-brew install "the_silver_searcher"
-brew install "tig"
-brew install "tldr"
-brew install "tmux"
-brew install "tree"
-brew install "vim"
-brew install "wget"
-brew install "gawk"
-brew install "maven"
-brew install "gabrie30/utils/ghorg"
-brew install "fd"
-brew install "mise"
-brew install rust
-brew install bison
-brew install coreutils
 brew tap homebrew/cask-fonts
 brew install --cask fork
-brew install --cask "font-fira-code-nerd-font"
-brew install --cask alfred
-brew install --cask rectangle
-brew install --cask "karabiner-elements"
-brew install --cask "keycastr"
-brew install --cask visual-studio-code
-brew install --cask yippy
-brew install --cask cursor
-brew install --cask ghostty
-brew install --cask zen-browser
-brew install --cask spotify
 
 mise use -g java
 mise use -g node@lts
@@ -81,6 +23,16 @@ mise use -g go
 mise use -g python
 mise use -g uv@latest
 
+#!/bin/bash
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.darwin.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+EOF
 {{ else if eq .chezmoi.os "linux" -}}
 
 {{ end -}}
