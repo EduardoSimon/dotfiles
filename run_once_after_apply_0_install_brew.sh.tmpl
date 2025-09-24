@@ -9,8 +9,6 @@ echo $(which fish) | sudo tee -a /etc/shells
 
 chsh -s $(which fish)
 
-exec zsh
-
 brew install ripgrep
 yes n | brew install fzf
 
