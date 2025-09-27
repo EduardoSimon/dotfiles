@@ -48,8 +48,8 @@ set -Ux GOPATH "$HOME/.go"
 set -Ux GEM_HOME "$HOME/gems"
 
 # Default editor environment variables
-set -Ux EDITOR "nvim"
-set -Ux VISUAL "nvim"
+set -Ux EDITOR nvim
+set -Ux VISUAL nvim
 
 # History settings (Fish uses a single history file by default)
 # The following are not directly applicable in Fish but can be adjusted if needed:
@@ -78,20 +78,21 @@ set -Ux FZF_DEFAULT_OPTS "
 "
 
 source ~/.config/fish/functions/custom_functions.fish
+source ~/private_aliases.fish
 
-fish_add_path "$HOME/gems/bin" 
-fish_add_path "$JAVA_HOME/bin" 
-fish_add_path "$GOPATH/bin" 
-fish_add_path "$HOME/.cargo/bin" 
-fish_add_path "$HOME/.jenv/bin" 
-fish_add_path "/usr/local/opt/python/libexec/bin"
-fish_add_path "/usr/local/bin"
-fish_add_path "/usr/local/sbin"
-fish_add_path "/mnt/c/Windows/system32"
+fish_add_path "$HOME/gems/bin"
+fish_add_path "$JAVA_HOME/bin"
+fish_add_path "$GOPATH/bin"
+fish_add_path "$HOME/.cargo/bin"
+fish_add_path "$HOME/.jenv/bin"
+fish_add_path /usr/local/opt/python/libexec/bin
+fish_add_path /usr/local/bin
+fish_add_path /usr/local/sbin
+fish_add_path /mnt/c/Windows/system32
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.npm-global/bin"
 fish_add_path "$HOME/.deno/bin"
-fish_add_path "/opt/homebrew/bin"
+fish_add_path /opt/homebrew/bin
 fish_add_path "$ASDF_DIR/bin"
 
 starship init fish | source
