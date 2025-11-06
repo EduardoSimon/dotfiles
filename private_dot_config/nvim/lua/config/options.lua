@@ -7,3 +7,6 @@ vim.g.autoformat = false
 
 -- Do not show diagnostic by default
 vim.diagnostic.enable(false)
+
+-- Search always from the initialized directory
+vim.g.root_spec = { "cwd" }
