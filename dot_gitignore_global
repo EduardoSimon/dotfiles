@@ -16,3 +16,6 @@
 
 # Claude local permissions file
 **/.claude/settings.local.json
+
+# Avoid comitting mise files
+mise.toml
