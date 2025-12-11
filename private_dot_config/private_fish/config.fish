@@ -22,7 +22,7 @@ alias grh="git reset --hard"
 
 # Utils
 alias k='kill -9'
-alias v='nvim .'
+alias v='nvim'
 
 alias uuid="generate-uuid"
 alias fprev="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
