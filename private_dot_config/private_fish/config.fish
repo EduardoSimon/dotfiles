@@ -99,6 +99,6 @@ starship init fish | source
 mise activate fish | source
 direnv hook fish | source
 
-alias assume="source (brew --prefix)/bin/assume.fish"
-
 fish_vi_key_bindings
+
+alias assume="source (brew --prefix)/bin/assume.fish"
