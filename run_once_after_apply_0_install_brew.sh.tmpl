@@ -30,6 +30,9 @@ mise use -g uv@latest
 #!/bin/bash
 
 brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.darwin.taps -}}
+tap {{ . | quote }}
+{{ end -}}
 {{ range .packages.darwin.brews -}}
 brew {{ . | quote }}
 {{ end -}}

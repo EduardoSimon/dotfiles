@@ -1,6 +1,10 @@
 packages:
   darwin:
+    taps:
+      - 'common-fate/granted'
+      - 'supabase/tap'
     brews:
+      - 'act'
       - 'aom'
       - 'aribb24'
       - 'asdf'
@@ -180,8 +184,10 @@ packages:
       - 'srt'
       - 'starship'
       - 'stoken'
+      - 'supabase/tap/supabase'
       - 'svt-av1'
       - 'tailspin'
+      - 'terminal-notifier'
       - 'tesseract'
       - 'the_silver_searcher'
       - 'theora'
@@ -190,6 +196,7 @@ packages:
       - 'tmux'
       - 'tree'
       - 'tree-sitter'
+      - 'trufflehog'
       - 'unbound'
       - 'unibilium'
       - 'usage'
