@@ -5,9 +5,12 @@ export PATH=/opt/homebrew/bin:$PATH
 
 brew install fish
 
-echo $(which fish) | sudo tee -a /etc/shells
+echo "Adding fish to /etc/shells: $(which fish)"
+echo $(which fish) | sudo tee -a /etc/shells > /dev/null
 
-chsh -s $(which fish)
+# Only change shell if fish is not already the default
+echo "Current shell: $SHELL"
+[ "$SHELL" != "$(which fish)" ] && chsh -s $(which fish)
 
 brew install ripgrep
 yes n | brew install fzf
@@ -15,9 +18,7 @@ yes n | brew install fzf
 # To install useful key bindings and fuzzy completion:
 yes n | $(brew --prefix)/opt/fzf/install
 
-brew tap homebrew/cask-fonts
 brew tap common-fate/granted
-brew install --cask fork
 brew install mise
 
 mise use -g java

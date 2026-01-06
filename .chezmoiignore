@@ -6,3 +6,4 @@
 .oh-my-zsh/custom/
 .oh-my-zsh/themes
 .config/fish/fish_variables
+.zshenv

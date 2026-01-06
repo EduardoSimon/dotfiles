@@ -14,7 +14,8 @@ sudo apt-get -y install cmake
 sudo apt install pkg-config
 sudo apt-get install fontconfig
 
-chsh -s $(which fish)
+# Only change shell if fish is not already the default
+[ "$SHELL" != "$(which fish)" ] && chsh -s $(which fish)
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

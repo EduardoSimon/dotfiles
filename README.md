@@ -45,6 +45,25 @@ chezmoi edit <file/folder>
 chezmoi apply
 ```
 
+## Update Homebrew package list
+
+To update the brew package list in `.chezmoidata/brew_packages.yaml` with your currently installed packages:
+
+```bash
+./create_brewfile.fish
+```
+
+This script will:
+1. Generate a Brewfile from your current Homebrew installations
+2. Convert it to the brew_packages.yaml format
+3. Clean up the temporary Brewfile
+
+After updating the package list, apply the changes:
+
+```bash
+chezmoi apply
+```
+
 ## Run a script for debugging purposes
 
 ### Delete the script execution state
