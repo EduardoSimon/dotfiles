@@ -7,3 +7,6 @@
 .oh-my-zsh/themes
 .config/fish/fish_variables
 .zshenv
+
+# Exclude work-specific Claude settings from public repo
+.claude/private_settings.json.tmpl

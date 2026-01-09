@@ -1,0 +1,10 @@
+{
+  "model": "sonnet",
+  "defaultMode": "plan",
+  "enabledPlugins": {
+    "ralph-loop@claude-plugins-official": true
+  },
+  "companyAnnouncements": [
+    "📋 Tmux Shortcuts: Prefix=Ctrl+A | Windows: Ctrl+A then Ctrl+L/H (next/prev) | Panes: Ctrl+A then - or % (split) | Sessions: tl/ta/tk"
+  ]
+}

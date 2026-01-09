@@ -27,6 +27,11 @@ alias v='nvim'
 alias uuid="generate-uuid"
 alias fprev="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
+# Quick tmux session management
+alias tl='tmux ls'
+alias ta='tmux attach -t'
+alias tk='tmux kill-session -t'
+
 # Docker
 alias dockillc='docker container stop (docker container ls -aq) && docker container rm (docker container ls -aq)'
 alias dockilli='docker image rm (docker image ls -q)'
@@ -102,3 +107,10 @@ direnv hook fish | source
 fish_vi_key_bindings
 
 alias assume="source (brew --prefix)/bin/assume.fish"
+
+# Set terminal title to tmux session name when inside tmux
+if set -q TMUX
+    function fish_title
+        tmux display-message -p '#S'
+    end
+end
