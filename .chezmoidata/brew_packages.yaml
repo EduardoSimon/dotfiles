@@ -82,7 +82,6 @@ packages:
       - 'font-monaspice-nerd-font'
       - 'font-noto-sans'
       - 'fork'
-      - 'ghostty'
       - 'karabiner-elements'
       - 'keycastr'
       - 'meetingbar'
