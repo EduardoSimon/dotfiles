@@ -374,15 +374,25 @@ bind-key & kill-window #!important
 # move status line to top
 set -g status-position top
 
-set -g @plugin "janoamaral/tokyo-night-tmux"
+set -g @plugin 'vaaleyard/tmux-dotbar'
+
+# tmux-dotbar color configuration (Tokyo Night theme colors)
+set -g @tmux-dotbar-bg '#1a1b26'           # Tokyo Night background
+set -g @tmux-dotbar-fg '#a9b1d6'           # Tokyo Night foreground
+set -g @tmux-dotbar-fg-current '#7aa2f7'   # Tokyo Night blue for current window
+set -g @tmux-dotbar-session '#bb9af7'      # Tokyo Night purple for session
+set -g @tmux-dotbar-prefix '#f7768e'       # Tokyo Night red for prefix indicator
+set -g @tmux-dotbar-position 'top'         # status bar at top
+set -g @tmux-dotbar-bold 'on'              # bold text
+
+# Disable tmux-dotbar's terminal title management (we handle it ourselves for WezTerm)
+set -g @tmux-dotbar-title 'off'
 
 # justifies windows in the center
 set-option -g status-justify centre
 
-
-# fixes toky night status bar color problem
-set -g status-bg "#1a1b26"
-
+# window renumbering for tmux-dotbar
+set-option -g renumber-windows on
 
 
 # -- tpm -----------------------------------------------------------------------
@@ -444,6 +454,16 @@ tmux_conf_uninstall_plugins_on_reload=true
 # git_repository_name() {
 #   cd "$1" && { echo $(basename $(git rev-parse --show-toplevel)); }
 # }
+
+# -- WezTerm integration -------------------------------------------------------
+# Override tmux-dotbar's set-titles-string to show just session name
+# Use a hook to ensure this persists even after plugins modify it
+set-option -g set-titles-string "#S"
+
+# Reset title on various events to counter tmux-dotbar overriding it
+set-hook -g after-select-window 'set-option -g set-titles-string "#S"'
+set-hook -g after-new-window 'set-option -g set-titles-string "#S"'
+set-hook -g pane-focus-in 'set-option -g set-titles-string "#S"'
 
 # # /!\ do not "uncomment" the functions: the leading "# " characters are needed
 #

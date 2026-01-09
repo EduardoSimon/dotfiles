@@ -2,3 +2,5 @@
 mysql_dump.conf
 .vscode/
 .envrc
+
+# Work-specific Claude settings - keep company info private
