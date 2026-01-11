@@ -2,7 +2,8 @@
   "model": "sonnet",
   "defaultMode": "plan",
   "enabledPlugins": {
-    "ralph-loop@claude-plugins-official": true
+    "ralph-loop@claude-plugins-official": true,
+    "worktrunk@worktrunk": true
   },
   "companyAnnouncements": [
     "📋 Copy Mode: Ctrl+A [ (enter) | / (search) | v (select) | y (copy) | p (paste)",

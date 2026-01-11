@@ -1,0 +1,11 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+# Install worktrunk shell integration
+if command -v wt >/dev/null 2>&1; then
+    echo "Installing worktrunk shell integration..."
+    wt config shell install
+else
+    echo "Warning: wt command not found. Skipping shell integration install."
+fi
+{{ end -}}
