@@ -1,0 +1,70 @@
+#!/bin/bash
+# Random tmux tip display script
+
+TIPS_FILE="$HOME/tmux-shortcuts.md"
+
+if [ ! -f "$TIPS_FILE" ]; then
+    exit 0
+fi
+
+# Array of section headers to extract tips from
+sections=(
+    "Copy Mode & Pagination"
+    "Window Management"
+    "Pane Management"
+    "Session Management"
+    "Configuration & System"
+    "Mouse Mode Features"
+    "Pro Tips"
+)
+
+# Pick a random section
+section="${sections[$RANDOM % ${#sections[@]}]}"
+
+# Extract the section and display a formatted tip
+echo ""
+echo "💡 Tmux Tip of the Day - $section"
+echo "════════════════════════════════════════════════════"
+
+# Extract section content (from header to next ## or end of file)
+awk -v section="$section" '
+    /^## / {
+        if ($0 ~ section) {
+            in_section=1
+            next
+        } else if (in_section) {
+            exit
+        }
+    }
+    in_section && /^###/ {
+        print "\n\033[1;36m" $0 "\033[0m"
+        next
+    }
+    in_section && /^- / {
+        # Print bullet points with color
+        sub(/^- /, "  • ")
+        print "\033[0;33m" $0 "\033[0m"
+        next
+    }
+    in_section && /^[0-9]\./ {
+        # Print numbered lists
+        print "\033[0;32m" $0 "\033[0m"
+        next
+    }
+    in_section && /^```/ {
+        in_code = !in_code
+        next
+    }
+    in_section && in_code {
+        print "  \033[0;90m" $0 "\033[0m"
+        next
+    }
+    in_section && NF > 0 {
+        print $0
+    }
+' "$TIPS_FILE" | head -20
+
+echo ""
+echo "════════════════════════════════════════════════════"
+echo "Full guide: cat ~/tmux-shortcuts.md"
+echo ""
