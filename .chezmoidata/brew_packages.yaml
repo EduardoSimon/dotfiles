@@ -3,6 +3,7 @@ packages:
     taps:
       - 'common-fate/granted'
       - 'hashicorp/tap'
+      - 'max-sixty/worktrunk'
       - 'supabase/tap'
       - 'warrensbox/tap'
     brews:
@@ -50,6 +51,7 @@ packages:
       - 'make'
       - 'mas'
       - 'maven'
+      - 'max-sixty/worktrunk/wt'
       - 'mbedtls'
       - 'mise'
       - 'neovim'

@@ -43,3 +43,9 @@
     type = "file"
     url = "https://raw.githubusercontent.com/rupa/z/master/z.sh"
     refreshPeriod = "168h"
+[".claude/plugins/marketplaces/worktrunk"]
+    type = "archive"
+    url = "https://github.com/max-sixty/worktrunk/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
