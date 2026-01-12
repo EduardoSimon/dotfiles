@@ -16,5 +16,18 @@
     "⚡ Quick: Ctrl+A q (show pane numbers) | Ctrl+A x (kill pane) | Ctrl+A Space (layouts)",
     "💾 Buffers: Ctrl+A b (list buffers) | Ctrl+A P (choose buffer) | Ctrl+A p (paste)",
     "🔧 Config: Ctrl+A r (reload) | Ctrl+A e (edit) | Ctrl+A ? (help) | Ctrl+A : (command)"
-  ]
+  ],
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -message \"Claude Code Finished\""
+          }
+        ]
+      }
+    ]
+  }
 }
