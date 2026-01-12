@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- ============================================================================
@@ -195,5 +196,13 @@ config.visual_bell = {
   fade_out_duration_ms = 150,
 }
 config.audible_bell = 'Disabled'
+
+-- ============================================================================
+-- Key Bindings
+-- ============================================================================
+
+config.keys = {
+  { mods = "SHIFT", key = "Enter", action = act.SendString "\\\n" },
+}
 
 return config
