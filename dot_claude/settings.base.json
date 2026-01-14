@@ -1,6 +1,5 @@
 {
-  "model": "sonnet",
-  "defaultMode": "plan",
+  "model": "opusplan",
   "enabledPlugins": {
     "ralph-loop@claude-plugins-official": true,
     "worktrunk@worktrunk": true
@@ -17,6 +16,9 @@
     "💾 Buffers: Ctrl+A b (list buffers) | Ctrl+A P (choose buffer) | Ctrl+A p (paste)",
     "🔧 Config: Ctrl+A r (reload) | Ctrl+A e (edit) | Ctrl+A ? (help) | Ctrl+A : (command)"
   ],
+  "permissions": {
+    "defaultMode": "plan"
+  },
   "hooks": {
     "Notification": [
       {
