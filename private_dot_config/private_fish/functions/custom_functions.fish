@@ -244,7 +244,7 @@ function list-stacks
 
   # Get all branches that start with current branch name followed by a dash
   set stack_branches (git branch --format="%(refname:short)" | grep "^$current_branch-")
-  
+
   if test (count $stack_branches) -eq 0
     echo "No stacks found for branch: $current_branch"
     return 0
@@ -256,5 +256,42 @@ function list-stacks
     set stack_name (echo $branch | sed "s/^$current_branch-//")
     echo "  - $stack_name ($branch)"
   end
+end
+
+function cc
+    claude --allow-dangerously-skip-permissions
+end
+
+function cc-resume
+    claude --allow-dangerously-skip-permissions --resume
+end
+
+function dev-session
+    set -l ticket $argv[1]
+
+    if test -z "$ticket"
+        echo "Usage: dev-session <ticket-name>"
+        return 1
+    end
+
+    # Call dev to ensure authentication (only if defined)
+    if type -q dev
+        echo "🔐 Authenticating with dev environment..."
+        dev
+    end
+
+    # Get current directory name
+    set -l dir_name (basename $PWD)
+
+    # Create session name
+    set -l session_name "$dir_name-$ticket"
+
+    echo "📂 Creating tmux session: $session_name"
+    echo "🪟 Setting up 2-pane window layout..."
+    echo "🤖 Starting Claude Code in first pane..."
+
+    # Create new tmux session and split into 2 panes
+    # First pane runs cc command, second pane is empty
+    tmux new-session -s $session_name "cc" \; split-window -h
 end
 
