@@ -283,24 +283,38 @@ function dev-session
         return 1
     end
 
-    # Call dev to ensure authentication (only if defined)
-    if type -q dev
-        echo "🔐 Authenticating with dev environment..."
-        dev
-    end
-
     # Get current directory name (after wt switch)
     set -l dir_name (basename $PWD)
 
-    # Create session name
-    set -l session_name "$dir_name-$ticket"
+    # Create session name (ticket already in workspace/dir name)
+    set -l session_name "$dir_name"
 
-    echo "📂 Creating tmux session: $session_name"
-    echo "🪟 Setting up 2-pane window layout..."
-    echo "🤖 Starting Claude Code in first pane..."
+    # Check if tmux session already exists
+    if tmux has-session -t $session_name 2>/dev/null
+        echo "📌 Attaching to existing session: $session_name"
 
-    # Create new tmux session and split into 2 panes
-    # First pane runs cc command, second pane is empty
-    tmux new-session -s $session_name "cc" \; split-window -h
+        # Call dev to ensure authentication (only if defined)
+        if type -q dev
+            echo "🔐 Authenticating with dev environment..."
+            dev
+        end
+
+        # Attach to existing session
+        tmux attach-session -t $session_name
+    else
+        # Call dev to ensure authentication (only if defined)
+        if type -q dev
+            echo "🔐 Authenticating with dev environment..."
+            dev
+        end
+
+        echo "📂 Creating tmux session: $session_name"
+        echo "🪟 Setting up 2-pane window layout..."
+        echo "🤖 Starting Claude Code in first pane..."
+
+        # Create new tmux session and split into 2 panes
+        # First pane runs cc command, second pane is empty
+        tmux new-session -s $session_name "cc" \; split-window -h
+    end
 end
 
