@@ -274,13 +274,22 @@ function dev-session
         return 1
     end
 
+    echo "🌳 Creating and switching to worktree: $ticket"
+    # Create new worktree and switch to it
+    wt switch --create $ticket
+
+    if test $status -ne 0
+        echo "❌ Failed to create worktree"
+        return 1
+    end
+
     # Call dev to ensure authentication (only if defined)
     if type -q dev
         echo "🔐 Authenticating with dev environment..."
         dev
     end
 
-    # Get current directory name
+    # Get current directory name (after wt switch)
     set -l dir_name (basename $PWD)
 
     # Create session name
