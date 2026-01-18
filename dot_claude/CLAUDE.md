@@ -3,6 +3,52 @@
 - Correct grammar mistakes and highlight errors
 - Offer corrections for any language issues
 
+# AGENTS.md — Global Agent Context & Guidelines
+
+---
+
+## ⚠️ MANDATORY: Fish Shell for ALL Commands
+
+> **CRITICAL RULE — READ BEFORE ANY COMMAND EXECUTION**
+
+The Bash tool executes in zsh/bash. Your environment (fnm, pyenv, bun, etc.) exists ONLY in fish.
+
+### 🐟 THE RULE: ALWAYS use `fish -c "command"`
+
+**EVERY command. No exceptions. No thinking required.**
+
+```bash
+# Pattern
+fish -c "your command here"
+
+# Examples
+fish -c "node -v"
+fish -c "pnpm install"
+fish -c "bun run dev"
+fish -c "python --version"
+fish -c "git status"
+fish -c "ls -la"
+```
+
+### Why This Matters
+- `node`, `bun`, `pnpm` → Managed by `fnm` → Only in fish PATH
+- `python`, `uv`, `pip` → Managed by `pyenv` → Only in fish PATH
+- `ruby`, `gem`, `bundle` → Managed by `rbenv` → Only in fish PATH
+- Environment variables → Set in `~/.config/fish/config.fish`
+
+### DO NOT
+❌ `node -v` → Will fail: "command not found"
+❌ `pnpm install` → Will fail: "command not found"
+❌ Run any command without `fish -c` wrapper
+
+### DO
+✅ `fish -c "node -v"`
+✅ `fish -c "pnpm install"`
+✅ `fish -c "ls -la"` (even simple commands - consistency matters)
+
+---
+
+
 ## Development Process
 
 ### Pre-Development Checklist
@@ -80,32 +126,6 @@ Multiple simultaneous requests were causing duplicate charges. Added
 mutex lock to ensure atomic transaction processing.
 ```
 
-## Claude Settings Management
-
-### Base vs Private Settings
-Claude Code settings are split into two files:
-- **`settings.base.json`** (tracked in dotfiles): Contains public, shareable settings like plugins, keybindings, and UI preferences
-- **`settings.json`** (not tracked): Contains private settings like AWS profiles, credentials, and personal configurations
-
-The private `settings.json` is merged with `settings.base.json` at runtime. This allows you to:
-- Share common settings across machines via dotfiles
-- Keep sensitive information out of version control
-- Maintain machine-specific configurations
-
-### What Goes Where
-**Base settings** (public):
-- Model preferences
-- Default modes
-- Enabled plugins
-- UI configurations
-- Notification hooks
-- Tmux keybinding announcements
-
-**Private settings** (not tracked):
-- AWS profiles and auth commands
-- Environment variables with credentials
-- Machine-specific paths
-- Custom status line commands
 
 ## Additional Guidelines
 - Always maintain clean, readable code
