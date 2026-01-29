@@ -318,3 +318,7 @@ function dev-session
     end
 end
 
+function wt-remove-all -d "Remove all worktrees except main"
+    wt list --format json | jq -r '.[] | select(.branch == "main" | not) | .branch' | xargs -I {} wt remove {}
+end
+
