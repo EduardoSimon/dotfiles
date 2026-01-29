@@ -34,7 +34,7 @@ function force-push-monoenv
     git fetch -p
     and git branch -f $ENVIRONMENT HEAD
     and git checkout $ENVIRONMENT
-    and git commit --allow-empty -m "[SKIP_MANUAL]"
+    and git commit --allow-empty -m "[SKIP_MANUAL][FULL_PIPELINE][RUN_CD]"
     and git push --force origin $ENVIRONMENT
     and git checkout $BRANCH
 end
@@ -107,7 +107,7 @@ function merge-to-monoenv
     echo "✓ Merged '$BRANCH'."
 
     # Create the empty commit marker
-    if not git commit --allow-empty -m "[SKIP_MANUAL]"
+    if not git commit --allow-empty -m "[SKIP_MANUAL][RUN_CD]"
         echo "Error: Failed to create empty commit marker."
         # Attempt to switch back to the original branch for safety
         git checkout $BRANCH >/dev/null 2>&1
@@ -173,7 +173,7 @@ function monoenv_git_refresh
     for MONOENV in $MONOENVS
         git checkout $MONOENV
         and git reset --hard origin/master
-        and git commit --allow-empty -m "[SKIP_MANUAL]"
+        and git commit --allow-empty -m "[SKIP_MANUAL][FULL_PIPELINE]"
         and git push -f origin $MONOENV
     end
 end
@@ -199,7 +199,7 @@ function fpush-with-mr
   end
 
   set branch $argv[1]
-  set default_labels "INEX::review"
+  set default_labels "PFX::review"
   set labels $default_labels
 
   if set -q argv[2]
