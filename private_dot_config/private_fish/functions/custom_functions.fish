@@ -322,3 +322,156 @@ function wt-remove-all -d "Remove all worktrees except main"
     wt list --format json | jq -r '.[] | select(.branch == "main" | not) | .branch' | xargs -I {} wt remove {}
 end
 
+function dev-list
+    echo "📋 Development Sessions:"
+    echo ""
+
+    # Get all worktrees
+    set -l worktree_data (git worktree list --porcelain 2>/dev/null)
+
+    if test $status -ne 0
+        echo "❌ Not in a git repository"
+        return 1
+    end
+
+    # Get all tmux sessions
+    set -l tmux_sessions (tmux list-sessions -F "#{session_name}" 2>/dev/null)
+
+    # Parse worktrees
+    set -l worktree_path ""
+    set -l branch_name ""
+    set -l found_worktrees 0
+
+    # Print header
+    printf "%-30s %-35s %-15s\n" "Worktree" "Branch" "Tmux Session"
+    printf "%-30s %-35s %-15s\n" "--------" "------" "------------"
+
+    for line in $worktree_data
+        if string match -q "worktree *" $line
+            set worktree_path (string replace "worktree " "" $line)
+        else if string match -q "branch *" $line
+            set branch_name (string replace "branch refs/heads/" "" $line)
+
+            # Extract session name from worktree path
+            set -l session_name (basename $worktree_path)
+
+            # Check if tmux session exists
+            set -l session_status "✗"
+            if contains $session_name $tmux_sessions
+                set session_status "✓"
+            end
+
+            # Print the entry
+            printf "%-30s %-35s %-15s\n" $session_name $branch_name $session_status
+            set found_worktrees 1
+
+            # Reset for next worktree
+            set worktree_path ""
+            set branch_name ""
+        end
+    end
+
+    if test $found_worktrees -eq 0
+        echo "No worktrees found"
+    end
+end
+
+function dev-remove
+    set -l ticket $argv[1]
+
+    if test -z "$ticket"
+        echo "Usage: dev-remove <ticket-name>"
+        return 1
+    end
+
+    echo "🔍 Searching for worktree: $ticket"
+
+    # Get all worktrees
+    set -l worktree_data (git worktree list --porcelain 2>/dev/null)
+
+    if test $status -ne 0
+        echo "❌ Not in a git repository"
+        return 1
+    end
+
+    # Find the worktree path matching the ticket
+    set -l worktree_path ""
+    set -l found 0
+
+    for line in $worktree_data
+        if string match -q "worktree *" $line
+            set -l path (string replace "worktree " "" $line)
+            set -l dir_name (basename $path)
+
+            if test "$dir_name" = "$ticket"
+                set worktree_path $path
+                set found 1
+                break
+            end
+        end
+    end
+
+    if test $found -eq 0
+        echo "❌ Worktree not found: $ticket"
+        return 1
+    end
+
+    echo "✓ Found worktree at: $worktree_path"
+
+    # Extract session name (basename of worktree path)
+    set -l session_name (basename $worktree_path)
+
+    # Check if we're currently in the worktree being removed
+    if string match -q "$worktree_path*" $PWD
+        echo "⚠️  You are currently inside the worktree being removed"
+        echo "Please switch to another directory first"
+        return 1
+    end
+
+    # Check for uncommitted changes
+    set -l current_dir $PWD
+    cd $worktree_path
+    set -l dirty_status (git status --porcelain)
+    cd $current_dir
+
+    if test -n "$dirty_status"
+        echo "⚠️  Worktree has uncommitted changes:"
+        cd $worktree_path
+        git status --short
+        cd $current_dir
+        echo ""
+        echo "Please commit or stash changes before removing"
+        return 1
+    end
+
+    # Kill tmux session if it exists
+    if tmux has-session -t $session_name 2>/dev/null
+        echo "🔪 Killing tmux session: $session_name"
+        tmux kill-session -t $session_name
+
+        if test $status -ne 0
+            echo "⚠️  Failed to kill tmux session"
+        else
+            echo "✓ Tmux session killed"
+        end
+    else
+        echo "ℹ️  No active tmux session found"
+    end
+
+    # Remove worktree
+    echo "🗑️  Removing worktree: $ticket"
+
+    # Use git worktree remove directly (wt remove expects branch names)
+    git worktree remove $worktree_path
+
+    if test $status -ne 0
+        echo "❌ Failed to remove worktree"
+        return 1
+    end
+
+    # Prune worktree references
+    git worktree prune
+
+    echo "✓ Successfully removed dev session: $ticket"
+end
+
