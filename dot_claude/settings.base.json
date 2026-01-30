@@ -34,7 +34,22 @@
   },
   "enabledPlugins": {
     "ralph-loop@claude-plugins-official": true,
-    "worktrunk@worktrunk": true
+    "worktrunk@worktrunk": true,
+    "playwright-cli@playwright-cli": true
+  },
+  "extraKnownMarketplaces": {
+    "playwright-cli": {
+      "source": {
+        "source": "github",
+        "repo": "microsoft/playwright-cli"
+      }
+    },
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
+      }
+    }
   },
   "companyAnnouncements": [
     "📋 Copy Mode: Ctrl+A [ (enter) | / (search) | v (select) | y (copy) | p (paste)",
