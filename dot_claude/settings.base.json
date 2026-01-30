@@ -1,5 +1,37 @@
 {
-  "model": "opusplan",
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "model": "opus",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -message \"Claude Code Finished\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -message \"Claude Code Finished\""
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh",
+    "padding": 0
+  },
   "enabledPlugins": {
     "ralph-loop@claude-plugins-official": true,
     "worktrunk@worktrunk": true
@@ -15,21 +47,5 @@
     "⚡ Quick: Ctrl+A q (show pane numbers) | Ctrl+A x (kill pane) | Ctrl+A Space (layouts)",
     "💾 Buffers: Ctrl+A b (list buffers) | Ctrl+A P (choose buffer) | Ctrl+A p (paste)",
     "🔧 Config: Ctrl+A r (reload) | Ctrl+A e (edit) | Ctrl+A ? (help) | Ctrl+A : (command)"
-  ],
-  "permissions": {
-    "defaultMode": "plan"
-  },
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "terminal-notifier -message \"Claude Code Finished\""
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }
