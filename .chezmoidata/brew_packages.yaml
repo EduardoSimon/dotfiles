@@ -77,7 +77,6 @@ packages:
       - 'wget'
       - 'zsh'
     casks:
-      - 'alacritty'
       - 'alfred'
       - 'betterdisplay'
       - 'font-fira-code-nerd-font'
