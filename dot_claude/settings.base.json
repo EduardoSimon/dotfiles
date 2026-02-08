@@ -1,7 +1,4 @@
 {
-  "permissions": {
-    "defaultMode": "plan"
-  },
   "model": "opus",
   "hooks": {
     "Notification": [
