@@ -2,20 +2,15 @@
 #!/bin/sh
 sudo apt-get update
 sudo apt-get install build-essential
-sudo apt install -y fish
 yes n | sudo apt install -y fzf
 sudo apt install -y tig
 sudo apt install -y vim
-sudo apt install curl git
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+sudo apt install curl git zoxide
 sudo apt install ripgrep
 sudo apt install dirmngr gpg gawk
 sudo apt-get -y install cmake
 sudo apt install pkg-config
 sudo apt-get install fontconfig
-
-# Only change shell if fish is not already the default
-[ "$SHELL" != "$(which fish)" ] && chsh -s $(which fish)
 
 # Install rust if not installed
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

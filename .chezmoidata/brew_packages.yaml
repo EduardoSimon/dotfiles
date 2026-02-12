@@ -8,8 +8,9 @@ packages:
       - 'warrensbox/tap'
     brews:
       - 'act'
-      - 'asdf'
       - 'awscli'
+      - 'bash'
+      - 'bash-completion@2'
       - 'bat'
       - 'bc'
       - 'bison'
@@ -24,7 +25,6 @@ packages:
       - 'duf'
       - 'fd'
       - 'ffmpeg'
-      - 'fish'
       - 'fzf'
       - 'gawk'
       - 'gcc'
@@ -75,6 +75,7 @@ packages:
       - 'vim'
       - 'warrensbox/tap/tfswitch'
       - 'wget'
+      - 'zoxide'
       - 'zsh'
     casks:
       - 'alfred'

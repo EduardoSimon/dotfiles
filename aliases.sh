@@ -40,7 +40,9 @@ alias audit_trivy="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock 
 alias dive="docker run --rm -it -e CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest "
 alias dive_panel="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest "
 
-# aliases for recent direct dir stack access in zsh
-alias d='dirs -v'
-for index ({1..9}) alias "$index"="cd +${index}"; unset index
 alias magelland="docker run --rm -it -e USER -e GITLAB_TOKEN -e AWS_PROFILE -v ${PWD}:/platform_app -v ~/.aws:/root/.aws -v /var/run/docker.sock:/var/run/docker.sock magellan_release"
+
+# Quick tmux session management
+alias tl='tmux ls'
+alias ta='tmux attach -t'
+alias tk='tmux kill-session -t'

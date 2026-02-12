@@ -7,44 +7,14 @@
 
 ---
 
-## ⚠️ MANDATORY: Fish Shell for ALL Commands
+## Shell Environment
 
-> **CRITICAL RULE — READ BEFORE ANY COMMAND EXECUTION**
+Commands run directly in bash. No wrapper needed.
 
-The Bash tool executes in zsh/bash. Your environment (fnm, pyenv, bun, etc.) exists ONLY in fish.
-
-### 🐟 THE RULE: ALWAYS use `fish -c "command"`
-
-**EVERY command. No exceptions. No thinking required.**
-
-```bash
-# Pattern
-fish -c "your command here"
-
-# Examples
-fish -c "node -v"
-fish -c "pnpm install"
-fish -c "bun run dev"
-fish -c "python --version"
-fish -c "git status"
-fish -c "ls -la"
-```
-
-### Why This Matters
-- `node`, `bun`, `pnpm` → Managed by `fnm` → Only in fish PATH
-- `python`, `uv`, `pip` → Managed by `pyenv` → Only in fish PATH
-- `ruby`, `gem`, `bundle` → Managed by `rbenv` → Only in fish PATH
-- Environment variables → Set in `~/.config/fish/config.fish`
-
-### DO NOT
-❌ `node -v` → Will fail: "command not found"
-❌ `pnpm install` → Will fail: "command not found"
-❌ Run any command without `fish -c` wrapper
-
-### DO
-✅ `fish -c "node -v"`
-✅ `fish -c "pnpm install"`
-✅ `fish -c "ls -la"` (even simple commands - consistency matters)
+- `node`, `bun`, `pnpm` -> Managed by `mise` -> Available in PATH
+- `python`, `uv`, `pip` -> Managed by `mise` -> Available in PATH
+- `ruby`, `gem`, `bundle` -> Managed by `mise` -> Available in PATH
+- Environment variables -> Set in `~/.bashrc`
 
 ---
 

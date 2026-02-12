@@ -1,0 +1,15 @@
+# Vi mode
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[5 q\2
+set vi-cmd-mode-string \1\e[1 q\2
+
+# jk/kj to exit insert mode
+set keymap vi-insert
+"jk": vi-movement-mode
+"kj": vi-movement-mode
+
+# Better completion
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set colored-stats on

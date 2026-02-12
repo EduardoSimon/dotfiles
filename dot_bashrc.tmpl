@@ -1,0 +1,127 @@
+#!/bin/bash
+# ~/.bashrc - Bash shell configuration
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# ============================================================
+# ENVIRONMENT VARIABLES
+# ============================================================
+export DOTFILES_PATH="$HOME"
+export GOPATH="$HOME/.go"
+export GEM_HOME="$HOME/gems"
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# History
+export HISTFILE="$HOME/.bash_history"
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+export HISTCONTROL=ignoreboth:erasedups
+
+# CDPATH - allow relative cd
+export CDPATH=".:~:$HOME/work:$HOME/personal"
+
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="
+  --color=pointer:#ebdbb2,bg+:#3c3836,fg:#ebdbb2,fg+:#fbf1c7,hl:#8ec07c,info:#928374,header:#fb4934
+  --reverse"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -n 10'"
+
+# ============================================================
+# PATH
+# ============================================================
+paths=(
+    "/opt/homebrew/bin"
+    "$HOME/.local/bin"
+    "$HOME/gems/bin"
+    "$JAVA_HOME/bin"
+    "$GOPATH/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/.jenv/bin"
+    "/usr/local/opt/python/libexec/bin"
+    "/usr/local/bin"
+    "/usr/local/sbin"
+    "$HOME/.npm-global/bin"
+    "$HOME/.deno/bin"
+)
+for p in "${paths[@]}"; do
+    [[ -d "$p" ]] && [[ ":$PATH:" != *":$p:"* ]] && PATH="$p:$PATH"
+done
+export PATH
+
+# ============================================================
+# SHELL OPTIONS
+# ============================================================
+set -o vi
+shopt -s autocd 2>/dev/null
+shopt -s cdspell
+shopt -s dirspell
+shopt -s globstar
+shopt -s histappend
+
+# ============================================================
+# SOURCE ALIASES AND FUNCTIONS
+# ============================================================
+source "${HOME}/aliases.sh"
+source "${HOME}/functions.sh"
+source "${HOME}/git_functions.sh"
+[[ -f "$HOME/private_aliases.sh" ]] && source "$HOME/private_aliases.sh"
+
+# ============================================================
+# TOOL INTEGRATIONS
+# ============================================================
+
+# Mise (manages node, python, ruby, go, java, etc.)
+if command -v mise &>/dev/null; then
+    eval "$(mise activate bash)"
+fi
+
+# Starship prompt
+if command -v starship &>/dev/null; then
+    eval "$(starship init bash)"
+fi
+
+# Direnv
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+# Worktrunk
+if command -v wt &>/dev/null; then
+    eval "$(wt config shell init bash)"
+fi
+
+# Zoxide (z directory jumper)
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
+fi
+
+# FZF keybindings and completion (Ctrl+R, Ctrl+T, Alt+C)
+if command -v fzf &>/dev/null; then
+    eval "$(fzf --bash)"
+fi
+
+# Granted (AWS assume role)
+if command -v granted &>/dev/null; then
+    alias assume="source assume"
+fi
+
+# ============================================================
+# BASH COMPLETION
+# ============================================================
+if [[ -r "$(brew --prefix 2>/dev/null)/etc/profile.d/bash_completion.sh" ]]; then
+    source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+fi
+
+# ============================================================
+# TMUX TERMINAL TITLE
+# ============================================================
+if [[ -n "$TMUX" ]]; then
+    PROMPT_COMMAND='printf "\033]0;$(tmux display-message -p "#S")\007"'
+fi
+
+{{ if eq .chezmoi.os "darwin" -}}
+{{ end -}}

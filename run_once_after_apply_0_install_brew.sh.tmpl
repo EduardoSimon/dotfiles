@@ -3,14 +3,15 @@
 
 export PATH=/opt/homebrew/bin:$PATH
 
-brew install fish
+# Install modern bash (macOS ships bash 3.2)
+brew install bash bash-completion@2
 
-echo "Adding fish to /etc/shells: $(which fish)"
-echo $(which fish) | sudo tee -a /etc/shells > /dev/null
+# Add Homebrew bash to allowed shells and set as default
+BASH_PATH="$(brew --prefix)/bin/bash"
+grep -qxF "$BASH_PATH" /etc/shells || echo "$BASH_PATH" | sudo tee -a /etc/shells > /dev/null
 
-# Only change shell if fish is not already the default
 echo "Current shell: $SHELL"
-[ "$SHELL" != "$(which fish)" ] && chsh -s $(which fish)
+[ "$SHELL" != "$BASH_PATH" ] && chsh -s "$BASH_PATH"
 
 brew install ripgrep
 yes n | brew install fzf
@@ -20,6 +21,7 @@ yes n | $(brew --prefix)/opt/fzf/install
 
 brew tap common-fate/granted
 brew install mise
+brew install zoxide
 
 mise use -g java
 mise use -g node@lts
