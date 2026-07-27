@@ -1,0 +1,9 @@
+#!/usr/bin/env /opt/homebrew/bin/fish
+
+# fish_plugins hash: {{ include "private_dot_config/private_fish/fish_plugins" | sha256sum }}
+
+if not functions -q fisher
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+end
+
+fisher update
