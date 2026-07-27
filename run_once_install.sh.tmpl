@@ -26,6 +26,9 @@ sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb
 
 cargo install docpars
 
+# Install Claude Code if not installed
+[ -x "$(command -v claude)" ] || curl -fsSL https://claude.ai/install.sh | bash
+
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
@@ -42,6 +45,9 @@ export PATH=/opt/homebrew/bin:$PATH
 [ -x "$(command -v cargo)" ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 $HOME/.cargo/bin/cargo install docpars
+
+# Install Claude Code if not installed
+[ -x "$(command -v claude)" ] || curl -fsSL https://claude.ai/install.sh | bash
 
 {{ end -}}
 
