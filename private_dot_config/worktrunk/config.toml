@@ -1,2 +1,11 @@
-[post-create]
+[[pre-start]]
 copy = "wt step copy-ignored"
+
+[[pre-start]]
+sso-login = "test -f tools/victoria-local.py && aws sso login --sso-session flywire-aws"
+
+[[pre-start]]
+ecr-login = "test -f tools/victoria-local.py && aws ecr get-login-password --region us-east-1 --profile sso_registry_pro_dev | docker login --username AWS --password-stdin 339713173028.dkr.ecr.us-east-1.amazonaws.com"
+
+[[pre-start]]
+up = "test -f tools/victoria-local.py && APP_PORT={{ branch | hash_port }} DB_PORT={{ ('db-' ~ branch) | hash_port }} make up"

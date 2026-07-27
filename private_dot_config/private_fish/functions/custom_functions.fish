@@ -259,11 +259,11 @@ function list-stacks
 end
 
 function cc
-    claude --allow-dangerously-skip-permissions
+    claude --permission-mode=auto --allow-dangerously-skip-permissions
 end
 
 function cc-resume
-    claude --allow-dangerously-skip-permissions --resume
+    claude --permission-mode=auto --allow-dangerously-skip-permissions --resume
 end
 
 function dev-session
@@ -316,10 +316,6 @@ function dev-session
         # First pane runs cc command, second pane is empty
         tmux new-session -s $session_name "cc" \; split-window -h
     end
-end
-
-function wt-remove-all -d "Remove all worktrees except main"
-    wt list --format json | jq -r '.[] | select(.branch == "main" | not) | .branch' | xargs -I {} wt remove {}
 end
 
 function dev-list

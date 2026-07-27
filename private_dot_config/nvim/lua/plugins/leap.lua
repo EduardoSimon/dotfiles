@@ -1,4 +1,4 @@
 return {
-  "ggandor/leap.nvim",
+  "https://codeberg.org/andyg/leap.nvim",
   enabled = false
 }
