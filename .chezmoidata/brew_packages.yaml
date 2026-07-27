@@ -1,11 +1,13 @@
 packages:
   darwin:
     taps:
-      - 'common-fate/granted'
-      - 'hashicorp/tap'
-      - 'max-sixty/worktrunk'
-      - 'supabase/tap'
-      - 'warrensbox/tap'
+      - name: 'common-fate/granted'
+        trusted: true
+      - name: 'hashicorp/tap'
+      - name: 'max-sixty/worktrunk'
+        trusted: true
+      - name: 'supabase/tap'
+        trusted: true
     brews:
       - 'act'
       - 'asdf'
@@ -73,7 +75,6 @@ packages:
       - 'tree-sitter'
       - 'trufflehog'
       - 'vim'
-      - 'warrensbox/tap/tfswitch'
       - 'wget'
       - 'zsh'
     casks:
