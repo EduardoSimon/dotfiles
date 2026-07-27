@@ -29,12 +29,8 @@ cargo install docpars
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
-# Reinstall developer tools if there's any recent update
-echo "Reinstalling Mac OS developer tools. If the process end, run it again"
-sudo xcode-select --install
-
-# Accept license after an update
-sudo xcodebuild -license accept
+# Install Mac OS developer tools if not already present
+xcode-select -p >/dev/null 2>&1 || sudo xcode-select --install
 
 # Install brew if not installed
 [ -x "$(command -v brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
