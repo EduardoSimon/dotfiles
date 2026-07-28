@@ -108,8 +108,6 @@ git push <options-for-MR>
 2. **Commit Body**:
    - Explain **WHY** the change was made, not WHAT
    - Focus on reasoning and context
-   - Do not mention AI generation
-   - Do not add yourself as author
 
 #### Examples:
 ```
