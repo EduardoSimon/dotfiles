@@ -1,0 +1,44 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+# Import Rectangle window management settings.
+#
+# Rectangle's exported JSON wraps each default in its type, e.g.
+# {"allowAnyShortcut": {"bool": true}}, which `defaults import` cannot read
+# directly. Unwrap it into a real plist first, then import that.
+
+killall Rectangle >/dev/null 2>&1 || true
+
+/usr/bin/python3 - <<'PYEOF'
+import json
+import os
+import plistlib
+import subprocess
+
+config_path = os.path.expanduser("~/.config/Rectangle/RectangleConfig.json")
+plist_path = "/tmp/rectangle_import.plist"
+domain = "com.knollsoft.Rectangle"
+
+with open(config_path) as f:
+    data = json.load(f)
+
+plist = {}
+for key, wrapped in data.get("defaults", {}).items():
+    if isinstance(wrapped, dict) and wrapped:
+        _, val = next(iter(wrapped.items()))
+        plist[key] = val
+    else:
+        plist[key] = {}
+
+if "shortcuts" in data:
+    plist["shortcuts"] = data["shortcuts"]
+
+with open(plist_path, "wb") as f:
+    plistlib.dump(plist, f)
+
+subprocess.run(["defaults", "import", domain, plist_path], check=True)
+os.remove(plist_path)
+PYEOF
+
+open -a Rectangle
+{{ end -}}
