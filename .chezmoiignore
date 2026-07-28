@@ -10,3 +10,6 @@
 
 # Exclude work-specific Claude settings from public repo
 .claude/private_settings.json.tmpl
+
+# Exclude Claude plugin marketplace cache (cloned plugin repos, machine-local)
+.claude/plugins/marketplace
