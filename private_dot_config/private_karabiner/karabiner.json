@@ -527,6 +527,45 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Ctrl+Option+Cmd+1: Dell U2515H input to Mac mini (HDMI 1)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "1",
+                                    "modifiers": { "mandatory": ["control", "option", "command"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/m1ddc display 1 set input 17" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Option+Cmd+2: Dell U2515H input to laptop (HDMI 2)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "2",
+                                    "modifiers": { "mandatory": ["control", "option", "command"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/m1ddc display 1 set input 18" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Option+Cmd+3: Dell U2515H input to gaming PC (DisplayPort)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "3",
+                                    "modifiers": { "mandatory": ["control", "option", "command"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/m1ddc display 1 set input 15" }],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
