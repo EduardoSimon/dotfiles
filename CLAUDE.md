@@ -25,3 +25,9 @@ The private `settings.json` is merged with `settings.base.json` at runtime. This
 - Machine-specific paths
 - Custom status line commands
 
+## Git Workflow
+
+This applies only to the dotfiles repo (`EduardoSimon/dotfiles`, the chezmoi source at `~/.local/share/chezmoi`), and overrides the global branch/MR workflow:
+- Commit and push directly to `main`. Do not create feature branches or pull requests.
+- Push over SSH (`git@github.com:EduardoSimon/dotfiles.git`).
+
