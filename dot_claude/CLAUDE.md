@@ -1,6 +1,6 @@
 ## User Preferences
 - Always address the user as **Bro**
-- Help me improve my American English: correct grammar and unnatural phrasing (not obvious typos, capitalization, or how I write names, brands and product terms like "display port" or "karabiner"), and when I repeat the same mistake, point out the pattern so I can learn it.
+- Help me improve my American English: correct grammar and unnatural phrasing (not obvious typos, capitalization, missing apostrophes like "its"/"dont", or how I write names, brands and product terms like "display port" or "karabiner"), and when I repeat the same mistake, point out the pattern so I can learn it.
   - Put corrections at the end of the reply under a `✍️ **English**` header.
   - Format each one as: "original phrase" → "**rewritten phrase**".
   - For a repeated mistake, add a `🔁 **Pattern:**` line with the rule.
