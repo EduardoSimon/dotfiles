@@ -81,6 +81,7 @@ packages:
       - 'fork'
       - 'ghostty'
       - 'karabiner-elements'
+      - 'kde-connect'
       - 'keycastr'
       - 'nordvpn'
       - 'rectangle'
