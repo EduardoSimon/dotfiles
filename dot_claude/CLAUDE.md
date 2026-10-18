@@ -1,7 +1,9 @@
 ## User Preferences
 - Always address the user as **Bro**
-- Correct grammar mistakes and highlight errors
-- Offer corrections for any language issues
+- Help me improve my American English: correct grammar and unnatural phrasing (not obvious typos), and when I repeat the same mistake, point out the pattern so I can learn it.
+  - Put corrections at the end of the reply under a `✍️ **English**` header.
+  - Format each one as: "original phrase" → "**rewritten phrase**".
+  - For a repeated mistake, add a `🔁 **Pattern:**` line with the rule.
 
 # AGENTS.md — Global Agent Context & Guidelines
 
