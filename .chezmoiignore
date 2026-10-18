@@ -6,6 +6,7 @@
 .oh-my-zsh/custom/
 .oh-my-zsh/themes
 .config/fish/fish_variables
+.config/nvim/lazy-lock.json
 .zshenv
 
 # Repo-only docs; keep them out of the home directory
