@@ -19,7 +19,6 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "ralph-loop@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
     "playwright-cli@playwright-cli": true
   },
