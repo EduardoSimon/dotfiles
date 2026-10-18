@@ -20,3 +20,8 @@ tmux-shortcuts.md
 
 # Exclude Claude plugin marketplace cache (cloned plugin repos, machine-local)
 .claude/plugins/marketplaces
+
+{{ if ne .chezmoi.os "darwin" -}}
+# macOS-only config
+Library
+{{ end -}}

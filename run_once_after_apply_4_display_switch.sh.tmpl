@@ -1,0 +1,10 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+# Start display-switch at login. It switches the monitor input when the KVM
+# moves the keyboard; its config is ~/Library/Preferences/display-switch.ini.
+
+export PATH=/opt/homebrew/bin:$PATH
+
+brew services start haimgel/tools/display_switch
+{{ end -}}

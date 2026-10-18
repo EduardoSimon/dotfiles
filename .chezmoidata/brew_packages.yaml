@@ -3,6 +3,8 @@ packages:
     taps:
       - name: 'common-fate/granted'
         trusted: true
+      - name: 'haimgel/tools'
+        trusted: true
       - name: 'hashicorp/tap'
       - name: 'max-sixty/worktrunk'
         trusted: true
@@ -37,6 +39,7 @@ packages:
       - 'gnupg'
       - 'graphviz'
       - 'grep'
+      - 'haimgel/tools/display_switch'
       - 'htop'
       - 'httpie'
       - 'hurl'
