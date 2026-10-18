@@ -11,17 +11,6 @@
           }
         ]
       }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "terminal-notifier -message \"Claude Code Finished\""
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
