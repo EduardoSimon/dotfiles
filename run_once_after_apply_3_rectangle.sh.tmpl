@@ -30,8 +30,9 @@ for key, wrapped in data.get("defaults", {}).items():
     else:
         plist[key] = {}
 
-if "shortcuts" in data:
-    plist["shortcuts"] = data["shortcuts"]
+# Rectangle reads each shortcut from its own top-level key (e.g. "leftHalf"),
+# not from a nested "shortcuts" dict.
+plist.update(data.get("shortcuts", {}))
 
 with open(plist_path, "wb") as f:
     plistlib.dump(plist, f)

@@ -14,7 +14,7 @@ sh -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply EduardoSimon
 
 ## Mac OS Only
 
-- Import Rectangle config file from ~/.config/Rectangle/RectangleConfig.json: Settings > Import
+- Rectangle settings and shortcuts from `~/.config/Rectangle/RectangleConfig.json` are imported automatically on the first `chezmoi apply`. To re-import manually: Rectangle Settings > Import.
 
 ## WSL 2 + windows Only
 
