@@ -8,8 +8,11 @@
 .config/fish/fish_variables
 .zshenv
 
-# Repo-only instructions for working on the dotfiles; keep them out of ~/CLAUDE.md
+# Repo-only docs; keep them out of the home directory
 CLAUDE.md
+README.md
+TODO.md
+tmux-shortcuts.md
 
 # Exclude work-specific Claude settings from public repo
 .claude/private_settings.json.tmpl
