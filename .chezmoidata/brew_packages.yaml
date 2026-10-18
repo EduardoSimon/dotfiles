@@ -79,6 +79,7 @@ packages:
       - 'ghostty'
       - 'karabiner-elements'
       - 'keycastr'
+      - 'nordvpn'
       - 'rectangle'
       - 'yippy'
       - 'zed'
