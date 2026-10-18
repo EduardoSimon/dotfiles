@@ -34,7 +34,7 @@ npm install -g @playwright/cli@latest
 
 #!/bin/bash
 
-brew bundle --file=/dev/stdin <<EOF
+brew bundle --verbose --file=/dev/stdin <<EOF
 {{ range .packages.darwin.taps -}}
 tap {{ .name | quote }}{{ if index . "trusted" }}, trusted: true{{ end }}
 {{ end -}}
